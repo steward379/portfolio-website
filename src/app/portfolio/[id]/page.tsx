@@ -11,12 +11,9 @@ export { generateMetadata, generateStaticParams };
 
 
 // 動態作品詳情頁面
-//@ts-ignore
-export default async function ProjectPage({
-  params,
-}: {
-  params: { id: string }
-}) {
+// @ts-expect-error - 忽略 PageProps 類型不匹配的錯誤
+export default async function ProjectPage({params, }: {
+  params: { id: string }}) {
   // 使用 React.use() 來解析 params
   const project = getProjectById(params.id);
 

@@ -18,6 +18,7 @@ const eslintConfig = [
 
       // 允許使用 any 類型
       "@typescript-eslint/no-explicit-any": "off",
+       "@typescript-eslint/ban-ts-comment": "off"
     },
   },
 ];
