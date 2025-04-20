@@ -11,14 +11,12 @@ import { generateStaticParams } from './generateStaticParams';
 export { generateMetadata, generateStaticParams };
 
 // 動態作品詳情頁面
-type Props = {
-  params: { id: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+type PageParams = {
+  id: string;
 };
 
-
 //@ts-ignore
-export default function ProjectPage({ params }: Props) {
+export default function ProjectPage({ params }: { params: PageParams }) {
 
   const project = getProjectById(params.id);
 
