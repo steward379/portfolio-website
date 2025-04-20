@@ -5,18 +5,16 @@ import { getProjectById } from '@/data/projects';
 // 導入並重新導出這些函數
 import { generateMetadata } from './generateMetadata';
 import { generateStaticParams } from './generateStaticParams';
-import { NextPage } from 'next';
-
-interface ProjectPageProps {
-  params: { id: string };
-}
 
 // 重新導出這些函數
 export { generateMetadata, generateStaticParams };
 
 // 動態作品詳情頁面
 
-const ProjectPage: NextPage<ProjectPageProps> = ({ params }) => {
+//@ts-ignore
+export default function ProjectPage(props: any) {{
+
+  const { params } = props;
     
   const project = getProjectById(params.id);
 
@@ -174,5 +172,3 @@ const ProjectPage: NextPage<ProjectPageProps> = ({ params }) => {
     </div>
   );
 }
-
-export default ProjectPage;
