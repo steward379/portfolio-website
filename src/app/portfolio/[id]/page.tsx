@@ -1,8 +1,7 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation';
-import { getProjectById, Project } from '@/data/projects';
+import { getProjectById } from '@/data/projects';
 import { use } from 'react';
-import { useState, useEffect } from 'react'
 
 // 導入並重新導出這些函數
 import { generateMetadata } from './generateMetadata';
@@ -12,21 +11,9 @@ import { generateStaticParams } from './generateStaticParams';
 export { generateMetadata, generateStaticParams };
 
 // 動態作品詳情頁面
-
-export default function ProjectPage(props: { params: Promise<{ id: string }> }) {
-  // 使用异步IIFE来处理Promise参数
-  const [project, setProject] = useState<Project | null | undefined>(null);
-  
-  useEffect(() => {
-    async function loadProject() {
-      const resolvedParams = await props.params;
-      const loadedProject = getProjectById(resolvedParams.id);
-      setProject(loadedProject);
-    }
-    
-    loadProject();
-  }, [props.params]);
+export default function ProjectPage({ params } : any ) {
   // 使用 React.use() 來解析 params
+  const project = getProjectById(params.id);
 
   if (!project) {
     notFound();
