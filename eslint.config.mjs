@@ -15,6 +15,9 @@ const eslintConfig = [
     rules: {
       // 禁用未使用變量的規則，或將其降級為警告
       "@typescript-eslint/no-unused-vars": "warn", // 可以改為 "warn" 以顯示警告而非錯誤
+
+      // 允許使用 any 類型
+      "@typescript-eslint/no-explicit-any": "off",
     },
   },
 ];
