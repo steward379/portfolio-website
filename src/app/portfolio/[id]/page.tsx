@@ -9,14 +9,13 @@ import { generateStaticParams } from './generateStaticParams';
 // 重新導出這些函數
 export { generateMetadata, generateStaticParams };
 
-type Props = {
-  params: { id: string }
-  searchParams: { [key: string]: string | string[] | undefined }
-}
-
 
 // 動態作品詳情頁面
-export default function ProjectPage({ params } : Props ) {
+export default function ProjectPage({
+  params,
+}: {
+  params: { id: string }
+}) {
   // 使用 React.use() 來解析 params
   const project = getProjectById(params.id);
 
