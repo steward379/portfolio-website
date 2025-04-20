@@ -14,7 +14,6 @@ export { generateMetadata, generateStaticParams };
 // @ts-ignore
 export default async function ProjectPage({params, }: {params: any }) {
     
-/* eslint-enable @typescript-eslint/ban-ts-comment */
 
   const project = getProjectById(params.id);
 
