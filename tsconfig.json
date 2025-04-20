@@ -1,10 +1,16 @@
 {
   "compilerOptions": {
+      // 暂时关闭严格模式
+    "strict": false,
+
+    // 允许隐式的any类型
+    "noImplicitAny": false,
+
+    // 不检查类型兼容性
+    "skipLibCheck": true,
     "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",

@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation';
 import { getProjectById } from '@/data/projects';
-import { use } from 'react';
 
 // 導入並重新導出這些函數
 import { generateMetadata } from './generateMetadata';
@@ -11,7 +10,7 @@ import { generateStaticParams } from './generateStaticParams';
 export { generateMetadata, generateStaticParams };
 
 // 動態作品詳情頁面
-export default function ProjectPage({ params } : any ) {
+export default function ProjectPage({ params } : { params: { id: string } } ) {
   // 使用 React.use() 來解析 params
   const project = getProjectById(params.id);
 
