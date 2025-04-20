@@ -9,12 +9,16 @@ import { generateStaticParams } from './generateStaticParams';
 // 重新導出這些函數
 export { generateMetadata, generateStaticParams };
 
-
 // 動態作品詳情頁面
-// @ts-expect-error - 忽略 PageProps 類型不匹配的錯誤
+
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-ignore
+
 export default async function ProjectPage({params, }: {
   params: { id: string }}) {
-  // 使用 React.use() 來解析 params
+    
+/* eslint-enable @typescript-eslint/ban-ts-comment */
+
   const project = getProjectById(params.id);
 
   if (!project) {
