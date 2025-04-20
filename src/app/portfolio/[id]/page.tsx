@@ -7,11 +7,12 @@ export async function generateStaticParams(): Promise<{ id: string }[]> {
   return projects.map((project) => ({ id: project.id }));
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { id: string };
-}): Promise<Metadata> {
+export async function generateMetadata(
+  props: {
+    params: Promise<{ id: string }>;
+  }
+): Promise<Metadata> {
+  const params = await props.params;
   const project = getProjectById(params.id);
   if (!project) {
     return { title: '作品不存在 | 設計公司' };
