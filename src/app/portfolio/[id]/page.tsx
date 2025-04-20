@@ -6,16 +6,20 @@ import { getProjectById } from '@/data/projects';
 import { generateMetadata } from './generateMetadata';
 import { generateStaticParams } from './generateStaticParams';
 
+
 // 重新導出這些函數
 export { generateMetadata, generateStaticParams };
 
 // 動態作品詳情頁面
+type Props = {
+  params: { id: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
 
 //@ts-ignore
-export default function ProjectPage(props: any) {
+export default function ProjectPage({ params }: Props) {
 
-  const { params } = props;
-    
   const project = getProjectById(params.id);
 
   if (!project) {
