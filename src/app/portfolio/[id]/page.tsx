@@ -11,11 +11,7 @@ import { generateStaticParams } from './generateStaticParams';
 // 重新導出這些函數
 export { generateMetadata, generateStaticParams };
 
-export default function ProjectPage({ 
-  params 
-}: { 
-  params: { id: string } 
-}) {
+export default async function ProjectPage({ params }: { params: { id: string } }) {
 
   const project = getProjectById(params.id);
 

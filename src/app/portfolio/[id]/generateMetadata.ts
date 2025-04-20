@@ -1,3 +1,4 @@
+//generateMetadata
 import { Metadata } from 'next';
 import { getProjectById } from '@/data/projects';
 
