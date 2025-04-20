@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation';
 import { getProjectById } from '@/data/projects';
+import { Params } from 'next/dist/shared/lib/router/utils/route-matcher'
 
 // 導入並重新導出這些函數
 import { generateMetadata } from './generateMetadata';
@@ -11,7 +12,7 @@ export { generateMetadata, generateStaticParams };
 
 
 // 動態作品詳情頁面
-export default function ProjectPage({
+export default async function ProjectPage({
   params,
 }: {
   params: { id: string }
