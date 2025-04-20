@@ -1,15 +1,25 @@
-'use client'; 
-
 import Link from 'next/link'
 import { notFound } from 'next/navigation';
 import { getProjectById } from '@/data/projects';
 import { use } from 'react';
 
+// 導入並重新導出這些函數
+import { generateMetadata } from './generateMetadata';
+import { generateStaticParams } from './generateStaticParams';
+
+// 重新導出這些函數
+export { generateMetadata, generateStaticParams };
+
 // 創建一個泛型類型以擴展 Promise
 type Params<T> = Promise<T> | T;
 
+// 使用 PageProps 類型，符合 Next.js 的類型要求
+interface PageProps {
+  params: Promise<{ id: string }> | { id: string };
+}
+
 // 動態作品詳情頁面
-export default function ProjectPage({ params }: { params: Params<{ id: string }> }) {
+export default function ProjectPage({ params } : PageProps) {
   // 使用 React.use() 來解析 params
   const resolvedParams = use(params as Promise<{ id: string }>);
   const project = getProjectById(resolvedParams.id);
