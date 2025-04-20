@@ -12,7 +12,7 @@ export { generateMetadata, generateStaticParams };
 // 動態作品詳情頁面
 
 // @ts-ignore
-export default async function ProjectPage({params, }: {params: any }) {
+export default function ProjectPage({params,}: {params: { id: string }}) {
     
 
   const project = getProjectById(params.id);
