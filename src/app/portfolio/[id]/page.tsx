@@ -12,7 +12,7 @@ export { generateMetadata, generateStaticParams };
 // 動態作品詳情頁面
 
 //@ts-ignore
-export default function ProjectPage(props: any) {{
+export default function ProjectPage(props: any) {
 
   const { params } = props;
     
