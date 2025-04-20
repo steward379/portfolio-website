@@ -10,14 +10,8 @@ import { generateStaticParams } from './generateStaticParams';
 // 重新導出這些函數
 export { generateMetadata, generateStaticParams };
 
-
-// 使用 PageProps 類型，符合 Next.js 的類型要求
- interface PageProps {
-  params: { id: string };
-}
-
 // 動態作品詳情頁面
-export default function ProjectPage({ params } : PageProps) {
+export default function ProjectPage({ params } : { params: { id: string } }) {
   // 使用 React.use() 來解析 params
   const project = getProjectById(params.id);
 
