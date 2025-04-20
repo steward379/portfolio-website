@@ -11,11 +11,8 @@ export { generateMetadata, generateStaticParams };
 
 // 動態作品詳情頁面
 
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
-
-export default async function ProjectPage({params, }: {
-  params: { id: string }}) {
+export default async function ProjectPage({params, }: {params: any }) {
     
 /* eslint-enable @typescript-eslint/ban-ts-comment */
 
