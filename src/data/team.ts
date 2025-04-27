@@ -45,17 +45,17 @@ export interface TeamMember {
         github: 'https://github.com',
       },
     },
-    // {
-    //   id: 'sarah-williams',
-    //   name: '陳怡君',
-    //   role: '專案經理',
-    //   bio: '擁有豐富的專案管理經驗，確保每個項目都能按時高質量地交付。',
-    //   image: '/images/team-4.jpg',
-    //   socialLinks: {
-    //     linkedin: 'https://linkedin.com',
-    //     twitter: 'https://twitter.com',
-    //   },
-    // },
+    {
+      id: 'sarah-williams',
+      name: '陳怡君',
+      role: '專案經理',
+      bio: '擁有豐富的專案管理經驗，確保每個項目都能按時高質量地交付。',
+      image: '/images/team-4.jpg',
+      socialLinks: {
+        linkedin: 'https://linkedin.com',
+        twitter: 'https://twitter.com',
+      },
+    },
     {
       id: 'backend-developer',
       name: 'Backend Developer',
