@@ -37,7 +37,7 @@ const Team = () => {
                       href={member.socialLinks.linkedin} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="text-gray-400 hover:text-blue-600 transition-colors"
+                      className="text-gray-600 hover:text-blue-600 transition-colors"
                       aria-label={`${member.name}的LinkedIn`}
                     >
                       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -50,7 +50,7 @@ const Team = () => {
                       href={member.socialLinks.twitter} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="text-gray-400 hover:text-blue-600 transition-colors"
+                      className="text-gray-600 hover:text-blue-600 transition-colors"
                       aria-label={`${member.name}的Twitter`}
                     >
                       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -63,7 +63,7 @@ const Team = () => {
                       href={member.socialLinks.github} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="text-gray-400 hover:text-blue-600 transition-colors"
+                      className="text-gray-600 hover:text-blue-600 transition-colors"
                       aria-label={`${member.name}的GitHub`}
                     >
                       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">

@@ -9,7 +9,7 @@ const Hero = () => {
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             讓專業設計與開發，為您打造獨特品牌體驗
           </h1>
-          <p className="text-xl mb-8 text-gray-100">
+          <p className="text-xl mb-8 text-gray-500">
             我們是一家專注於網站開發和設計的公司，為您提供從概念到實現的全方位服務。我們幫助企業建立專業的數位形象，提升品牌價值。
           </p>
           <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
