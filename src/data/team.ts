@@ -47,7 +47,7 @@ export interface TeamMember {
     },
     {
       id: 'sarah-williams',
-      name: '陳怡君',
+      name: 'Project Manager',
       role: '專案經理',
       bio: '擁有豐富的專案管理經驗，確保每個項目都能按時高質量地交付。',
       image: '/images/team-4.jpg',
