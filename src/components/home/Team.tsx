@@ -6,8 +6,8 @@ const Team = () => {
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">我們的團隊</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">我們的團隊</h2>
+          <p className="text-xl text-gray-900 max-w-3xl mx-auto">
             我們擁有一支充滿熱情和創意的專業團隊，致力於為客戶提供最優質的服務
           </p>
         </div>
@@ -17,7 +17,7 @@ const Team = () => {
             <div key={member.id} className="bg-gray-50 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
               <div className="relative h-64 w-full">
                 <div className="absolute inset-0 bg-gray-300 flex items-center justify-center">
-                  <span className="text-gray-500">{member.name}的照片</span>
+                  <span className="text-gray-700">{member.name}的照片</span>
                 </div>
                 {/* 在實際專案中，這裡會顯示真實的團隊成員照片 */}
                 {/* <Image 
@@ -28,16 +28,16 @@ const Team = () => {
                 /> */}
               </div>
               <div className="p-6">
-                <h3 className="font-bold text-xl mb-1">{member.name}</h3>
+                <h3 className="font-bold text-xl mb-1 text-gray-900">{member.name}</h3>
                 <p className="text-blue-600 mb-4">{member.role}</p>
-                <p className="text-gray-600 mb-5">{member.bio}</p>
+                <p className="text-gray-900 mb-5">{member.bio}</p>
                 <div className="flex space-x-3">
                   {member.socialLinks.linkedin && (
                     <a 
                       href={member.socialLinks.linkedin} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="text-gray-600 hover:text-blue-600 transition-colors"
+                      className="text-gray-900 hover:text-blue-600 transition-colors"
                       aria-label={`${member.name}的LinkedIn`}
                     >
                       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -50,7 +50,7 @@ const Team = () => {
                       href={member.socialLinks.twitter} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="text-gray-600 hover:text-blue-600 transition-colors"
+                      className="text-gray-900 hover:text-blue-600 transition-colors"
                       aria-label={`${member.name}的Twitter`}
                     >
                       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -63,7 +63,7 @@ const Team = () => {
                       href={member.socialLinks.github} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="text-gray-600 hover:text-blue-600 transition-colors"
+                      className="text-gray-900 hover:text-blue-600 transition-colors"
                       aria-label={`${member.name}的GitHub`}
                     >
                       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">

@@ -9,13 +9,13 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <h3 className="text-xl font-bold mb-4">設計公司</h3>
-            <p className="text-gray-500 mb-4">
+            <p className="text-gray-300 mb-4">
               我們提供專業的網站開發與設計服務，為您打造獨特的品牌形象。
             </p>
             <div className="flex space-x-4">
               <a
                 href="#"
-                className="text-gray-500 hover:text-white transition-colors"
+                className="text-gray-300 hover:text-white transition-colors"
                 aria-label="Facebook"
               >
                 <svg
@@ -33,7 +33,7 @@ const Footer = () => {
               </a>
               <a
                 href="#"
-                className="text-gray-500 hover:text-white transition-colors"
+                className="text-gray-300 hover:text-white transition-colors"
                 aria-label="Instagram"
               >
                 <svg
@@ -51,7 +51,7 @@ const Footer = () => {
               </a>
               <a
                 href="#"
-                className="text-gray-500 hover:text-white transition-colors"
+                className="text-gray-300 hover:text-white transition-colors"
                 aria-label="Twitter"
               >
                 <svg
@@ -70,17 +70,17 @@ const Footer = () => {
             <h3 className="text-xl font-bold mb-4">導覽</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/" className="text-gray-500 hover:text-white transition-colors">
+                <Link href="/" className="text-gray-300 hover:text-white transition-colors">
                   首頁
                 </Link>
               </li>
               <li>
-                <Link href="/portfolio" className="text-gray-500 hover:text-white transition-colors">
+                <Link href="/portfolio" className="text-gray-300 hover:text-white transition-colors">
                   作品集
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="text-gray-500 hover:text-white transition-colors">
+                <Link href="/about" className="text-gray-300 hover:text-white transition-colors">
                   關於我們
                 </Link>
               </li>
@@ -90,13 +90,13 @@ const Footer = () => {
           <div>
             <h3 className="text-xl font-bold mb-4">聯絡資訊</h3>
             <address className="not-italic">
-              <p className="text-gray-500 mb-2">台北市中山區南京東路一段 123 號</p>
-              <p className="text-gray-500 mb-2">
+              <p className="text-gray-300 mb-2">台北市中山區南京東路一段 123 號</p>
+              <p className="text-gray-300 mb-2">
                 <a href="mailto:info@design-company.com" className="hover:text-white transition-colors">
                   info@design-company.com
                 </a>
               </p>
-              <p className="text-gray-500">
+              <p className="text-gray-300">
                 <a href="tel:+886212345678" className="hover:text-white transition-colors">
                   (02) 1234-5678
                 </a>
@@ -105,7 +105,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-gray-700 text-center text-gray-400">
+        <div className="mt-12 pt-8 border-t border-gray-700 text-center text-gray-300">
           <p>&copy; {currentYear} 設計公司. 版權所有.</p>
         </div>
       </div>

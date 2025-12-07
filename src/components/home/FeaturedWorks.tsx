@@ -9,8 +9,8 @@ const FeaturedWorks = () => {
     <section className="py-20 bg-gray-100">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">精選作品</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">精選作品</h2>
+          <p className="text-xl text-gray-900 max-w-3xl mx-auto">
             探索我們最近完成的一些作品，展示我們在不同領域的專業技能和創意
           </p>
         </div>

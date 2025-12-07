@@ -22,18 +22,18 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl font-bold mb-6">我們的故事</h2>
-              <p className="text-gray-700 mb-4">
+              <p className="text-gray-900 mb-4">
                 設計公司成立於2020年，由一群具有豐富行業經驗的設計師和開發人員組成。我們相信優秀的設計不僅僅是美觀，更應該能夠解決問題並創造價值。
               </p>
-              <p className="text-gray-700 mb-4">
+              <p className="text-gray-900 mb-4">
                 從成立之初，我們就專注於為客戶提供全方位的設計和開發服務，包括品牌設計、網站開發、UI/UX設計等。我們與各行各業的企業合作，從初創公司到大型企業，幫助他們在數位時代建立強大的品牌形象。
               </p>
-              <p className="text-gray-700">
+              <p className="text-gray-900">
                 我們的團隊擁有多元化的背景和技能，這使我們能夠從不同角度思考問題，為客戶提供創新且實用的解決方案。我們相信透過設計的力量，可以幫助企業實現其業務目標，同時為用戶創造愉悅的體驗。
               </p>
             </div>
             <div className="bg-gray-200 h-80 rounded-lg flex items-center justify-center">
-              <span className="text-gray-500">公司團隊合照</span>
+              <span className="text-gray-700">公司團隊合照</span>
             </div>
           </div>
         </div>
@@ -43,7 +43,7 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-16">
             <h2 className="text-3xl font-bold mb-6">我們的價值觀</h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-gray-900">
               我們的核心價值觀引導著我們的工作和與客戶的合作方式
             </p>
           </div>
@@ -67,7 +67,7 @@ export default function AboutPage() {
                 </svg>
               </div>
               <h3 className="text-xl font-bold mb-3">創新思維</h3>
-              <p className="text-gray-600">
+              <p className="text-gray-900">
                 我們不斷探索新的創意和技術，為客戶提供前沿的解決方案。我們鼓勵團隊突破常規思維，從不同角度看待問題。
               </p>
             </div>
@@ -90,7 +90,7 @@ export default function AboutPage() {
                 </svg>
               </div>
               <h3 className="text-xl font-bold mb-3">以客戶為中心</h3>
-              <p className="text-gray-600">
+              <p className="text-gray-900">
                 我們深入了解客戶的需求和目標，與客戶建立長期的合作關係。我們相信真正了解客戶的業務是提供優質服務的關鍵。
               </p>
             </div>
@@ -113,7 +113,7 @@ export default function AboutPage() {
                 </svg>
               </div>
               <h3 className="text-xl font-bold mb-3">品質與專業</h3>
-              <p className="text-gray-600">
+              <p className="text-gray-900">
                 我們對每個項目都投入百分之百的專注和努力，確保交付的成果符合最高標準。我們注重細節，不斷追求卓越。
               </p>
             </div>
@@ -126,7 +126,7 @@ export default function AboutPage() {
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl font-bold mb-6">聯絡我們</h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-900 max-w-3xl mx-auto">
                 無論您有任何問題或想討論合作機會，都歡迎與我們聯絡
               </p>
             </div>
@@ -162,7 +162,7 @@ export default function AboutPage() {
                       </div>
                       <div className="ml-4">
                         <h4 className="text-lg font-medium mb-1">地址</h4>
-                        <address className="not-italic text-gray-600">
+                        <address className="not-italic text-gray-900">
                           台北市中山區南京東路一段 123 號
                         </address>
                       </div>
@@ -187,7 +187,7 @@ export default function AboutPage() {
                       </div>
                       <div className="ml-4">
                         <h4 className="text-lg font-medium mb-1">Email</h4>
-                        <a href="mailto:info@design-company.com" className="text-gray-600 hover:text-blue-600 transition-colors">
+                        <a href="mailto:info@design-company.com" className="text-gray-900 hover:text-blue-600 transition-colors">
                           info@design-company.com
                         </a>
                       </div>
@@ -212,7 +212,7 @@ export default function AboutPage() {
                       </div>
                       <div className="ml-4">
                         <h4 className="text-lg font-medium mb-1">電話</h4>
-                        <a href="tel:+886212345678" className="text-gray-600 hover:text-blue-600 transition-colors">
+                        <a href="tel:+886212345678" className="text-gray-900 hover:text-blue-600 transition-colors">
                           (02) 1234-5678
                         </a>
                       </div>
@@ -237,7 +237,7 @@ export default function AboutPage() {
                       </div>
                       <div className="ml-4">
                         <h4 className="text-lg font-medium mb-1">營業時間</h4>
-                        <p className="text-gray-600">
+                        <p className="text-gray-900">
                           週一至週五: 10:00 - 22:00<br />
                           週六至週日: 12:00 ~ 22:00
                         </p>

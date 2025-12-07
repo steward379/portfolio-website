@@ -63,14 +63,14 @@ const ProjectFilter = ({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* 類別篩選 */}
           <div>
-            <h3 className="font-medium mb-3 text-gray-700">依類別篩選</h3>
+            <h3 className="font-medium mb-3 text-gray-900">依類別篩選</h3>
             <div className="flex flex-wrap gap-2">
               <button
                 onClick={() => onCategoryChange(null)}
                 className={`px-4 py-2 rounded-full text-sm ${
                   selectedCategory === null
                     ? 'bg-blue-600 text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
                 } transition-colors`}
               >
                 全部
@@ -82,7 +82,7 @@ const ProjectFilter = ({
                   className={`px-4 py-2 rounded-full text-sm ${
                     selectedCategory === category.value
                       ? 'bg-blue-600 text-white'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
                   } transition-colors`}
                 >
                   {category.label}
@@ -93,14 +93,14 @@ const ProjectFilter = ({
 
           {/* 產業篩選 */}
           <div>
-            <h3 className="font-medium mb-3 text-gray-700">依產業篩選</h3>
+            <h3 className="font-medium mb-3 text-gray-900">依產業篩選</h3>
             <div className="flex flex-wrap gap-2">
               <button
                 onClick={() => onIndustryChange(null)}
                 className={`px-4 py-2 rounded-full text-sm ${
                   selectedIndustry === null
                     ? 'bg-blue-600 text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
                 } transition-colors`}
               >
                 全部
@@ -112,7 +112,7 @@ const ProjectFilter = ({
                   className={`px-4 py-2 rounded-full text-sm ${
                     selectedIndustry === industry.value
                       ? 'bg-blue-600 text-white'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
                   } transition-colors`}
                 >
                   {industry.label}

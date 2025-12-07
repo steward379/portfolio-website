@@ -76,7 +76,7 @@ const ContactForm = () => {
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div>
-            <label htmlFor="name" className="block text-gray-700 font-medium mb-2">
+            <label htmlFor="name" className="block text-gray-900 font-medium mb-2">
               姓名 *
             </label>
             <input
@@ -92,7 +92,7 @@ const ContactForm = () => {
           </div>
 
           <div>
-            <label htmlFor="email" className="block text-gray-700 font-medium mb-2">
+            <label htmlFor="email" className="block text-gray-900 font-medium mb-2">
               Email *
             </label>
             <input
@@ -110,7 +110,7 @@ const ContactForm = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div>
-            <label htmlFor="phone" className="block text-gray-700 font-medium mb-2">
+            <label htmlFor="phone" className="block text-gray-900 font-medium mb-2">
               電話
             </label>
             <input
@@ -125,7 +125,7 @@ const ContactForm = () => {
           </div>
 
           <div>
-            <label htmlFor="subject" className="block text-gray-700 font-medium mb-2">
+            <label htmlFor="subject" className="block text-gray-900 font-medium mb-2">
               主題 *
             </label>
             <select
@@ -148,7 +148,7 @@ const ContactForm = () => {
         </div>
 
         <div className="mb-6">
-          <label htmlFor="message" className="block text-gray-700 font-medium mb-2">
+          <label htmlFor="message" className="block text-gray-900 font-medium mb-2">
             訊息內容 *
           </label>
           <textarea

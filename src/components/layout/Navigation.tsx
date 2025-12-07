@@ -31,7 +31,7 @@ const Navigation = ({ className = '' }: NavigationProps) => {
               className={`${
                 pathname === item.path
                   ? 'text-blue-600 font-medium'
-                  : 'text-gray-600 hover:text-blue-600'
+                  : 'text-gray-900 hover:text-blue-600'
               } transition-colors duration-300`}
             >
               {item.name}

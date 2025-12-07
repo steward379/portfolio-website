@@ -6,7 +6,7 @@ export default function NotFound() {
       <div className="max-w-lg w-full text-center">
         <h1 className="text-9xl font-bold text-blue-600">404</h1>
         <h2 className="text-3xl font-bold mb-8">頁面不存在</h2>
-        <p className="text-xl text-gray-600 mb-8">
+        <p className="text-xl text-gray-900 mb-8">
           您要尋找的頁面不存在或已被移除。
         </p>
         <Link

@@ -29,7 +29,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
     >
       <div className="relative h-60 overflow-hidden">
         <div className="absolute inset-0 bg-gray-300 flex items-center justify-center">
-          <span className="text-gray-500">{project.title}的預覽圖</span>
+          <span className="text-gray-700">{project.title}的預覽圖</span>
         </div>
         {/* 在實際專案中，這裡會顯示真實的作品圖片 */}
         {/* <Image 
@@ -54,12 +54,12 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
       </div>
       <div className="p-6">
         <div className="flex justify-between items-center mb-2">
-          <h3 className="text-xl font-bold text-gray-800">{project.title}</h3>
-          <span className="text-sm text-gray-500">{project.date}</span>
+          <h3 className="text-xl font-bold text-gray-900">{project.title}</h3>
+          <span className="text-sm text-gray-900">{project.date}</span>
         </div>
-        <p className="text-gray-600 mb-4">{project.description}</p>
+        <p className="text-gray-900 mb-4">{project.description}</p>
         <div className="flex justify-between items-center">
-          <span className="text-sm font-medium text-gray-500">客戶: {project.client}</span>
+          <span className="text-sm font-medium text-gray-900">客戶: {project.client}</span>
           <span className="text-blue-600 text-sm font-medium group-hover:underline">
             查看詳情
           </span>

@@ -97,13 +97,13 @@ export default function ProjectPage({ params }: PageProps) {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             <div className="lg:col-span-2">
               <h2 className="text-2xl font-bold mb-6">專案概述</h2>
-              <p className="text-gray-700 mb-8">
+              <p className="text-gray-900 mb-8">
                 {project.fullDescription || project.description}
               </p>
 
               <div className="mb-12">
                 <div className="bg-gray-300 rounded-lg h-96 mb-4 flex items-center justify-center">
-                  <span className="text-gray-600">主要專案圖片</span>
+                  <span className="text-gray-700">主要專案圖片</span>
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -112,7 +112,7 @@ export default function ProjectPage({ params }: PageProps) {
                       key={index} 
                       className="bg-gray-200 rounded-lg h-40 flex items-center justify-center"
                     >
-                      <span className="text-gray-600">專案圖片 {index + 1}</span>
+                      <span className="text-gray-700">專案圖片 {index + 1}</span>
                     </div>
                   ))}
                 </div>
@@ -151,19 +151,19 @@ export default function ProjectPage({ params }: PageProps) {
                 <h3 className="text-xl font-bold mb-4">專案資訊</h3>
                 <ul className="space-y-4">
                   <li className="flex justify-between">
-                    <span className="text-gray-600">客戶:</span>
+                    <span className="text-gray-900">客戶:</span>
                     <span className="font-medium">{project.client}</span>
                   </li>
                   <li className="flex justify-between">
-                    <span className="text-gray-600">類別:</span>
+                    <span className="text-gray-900">類別:</span>
                     <span className="font-medium">{getCategoryLabel()}</span>
                   </li>
                   <li className="flex justify-between">
-                    <span className="text-gray-600">產業:</span>
+                    <span className="text-gray-900">產業:</span>
                     <span className="font-medium">{getIndustryLabel()}</span>
                   </li>
                   <li className="flex justify-between">
-                    <span className="text-gray-600">完成日期:</span>
+                    <span className="text-gray-900">完成日期:</span>
                     <span className="font-medium">{project.date}</span>
                   </li>
                 </ul>
@@ -171,7 +171,7 @@ export default function ProjectPage({ params }: PageProps) {
 
               <div className="bg-blue-50 p-6 rounded-lg">
                 <h3 className="text-xl font-bold mb-4">需要相似的專案？</h3>
-                <p className="text-gray-700 mb-6">
+                <p className="text-gray-900 mb-6">
                   我們可以根據您的需求，為您打造獨特的品牌體驗和專業網站。
                 </p>
                 <Link 
