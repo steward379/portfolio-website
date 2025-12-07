@@ -55,7 +55,7 @@ export default function ProjectPage({ params }: PageProps) {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       <section className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-16">
         <div className="container mx-auto px-4">
           <Link 
@@ -92,27 +92,27 @@ export default function ProjectPage({ params }: PageProps) {
         </div>
       </section>
 
-      <section className="py-16">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             <div className="lg:col-span-2">
-              <h2 className="text-2xl font-bold mb-6">專案概述</h2>
-              <p className="text-gray-900 mb-8">
+              <h2 className="text-2xl font-bold mb-6 text-gray-900">專案概述</h2>
+              <p className="text-gray-900 mb-8 leading-relaxed">
                 {project.fullDescription || project.description}
               </p>
 
               <div className="mb-12">
-                <div className="bg-gray-300 rounded-lg h-96 mb-4 flex items-center justify-center">
-                  <span className="text-gray-700">主要專案圖片</span>
+                <div className="bg-gray-800 rounded-lg h-96 mb-4 flex items-center justify-center">
+                  <span className="text-white">主要專案圖片</span>
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                   {(project.images || []).map((_, index) => (
                     <div 
                       key={index} 
-                      className="bg-gray-200 rounded-lg h-40 flex items-center justify-center"
+                      className="bg-gray-800 rounded-lg h-40 flex items-center justify-center"
                     >
-                      <span className="text-gray-700">專案圖片 {index + 1}</span>
+                      <span className="text-white">專案圖片 {index + 1}</span>
                     </div>
                   ))}
                 </div>
@@ -148,29 +148,29 @@ export default function ProjectPage({ params }: PageProps) {
 
             <div>
               <div className="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
-                <h3 className="text-xl font-bold mb-4">專案資訊</h3>
+                <h3 className="text-xl font-bold mb-4 text-gray-900">專案資訊</h3>
                 <ul className="space-y-4">
                   <li className="flex justify-between">
                     <span className="text-gray-900">客戶:</span>
-                    <span className="font-medium">{project.client}</span>
+                    <span className="font-medium text-gray-900">{project.client}</span>
                   </li>
                   <li className="flex justify-between">
                     <span className="text-gray-900">類別:</span>
-                    <span className="font-medium">{getCategoryLabel()}</span>
+                    <span className="font-medium text-gray-900">{getCategoryLabel()}</span>
                   </li>
                   <li className="flex justify-between">
                     <span className="text-gray-900">產業:</span>
-                    <span className="font-medium">{getIndustryLabel()}</span>
+                    <span className="font-medium text-gray-900">{getIndustryLabel()}</span>
                   </li>
                   <li className="flex justify-between">
                     <span className="text-gray-900">完成日期:</span>
-                    <span className="font-medium">{project.date}</span>
+                    <span className="font-medium text-gray-900">{project.date}</span>
                   </li>
                 </ul>
               </div>
 
               <div className="bg-blue-50 p-6 rounded-lg">
-                <h3 className="text-xl font-bold mb-4">需要相似的專案？</h3>
+                <h3 className="text-xl font-bold mb-4 text-gray-900">需要相似的專案？</h3>
                 <p className="text-gray-900 mb-6">
                   我們可以根據您的需求，為您打造獨特的品牌體驗和專業網站。
                 </p>

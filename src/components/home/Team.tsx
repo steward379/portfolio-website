@@ -16,8 +16,8 @@ const Team = () => {
           {teamMembers.map((member) => (
             <div key={member.id} className="bg-gray-50 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
               <div className="relative h-64 w-full">
-                <div className="absolute inset-0 bg-gray-300 flex items-center justify-center">
-                  <span className="text-gray-700">{member.name}的照片</span>
+                <div className="absolute inset-0 bg-gray-800 flex items-center justify-center">
+                  <span className="text-white">{member.name}的照片</span>
                 </div>
                 {/* 在實際專案中，這裡會顯示真實的團隊成員照片 */}
                 {/* <Image 

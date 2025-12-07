@@ -7,7 +7,7 @@ export const metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       <section className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">關於我們</h1>
@@ -17,11 +17,11 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-20">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold mb-6">我們的故事</h2>
+              <h2 className="text-3xl font-bold mb-6 text-gray-900">我們的故事</h2>
               <p className="text-gray-900 mb-4">
                 設計公司成立於2020年，由一群具有豐富行業經驗的設計師和開發人員組成。我們相信優秀的設計不僅僅是美觀，更應該能夠解決問題並創造價值。
               </p>
@@ -32,8 +32,8 @@ export default function AboutPage() {
                 我們的團隊擁有多元化的背景和技能，這使我們能夠從不同角度思考問題，為客戶提供創新且實用的解決方案。我們相信透過設計的力量，可以幫助企業實現其業務目標，同時為用戶創造愉悅的體驗。
               </p>
             </div>
-            <div className="bg-gray-200 h-80 rounded-lg flex items-center justify-center">
-              <span className="text-gray-700">公司團隊合照</span>
+            <div className="bg-gray-800 h-80 rounded-lg flex items-center justify-center">
+              <span className="text-white">公司團隊合照</span>
             </div>
           </div>
         </div>
@@ -42,7 +42,7 @@ export default function AboutPage() {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-3xl font-bold mb-6">我們的價值觀</h2>
+            <h2 className="text-3xl font-bold mb-6 text-gray-900">我們的價值觀</h2>
             <p className="text-xl text-gray-900">
               我們的核心價值觀引導著我們的工作和與客戶的合作方式
             </p>
@@ -66,7 +66,7 @@ export default function AboutPage() {
                   />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold mb-3">創新思維</h3>
+              <h3 className="text-xl font-bold mb-3 text-gray-900">創新思維</h3>
               <p className="text-gray-900">
                 我們不斷探索新的創意和技術，為客戶提供前沿的解決方案。我們鼓勵團隊突破常規思維，從不同角度看待問題。
               </p>
@@ -89,7 +89,7 @@ export default function AboutPage() {
                   />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold mb-3">以客戶為中心</h3>
+              <h3 className="text-xl font-bold mb-3 text-gray-900">以客戶為中心</h3>
               <p className="text-gray-900">
                 我們深入了解客戶的需求和目標，與客戶建立長期的合作關係。我們相信真正了解客戶的業務是提供優質服務的關鍵。
               </p>
@@ -112,7 +112,7 @@ export default function AboutPage() {
                   />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold mb-3">品質與專業</h3>
+              <h3 className="text-xl font-bold mb-3 text-gray-900">品質與專業</h3>
               <p className="text-gray-900">
                 我們對每個項目都投入百分之百的專注和努力，確保交付的成果符合最高標準。我們注重細節，不斷追求卓越。
               </p>
@@ -121,11 +121,11 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-20">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold mb-6">聯絡我們</h2>
+              <h2 className="text-3xl font-bold mb-6 text-gray-900">聯絡我們</h2>
               <p className="text-xl text-gray-900 max-w-3xl mx-auto">
                 無論您有任何問題或想討論合作機會，都歡迎與我們聯絡
               </p>
@@ -134,7 +134,7 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
               <div className="lg:col-span-2">
                 <div className="bg-gray-50 p-8 rounded-lg">
-                  <h3 className="text-xl font-bold mb-6">聯絡資訊</h3>
+                  <h3 className="text-xl font-bold mb-6 text-gray-900">聯絡資訊</h3>
                   
                   <div className="space-y-6">
                     <div className="flex items-start">
@@ -161,7 +161,7 @@ export default function AboutPage() {
                         </svg>
                       </div>
                       <div className="ml-4">
-                        <h4 className="text-lg font-medium mb-1">地址</h4>
+                        <h4 className="text-lg font-medium mb-1 text-gray-900">地址</h4>
                         <address className="not-italic text-gray-900">
                           台北市中山區南京東路一段 123 號
                         </address>
@@ -186,7 +186,7 @@ export default function AboutPage() {
                         </svg>
                       </div>
                       <div className="ml-4">
-                        <h4 className="text-lg font-medium mb-1">Email</h4>
+                        <h4 className="text-lg font-medium mb-1 text-gray-900">Email</h4>
                         <a href="mailto:info@design-company.com" className="text-gray-900 hover:text-blue-600 transition-colors">
                           info@design-company.com
                         </a>
@@ -211,7 +211,7 @@ export default function AboutPage() {
                         </svg>
                       </div>
                       <div className="ml-4">
-                        <h4 className="text-lg font-medium mb-1">電話</h4>
+                        <h4 className="text-lg font-medium mb-1 text-gray-900">電話</h4>
                         <a href="tel:+886212345678" className="text-gray-900 hover:text-blue-600 transition-colors">
                           (02) 1234-5678
                         </a>
@@ -236,7 +236,7 @@ export default function AboutPage() {
                         </svg>
                       </div>
                       <div className="ml-4">
-                        <h4 className="text-lg font-medium mb-1">營業時間</h4>
+                        <h4 className="text-lg font-medium mb-1 text-gray-900">營業時間</h4>
                         <p className="text-gray-900">
                           週一至週五: 10:00 - 22:00<br />
                           週六至週日: 12:00 ~ 22:00

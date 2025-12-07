@@ -28,8 +28,8 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
       className="group block overflow-hidden bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
     >
       <div className="relative h-60 overflow-hidden">
-        <div className="absolute inset-0 bg-gray-300 flex items-center justify-center">
-          <span className="text-gray-700">{project.title}的預覽圖</span>
+        <div className="absolute inset-0 bg-gray-800 flex items-center justify-center">
+          <span className="text-white">{project.title}的預覽圖</span>
         </div>
         {/* 在實際專案中，這裡會顯示真實的作品圖片 */}
         {/* <Image 
