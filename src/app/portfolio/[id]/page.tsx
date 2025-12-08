@@ -1,3 +1,4 @@
+import { use } from 'react';
 import Link from 'next/link'
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
@@ -22,8 +23,6 @@ export async function generateMetadata(
     description: project.description,
   };
 }
-
-import { use } from 'react';
 
 type PageProps = {
   params: Promise<{ id: string }>;
