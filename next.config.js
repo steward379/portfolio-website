@@ -4,6 +4,7 @@ const nextConfig = {
   output: 'export',
   // 網站部署在 stewardtsou.com/portfolio-website/ 子路徑
   basePath: '/portfolio-website',
+  assetPrefix: '/portfolio-website',
   images: {
     unoptimized: true,
   },
