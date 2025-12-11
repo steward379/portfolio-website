@@ -1,5 +1,6 @@
 import { use } from 'react';
 import Link from 'next/link'
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { getProjectById, projects } from '@/data/projects';
@@ -101,20 +102,42 @@ export default function ProjectPage({ params }: PageProps) {
               </p>
 
               <div className="mb-12">
-                <div className="bg-gray-800 rounded-lg h-96 mb-4 flex items-center justify-center">
-                  <span className="text-white">主要專案圖片</span>
-                </div>
+                {project.image ? (
+                  <div className="relative rounded-lg h-96 mb-4 overflow-hidden">
+                    <Image 
+                      src={project.image} 
+                      alt={`${project.title} - 主要專案圖片`}
+                      fill
+                      className="object-cover"
+                      loading="lazy"
+                      sizes="(max-width: 768px) 100vw, 66vw"
+                    />
+                  </div>
+                ) : (
+                  <div className="bg-gray-800 rounded-lg h-96 mb-4 flex items-center justify-center">
+                    <span className="text-white">主要專案圖片</span>
+                  </div>
+                )}
 
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                  {(project.images || []).map((_, index) => (
-                    <div 
-                      key={index} 
-                      className="bg-gray-800 rounded-lg h-40 flex items-center justify-center"
-                    >
-                      <span className="text-white">專案圖片 {index + 1}</span>
-                    </div>
-                  ))}
-                </div>
+                {project.images && project.images.length > 0 && (
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    {project.images.map((image, index) => (
+                      <div 
+                        key={index} 
+                        className="relative rounded-lg h-40 overflow-hidden"
+                      >
+                        <Image 
+                          src={image} 
+                          alt={`${project.title} - 專案圖片 ${index + 1}`}
+                          fill
+                          className="object-cover"
+                          loading="lazy"
+                          sizes="(max-width: 768px) 50vw, 33vw"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
 
               {project.url && (
