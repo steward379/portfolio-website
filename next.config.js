@@ -2,8 +2,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  // 如果部署到 GitHub Pages 的子目錄，例如 username.github.io/portfolio-website
-  // 需要設置 basePath
+  // 使用自訂網域 (stewardtsou.com) 時不需要 basePath
+  // 如果部署到 username.github.io/portfolio-website 才需要設置 basePath
   // basePath: '/portfolio-website',
   images: {
     unoptimized: true,
