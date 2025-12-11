@@ -2,9 +2,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  // 使用自訂網域 (stewardtsou.com) 時不需要 basePath
-  // 如果部署到 username.github.io/portfolio-website 才需要設置 basePath
-  // basePath: '/portfolio-website',
+  // 網站部署在 stewardtsou.com/portfolio-website/ 子路徑
+  basePath: '/portfolio-website',
   images: {
     unoptimized: true,
   },
