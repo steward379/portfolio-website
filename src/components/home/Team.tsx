@@ -12,20 +12,16 @@ const Team = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {teamMembers.map((member) => (
             <div key={member.id} className="bg-gray-50 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
               <div className="relative h-64 w-full">
-                <div className="absolute inset-0 bg-gray-800 flex items-center justify-center">
-                  <span className="text-white">{member.name}的照片</span>
-                </div>
-                {/* 在實際專案中，這裡會顯示真實的團隊成員照片 */}
-                {/* <Image 
+                <Image 
                   src={member.image} 
                   alt={member.name} 
                   fill 
                   className="object-cover"
-                /> */}
+                />
               </div>
               <div className="p-6">
                 <h3 className="font-bold text-xl mb-1 text-gray-900">{member.name}</h3>

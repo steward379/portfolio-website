@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 import Navigation from './Navigation';
 
@@ -15,8 +16,18 @@ const Header = () => {
     <header className="bg-white shadow-md">
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
-          <Link href="/" className="text-2xl font-bold text-gray-900">
-            設計公司
+          <Link href="/" className="flex items-center gap-3">
+            <Image 
+              src="/portfolio-website/logo.jpg" 
+              alt="Logo" 
+              width={40} 
+              height={40}
+              className="rounded"
+            />
+            <div>
+              <div className="text-2xl font-bold text-gray-900">設計公司</div>
+              <div className="text-xs text-gray-500">縮小檢視工作室</div>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}

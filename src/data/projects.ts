@@ -15,6 +15,24 @@ export interface Project {
   
   export const projects: Project[] = [
     {
+      id: 'futual-website',
+      title: '共生未來官網開發',
+      client: 'Futual 共生未來',
+      description: '與設計師合作開發的現代化企業官網，展現品牌理念與核心價值。',
+      fullDescription: '與設計師合作為 Futual 共生未來開發的企業官網。網站採用 Next.js 和 Tailwind CSS 構建，具有流暢的動畫效果和互動式設計元素。我們專注於創造一個能夠清晰傳達品牌理念和核心價值的數位平台，同時提供優雅的用戶體驗。網站設計強調視覺層次和內容可讀性，確保訪客能夠輕鬆了解公司的使命和服務。<br/><br/><small>前端：Steward (創辦人)、Timothy (合作前端工程師)<br/>設計：Futual 團隊主理人</small>',
+      category: 'website',
+      industry: 'technology',
+      image: '/portfolio-website/Futual_main.png',
+      images: [
+        '/portfolio-website/Futual_1.png',
+        '/portfolio-website/Futual_2.png',
+        '/portfolio-website/Futual_3.png',
+      ],
+      featured: true,
+      date: '2024-11',
+      url: 'https://futual.co/',
+    },
+    {
       id: 'aromase-shampoo',
       title: '艾瑪絲洗髮精：職場壓力心理測驗',
       client: 'Supermedia 超人氣媒體',
@@ -128,24 +146,6 @@ export interface Project {
       featured: true,
       date: '2024-12',
       url: 'https://example.com/restaurant',
-    },
-    {
-      id: 'futual-website',
-      title: '共生未來官網開發',
-      client: '共生未來',
-      description: '與設計師合作開發的現代化企業官網，展現品牌理念與核心價值。',
-      fullDescription: '與設計師合作為共生未來開發的企業官網。網站採用 Next.js 和 Tailwind CSS 構建，具有流暢的動畫效果和互動式設計元素。我們專注於創造一個能夠清晰傳達品牌理念和核心價值的數位平台，同時提供優雅的用戶體驗。網站設計強調視覺層次和內容可讀性，確保訪客能夠輕鬆了解公司的使命和服務。',
-      category: 'website',
-      industry: 'technology',
-      image: '/portfolio-website/Futual_main.png',
-      images: [
-        '/portfolio-website/Futual_1.png',
-        '/portfolio-website/Futual_2.png',
-        '/portfolio-website/Futual_3.png',
-      ],
-      featured: true,
-      date: '2024-11',
-      url: 'https://futual.co/',
     },
     {
       id: 'education-platform',
