@@ -24,8 +24,8 @@ const Team = () => {
                 />
               </div>
               <div className="p-6">
-                <h3 className="font-bold text-xl mb-1 text-gray-900">{member.name}</h3>
-                <p className="text-blue-600 mb-4">{member.role}</p>
+                <h3 className="font-bold text-xl mb-2 text-gray-900">{member.name}</h3>
+                <p className="text-blue-600 mb-6 font-medium">{member.role}</p>
                 <p className="text-gray-900 mb-5">{member.bio}</p>
                 <div className="flex space-x-3">
                   {member.socialLinks.linkedin && (
