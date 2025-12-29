@@ -38,7 +38,7 @@ export interface Project {
     },
     {
       id: 'meowbti-quiz',
-      title: '讀喵術：貓砂心理測驗',
+      title: '鐵鎚牌貓砂',
       client: 'supermedia 超人氣媒體',
       description: 'Mobile First 手機優先的互動式心理測驗網站，結合創意微互動與流暢動畫效果。',
       fullDescription: '為 supermedia 超人氣媒體開發的 Mobile First 互動式心理測驗網站。此專案採用手機優先的開發策略，與設計師密切合作，自行發想並實作多個微互動效果與動畫，大幅提升用戶體驗的趣味性與流暢度。除了前端開發工作外，也協助完成部分平面設計的 UX 完稿，確保視覺與互動的完美結合。網站提供豐富的互動體驗，讓用戶透過有趣的測驗了解自己的個性特質。特別註明：上傳功能目前已停用。<br/><br/><small>前端設計、互動：Steward (創辦人)<br/>後端、雲端、視覺設計：Supermedia 團隊</small>',
@@ -57,7 +57,7 @@ export interface Project {
     },
     {
       id: 'wealth-quiz-temple',
-      title: '測測你是哪隻小財怪：財神心理測驗',
+      title: '測測你是哪隻小財怪：台中廣天宮心理測驗',
       client: 'supermedia 超人氣媒體',
       description: 'Mobile First 手機優先的互動式財運測驗網站，融合傳統廟宇文化與現代互動設計。',
       fullDescription: '為 supermedia 超人氣媒體開發的 Mobile First 互動式財運心理測驗網站。此專案採用手機優先的開發策略，結合傳統廟宇文化元素與現代互動設計，創造出獨特的用戶體驗。與設計師密切合作，自行發想並實作多個微互動效果與動畫，包括載入動畫、測驗流程動畫以及結果頁面的視覺呈現。網站採用傳統紅金配色與廟宇建築元素，讓用戶透過有趣的測驗了解自己的財運特質，並引導參與財神借庫活動。<br/><br/><small>前端設計、互動：Steward (創辦人)<br/>後端、雲端：Ming (合作工程師)<br/>視覺設計：Supermedia 團隊</small>',
@@ -76,7 +76,7 @@ export interface Project {
     },
     {
       id: 'office-worker-escape',
-      title: '社畜大逃殺：職場求生挑戰',
+      title: '社畜大逃殺：職場求生挑戰 2025 文博會',
       client: 'supermedia 超人氣媒體',
       description: 'Mobile First 手機優先的互動式職場生存遊戲，重現職場真實情境與社畜生活體驗。',
       fullDescription: '為 supermedia 超人氣媒體開發的 Mobile First 互動式職場生存遊戲。此專案採用手機優先的開發策略，以幽默詼諧的方式重現職場中的各種奇葩 NPC 與真實情境，讓玩家體驗社畜生活的挑戰。與設計師密切合作，自行發想並實作多個微互動效果與動畫，包括角色選擇、遊戲進行中的動態效果、生存計時系統以及遊戲結束後的結果呈現。遊戲結合排行榜功能，增加互動性與競爭感，讓用戶在輕鬆的遊戲體驗中產生共鳴。<br/><br/><small>前後端、雲端：Ming (合作工程師)<br/>遊戲：Supermedia 合作 Unity 工程師<br/>視覺設計：Supermedia 團隊</small>',
