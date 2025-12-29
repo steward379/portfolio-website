@@ -97,9 +97,12 @@ export default function ProjectPage({ params }: PageProps) {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             <div className="lg:col-span-2">
               <h2 className="text-2xl font-bold mb-6 text-gray-900">專案概述</h2>
-              <p className="text-gray-900 mb-8 leading-relaxed">
-                {project.fullDescription || project.description}
-              </p>
+              <div 
+                className="text-gray-900 mb-8 leading-relaxed [&_small]:text-sm [&_small]:text-gray-600 [&_small]:block [&_small]:mt-4"
+                dangerouslySetInnerHTML={{ 
+                  __html: project.fullDescription || project.description 
+                }}
+              />
 
               <div className="mb-12">
                 {project.image ? (
