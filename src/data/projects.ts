@@ -38,7 +38,7 @@ export interface Project {
     },
     {
       id: 'meowbti-quiz',
-      title: '鐵鎚牌貓砂',
+      title: '鐵鎚牌貓砂：貓咪到底在喵什麼？心理測驗',
       client: 'supermedia 超人氣媒體',
       description: 'Mobile First 手機優先的互動式心理測驗網站，結合創意微互動與流暢動畫效果。',
       fullDescription: '為 supermedia 超人氣媒體開發的 Mobile First 互動式心理測驗網站。此專案採用手機優先的開發策略，與設計師密切合作，自行發想並實作多個微互動效果與動畫，大幅提升用戶體驗的趣味性與流暢度。除了前端開發工作外，也協助完成部分平面設計的 UX 完稿，確保視覺與互動的完美結合。網站提供豐富的互動體驗，讓用戶透過有趣的測驗了解自己的個性特質。特別註明：上傳功能目前已停用。<br/><br/><small>前端設計、互動：Steward (創辦人)<br/>後端、雲端、視覺設計：Supermedia 團隊</small>',
