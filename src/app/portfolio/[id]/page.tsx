@@ -88,7 +88,41 @@ export default function ProjectPage({ params }: PageProps) {
               {getIndustryLabel()}
             </span>
           </div>
-          <p className="text-xl max-w-3xl">{project.description}</p>
+          <p className="text-xl max-w-3xl mb-6">{project.description}</p>
+          {project.url && (
+            <div className="flex flex-wrap items-center gap-4">
+              <a 
+                href={project.url} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-flex items-center bg-white text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-50 transition-colors font-medium shadow-md"
+              >
+                <span>訪問網站</span>
+                <svg 
+                  className="w-5 h-5 ml-2" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24" 
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    strokeWidth={2} 
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" 
+                  />
+                </svg>
+              </a>
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-blue-200 underline text-sm break-all"
+              >
+                {project.url}
+              </a>
+            </div>
+          )}
         </div>
       </section>
 
@@ -142,33 +176,6 @@ export default function ProjectPage({ params }: PageProps) {
                   </div>
                 )}
               </div>
-
-              {project.url && (
-                <div className="mb-8">
-                  <a 
-                    href={project.url} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
-                  >
-                    <span>訪問網站</span>
-                    <svg 
-                      className="w-5 h-5 ml-2" 
-                      fill="none" 
-                      stroke="currentColor" 
-                      viewBox="0 0 24 24" 
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path 
-                        strokeLinecap="round" 
-                        strokeLinejoin="round" 
-                        strokeWidth={2} 
-                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" 
-                      />
-                    </svg>
-                  </a>
-                </div>
-              )}
             </div>
 
             <div>

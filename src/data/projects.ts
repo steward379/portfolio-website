@@ -15,6 +15,28 @@ export interface Project {
   
   export const projects: Project[] = [
     {
+      id: 'aromase-shampoo',
+      title: '艾瑪絲洗髮精：職場壓力心理測驗',
+      client: 'Supermedia 超人氣媒體',
+      description: 'Mobile First 手機優先的互動式行銷網站，整合客戶證言影片、試用表單與職場壓力心理測驗。',
+      fullDescription: '為 Supermedia 超人氣媒體開發的 Mobile First 互動式行銷網站。此專案採用手機優先的開發策略，整合多項功能包括客戶證言影片展示、試用申請表單以及職場壓力心理測驗，創造完整的用戶體驗流程。網站設計以清新自然的視覺風格呈現產品特色，透過互動式測驗吸引用戶參與，並引導完成試用申請，有效提升品牌曝光與轉換率。<br/><br/><small>前端：Timothy (合作前端工程師)<br/>後端、雲端、設計：Supermedia 團隊</small>',
+      category: 'website',
+      industry: 'retail',
+      image: '/portfolio-website/aromase_1.png',
+      images: [
+        '/portfolio-website/aromase_1.png',
+        '/portfolio-website/aromase_2.png',
+        '/portfolio-website/aromase_3.png',
+        '/portfolio-website/aromase_4.png',
+        '/portfolio-website/aromase_5.png',
+        '/portfolio-website/aromase_6.png',
+        '/portfolio-website/aromase_7.png',
+      ],
+      featured: true,
+      date: '2025-03',
+      url: 'https://event.ttshow.tw/scalp_dandruff',
+    },
+    {
       id: 'meowbti-quiz',
       title: '讀喵術：貓砂心理測驗',
       client: 'supermedia 超人氣媒體',
@@ -50,6 +72,7 @@ export interface Project {
       ],
       featured: true,
       date: '2025-01',
+      url: 'https://www.gtg.org.tw/psychological',
     },
     {
       id: 'office-worker-escape',
@@ -69,6 +92,7 @@ export interface Project {
       ],
       featured: true,
       date: '2024-12',
+      url: 'https://bowlcutlife2025.ttshow.tw/',
     },
     {
       id: 'finance-app-design',
