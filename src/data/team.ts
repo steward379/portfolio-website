@@ -45,6 +45,14 @@ export interface TeamMember {
       socialLinks: {},
     },
     {
+      id: 'John',
+      name: 'John',
+      role: '合作工程師（上市櫃硬體、Web3 前端工程師)',
+      bio: '具有供應鏈背景、3 年以上經驗的前端工程師，並曾負責區塊鏈 DeFi 去中心化金融 Web3 前端開發、硬體業高度複雜內部系統等，經驗豐富、敏捷應對。',
+      image: '/portfolio-website/team-6.jpeg',
+      socialLinks: {},
+    },
+    {
       id: 'Xyloc',
       name: 'Xyloc',
       role: '合作系統架構公司、技術顧問',

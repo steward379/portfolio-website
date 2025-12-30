@@ -35,7 +35,7 @@ const ProjectFilter = ({
     <div className="mb-12">
       <div className="bg-white rounded-lg shadow-md p-6">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
-          <h2 className="text-2xl font-bold mb-4 md:mb-0">篩選作品</h2>
+          <h2 className="text-2xl font-bold mb-4 md:mb-0 text-black">篩選作品</h2>
           {(selectedCategory || selectedIndustry) && (
             <button
               onClick={onReset}
