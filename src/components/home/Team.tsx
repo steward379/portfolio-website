@@ -58,33 +58,64 @@ const Team = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {teamMembers.map((member) => (
             <div key={member.id} className="bg-gray-50 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
-              <div className="relative h-64 w-full bg-gray-200">
+              <div className="relative h-64 w-full bg-gray-200 flex items-center justify-center p-8">
                 {!imageErrors.has(member.id) ? (
                   <>
-                    <img
-                      ref={(el) => setImageRef(member.id, el)}
-                      src={member.image}
-                      alt={member.name}
-                      className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${
-                        imageLoaded.has(member.id) ? 'opacity-100' : 'opacity-0'
-                      }`}
-                      loading="lazy"
-                      onError={() => handleImageError(member.id)}
-                      onLoad={() => handleImageLoad(member.id)}
-                    />
-                    {!imageLoaded.has(member.id) && (
-                      <div className="absolute inset-0 bg-gray-200 animate-pulse" />
+                    {member.id === 'Futual' || member.id === 'Xyloc' ? (
+                      <div className={`relative bg-gray-200 flex items-center justify-center ${
+                        member.id === 'Futual' ? 'w-[300px] h-[100px]' : 'w-48 h-48'
+                      }`}>
+                        <img
+                          ref={(el) => setImageRef(member.id, el)}
+                          src={member.image}
+                          alt={member.name}
+                          className={`max-w-full max-h-full object-contain transition-opacity duration-700 ease-in-out ${
+                            imageLoaded.has(member.id) ? 'opacity-100' : 'opacity-0'
+                          }`}
+                          loading="lazy"
+                          onError={() => handleImageError(member.id)}
+                          onLoad={() => handleImageLoad(member.id)}
+                        />
+                        {!imageLoaded.has(member.id) && (
+                          <div className="absolute inset-0 bg-gray-200 animate-pulse" />
+                        )}
+                      </div>
+                    ) : (
+                      <div className="relative w-48 h-48 rounded-full overflow-hidden bg-gray-200">
+                        <img
+                          ref={(el) => setImageRef(member.id, el)}
+                          src={member.image}
+                          alt={member.name}
+                          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${
+                            imageLoaded.has(member.id) ? 'opacity-100' : 'opacity-0'
+                          }`}
+                          loading="lazy"
+                          onError={() => handleImageError(member.id)}
+                          onLoad={() => handleImageLoad(member.id)}
+                        />
+                        {!imageLoaded.has(member.id) && (
+                          <div className="absolute inset-0 bg-gray-200 animate-pulse" />
+                        )}
+                      </div>
                     )}
                   </>
                 ) : (
-                  <div className="absolute inset-0 flex items-center justify-center text-gray-500">
-                    {member.name}
-                  </div>
+                  member.id === 'Futual' || member.id === 'Xyloc' ? (
+                    <div className={`flex items-center justify-center text-gray-500 bg-gray-200 ${
+                      member.id === 'Futual' ? 'w-[300px] h-[100px]' : 'w-48 h-48'
+                    }`}>
+                      {member.name}
+                    </div>
+                  ) : (
+                    <div className="w-48 h-48 rounded-full flex items-center justify-center text-gray-500 bg-gray-200">
+                      {member.name}
+                    </div>
+                  )
                 )}
               </div>
               <div className="p-6">
                 <h3 className="font-bold text-xl mb-2 text-gray-900">{member.name}</h3>
-                <p className="text-blue-600 mb-6 font-medium">{member.role}</p>
+                <p className="text-blue-600 mb-6 font-medium" dangerouslySetInnerHTML={{ __html: member.role }} />
                 <p className="text-gray-900 mb-5">{member.bio}</p>
                 <div className="flex space-x-3">
                   {member.socialLinks.linkedin && (
