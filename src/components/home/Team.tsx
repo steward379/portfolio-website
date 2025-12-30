@@ -1,7 +1,50 @@
-import Image from 'next/image';
+'use client';
+
+import { useState, useEffect, useRef } from 'react';
 import { teamMembers } from '@/data/team';
 
 const Team = () => {
+  const [imageErrors, setImageErrors] = useState<Set<string>>(new Set());
+  const [imageLoaded, setImageLoaded] = useState<Set<string>>(new Set());
+  const imgRefs = useRef<Map<string, HTMLImageElement>>(new Map());
+
+  const handleImageError = (id: string) => {
+    setImageErrors((prev) => new Set(prev).add(id));
+  };
+
+  const handleImageLoad = (id: string) => {
+    setImageLoaded((prev) => new Set(prev).add(id));
+  };
+
+  const setImageRef = (id: string, element: HTMLImageElement | null) => {
+    if (element) {
+      imgRefs.current.set(id, element);
+    }
+  };
+
+  // 檢查所有圖片的載入狀態（只在組件掛載時檢查一次）
+  useEffect(() => {
+    const checkLoadedImages = () => {
+      teamMembers.forEach((member) => {
+        const img = imgRefs.current.get(member.id);
+        if (img && img.complete && img.naturalHeight !== 0) {
+          setImageLoaded((prev) => {
+            // 使用函數式更新，檢查是否已經在 Set 中
+            if (prev.has(member.id)) return prev;
+            const newSet = new Set(prev);
+            newSet.add(member.id);
+            return newSet;
+          });
+        }
+      });
+    };
+    
+    // 使用 setTimeout 確保 DOM 已經渲染
+    const timeoutId = setTimeout(checkLoadedImages, 0);
+    
+    return () => clearTimeout(timeoutId);
+  }, []); // 空依賴陣列，只在掛載時執行一次
+
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
@@ -15,13 +58,29 @@ const Team = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {teamMembers.map((member) => (
             <div key={member.id} className="bg-gray-50 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
-              <div className="relative h-64 w-full">
-                <Image 
-                  src={member.image} 
-                  alt={member.name} 
-                  fill 
-                  className="object-cover"
-                />
+              <div className="relative h-64 w-full bg-gray-200">
+                {!imageErrors.has(member.id) ? (
+                  <>
+                    <img
+                      ref={(el) => setImageRef(member.id, el)}
+                      src={member.image}
+                      alt={member.name}
+                      className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${
+                        imageLoaded.has(member.id) ? 'opacity-100' : 'opacity-0'
+                      }`}
+                      loading="lazy"
+                      onError={() => handleImageError(member.id)}
+                      onLoad={() => handleImageLoad(member.id)}
+                    />
+                    {!imageLoaded.has(member.id) && (
+                      <div className="absolute inset-0 bg-gray-200 animate-pulse" />
+                    )}
+                  </>
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center text-gray-500">
+                    {member.name}
+                  </div>
+                )}
               </div>
               <div className="p-6">
                 <h3 className="font-bold text-xl mb-2 text-gray-900">{member.name}</h3>

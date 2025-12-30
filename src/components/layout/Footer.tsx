@@ -8,13 +8,15 @@ const Footer = () => {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="text-xl font-bold mb-4">設計公司</h3>
+            <h3 className="text-xl font-bold mb-4">縮小檢視工作室</h3>
             <p className="text-gray-300 mb-4">
               我們提供專業的網站開發與設計服務，為您打造獨特的品牌形象。
             </p>
             <div className="flex space-x-4">
               <a
-                href="#"
+                href="https://www.facebook.com/ZoomOutDesign"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-300 hover:text-white transition-colors"
                 aria-label="Facebook"
               >
@@ -90,15 +92,15 @@ const Footer = () => {
           <div>
             <h3 className="text-xl font-bold mb-4">聯絡資訊</h3>
             <address className="not-italic">
-              <p className="text-gray-300 mb-2">台北市中山區南京東路一段 123 號</p>
+              <p className="text-gray-300 mb-2">無實體地址</p>
               <p className="text-gray-300 mb-2">
-                <a href="mailto:info@design-company.com" className="hover:text-white transition-colors">
-                  info@design-company.com
+                <a href="mailto:steward379@gmail.com" className="hover:text-white transition-colors">
+                  steward379@gmail.com
                 </a>
               </p>
               <p className="text-gray-300">
                 <a href="tel:+886212345678" className="hover:text-white transition-colors">
-                  (02) 1234-5678
+                  Call me
                 </a>
               </p>
             </address>
@@ -106,7 +108,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-12 pt-8 border-t border-gray-700 text-center text-gray-300">
-          <p>&copy; {currentYear} 設計公司. 版權所有.</p>
+          <p>&copy; {currentYear} 縮小檢視工作室. 版權所有.</p>
         </div>
       </div>
     </footer>

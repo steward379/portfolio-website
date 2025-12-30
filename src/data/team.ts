@@ -25,7 +25,7 @@ export interface TeamMember {
       name: 'Timothy',
       role: '合作工程師 (銀行乙方工程師)',
       bio: 'React 前端工程、Node.js 後端工程。3 年以上經驗的前端工程師，有完整硬體經驗與銀行端大型系統經驗，協助您打造成熟應用。',
-      image: '/images/team-2.jpg',
+      image: '/portfolio-website/team-2.jpg',
       socialLinks: {},
     },
     {
@@ -33,7 +33,7 @@ export interface TeamMember {
       name: 'Ming',
       role: '合作工程師 (醫材甲方工程師)',
       bio: 'Node.js 後端工程、AWS/GCP/Azure 等雲端架構、React 前端工程。2 年以上經驗的後端工程師，職涯背景並有會計師牌照、金融產業業務經驗，並在醫材相關產業，熟捻第一線醫療中心合作需求、地端雲端調校架設。',
-      image: '/images/team-3.jpg',
+      image: '/portfolio-website/team-3.jpg',
       socialLinks: {},
     },
     {
@@ -41,15 +41,15 @@ export interface TeamMember {
       name: 'Joe',
       role: '合作工程師（法律新創工程師）',
       bio: 'AI 營運架設、PHP/Laravel 後端工程、Wordpress。3 年以上後端工程師，熟悉傳統 PHP 現代架構與 Wordpress 架站，職涯包含停車場系統建置，AI 相關系統建置。',
-      image: '/images/team-4.jpg',
+      image: '/portfolio-website/team-4.jpg',
       socialLinks: {},
     },
     {
-      id: 'xylos',
-      name: 'Xylos',
+      id: 'Xyloc',
+      name: 'Xyloc',
       role: '合作系統架構公司、技術顧問',
       bio: '完整的開發人力與體驗，App 開發、韌體與大型系統皆可討論，知名外商資深工程師顧問。',
-      image: '/images/team-4.jpg',
+      image: '/portfolio-website/team-5.png',
       socialLinks: {},
     },
   ];

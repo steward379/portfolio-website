@@ -96,7 +96,7 @@ portfolio-website/
 ### 添加新作品
 
 1. 修改 `src/data/projects.ts` 文件，添加新作品的數據。
-2. 將作品的圖片添加到 `public/images/projects/` 目錄。
+2. 將作品的圖片添加到 `public/portfolio-website/projects/` 目錄。
 
 ### 修改服務內容
 

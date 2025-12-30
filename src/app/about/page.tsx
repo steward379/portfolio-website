@@ -1,14 +1,14 @@
 import ContactForm from '@/components/contact/ContactForm';
 
 export const metadata = {
-  title: '關於我們 | 設計公司',
+  title: '關於我們 | 縮小檢視工作室',
   description: '了解我們的公司故事，以及我們如何為客戶提供專業的網站和設計服務。',
 };
 
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-white">
-      <section className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-20">
+      <section className="bg-linear-to-r from-blue-600 to-indigo-700 text-white py-20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">關於我們</h1>
           <p className="text-xl max-w-3xl mx-auto">
@@ -23,7 +23,7 @@ export default function AboutPage() {
             <div>
               <h2 className="text-3xl font-bold mb-6 text-gray-900">我們的故事</h2>
               <p className="text-gray-900 mb-4">
-                設計公司成立於2020年，由一群具有豐富行業經驗的設計師和開發人員組成。我們相信優秀的設計不僅僅是美觀，更應該能夠解決問題並創造價值。
+                縮小檢視工作室成立於2020年，由一群具有豐富行業經驗的設計師和開發人員組成。我們相信優秀的設計不僅僅是美觀，更應該能夠解決問題並創造價值。
               </p>
               <p className="text-gray-900 mb-4">
                 從成立之初，我們就專注於為客戶提供全方位的設計和開發服務，包括品牌設計、網站開發、UI/UX設計等。我們與各行各業的企業合作，從初創公司到大型企業，幫助他們在數位時代建立強大的品牌形象。
@@ -138,7 +138,7 @@ export default function AboutPage() {
                   
                   <div className="space-y-6">
                     <div className="flex items-start">
-                      <div className="flex-shrink-0 mt-1">
+                      <div className="shrink-0 mt-1">
                         <svg 
                           className="w-6 h-6 text-blue-600" 
                           fill="none" 
@@ -163,13 +163,13 @@ export default function AboutPage() {
                       <div className="ml-4">
                         <h4 className="text-lg font-medium mb-1 text-gray-900">地址</h4>
                         <address className="not-italic text-gray-900">
-                          台北市中山區南京東路一段 123 號
+                          無實體地址
                         </address>
                       </div>
                     </div>
 
                     <div className="flex items-start">
-                      <div className="flex-shrink-0 mt-1">
+                      <div className="shrink-0 mt-1">
                         <svg 
                           className="w-6 h-6 text-blue-600" 
                           fill="none" 
@@ -187,14 +187,14 @@ export default function AboutPage() {
                       </div>
                       <div className="ml-4">
                         <h4 className="text-lg font-medium mb-1 text-gray-900">Email</h4>
-                        <a href="mailto:info@design-company.com" className="text-gray-900 hover:text-blue-600 transition-colors">
-                          info@design-company.com
+                        <a href="mailto:steward379@gmail.com" className="text-gray-900 hover:text-blue-600 transition-colors">
+                          steward379@gmail.com
                         </a>
                       </div>
                     </div>
 
                     <div className="flex items-start">
-                      <div className="flex-shrink-0 mt-1">
+                      <div className="shrink-0 mt-1">
                         <svg 
                           className="w-6 h-6 text-blue-600" 
                           fill="none" 
@@ -213,13 +213,13 @@ export default function AboutPage() {
                       <div className="ml-4">
                         <h4 className="text-lg font-medium mb-1 text-gray-900">電話</h4>
                         <a href="tel:+886212345678" className="text-gray-900 hover:text-blue-600 transition-colors">
-                          (02) 1234-5678
+                          Call me
                         </a>
                       </div>
                     </div>
 
                     <div className="flex items-start">
-                      <div className="flex-shrink-0 mt-1">
+                      <div className="shrink-0 mt-1">
                         <svg 
                           className="w-6 h-6 text-blue-600" 
                           fill="none" 
@@ -238,8 +238,8 @@ export default function AboutPage() {
                       <div className="ml-4">
                         <h4 className="text-lg font-medium mb-1 text-gray-900">營業時間</h4>
                         <p className="text-gray-900">
-                          週一至週五: 10:00 - 22:00<br />
-                          週六至週日: 12:00 ~ 22:00
+                          平日晚間為主，白天可視情況處理<br />
+                          週末中午～晚間皆可
                         </p>
                       </div>
                     </div>

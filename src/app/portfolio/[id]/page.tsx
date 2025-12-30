@@ -1,9 +1,9 @@
 import { use } from 'react';
-import Link from 'next/link'
-import Image from 'next/image';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { getProjectById, projects } from '@/data/projects';
+import ProjectImages from '@/components/portfolio/ProjectImages';
 
 export async function generateStaticParams(): Promise<{ id: string }[]> {
   return projects.map((project) => ({ id: project.id }));
@@ -17,10 +17,10 @@ export async function generateMetadata(
   const params = await props.params;
   const project = getProjectById(params.id);
   if (!project) {
-    return { title: '作品不存在 | 設計公司' };
+    return { title: '作品不存在 | 縮小檢視工作室' };
   }
   return {
-    title: `${project.title} | 設計公司`,
+    title: `${project.title} | 縮小檢視工作室`,
     description: project.description,
   };
 }
@@ -31,7 +31,6 @@ type PageProps = {
 
 export default function ProjectPage({ params }: PageProps) {
   const { id } = use(params);
-  // const project = getProjectById(params.id);
   const project = getProjectById(id);
 
   if (!project) {
@@ -138,44 +137,11 @@ export default function ProjectPage({ params }: PageProps) {
                 }}
               />
 
-              <div className="mb-12">
-                {project.image ? (
-                  <div className="relative rounded-lg h-96 mb-4 overflow-hidden">
-                    <Image 
-                      src={project.image} 
-                      alt={`${project.title} - 主要專案圖片`}
-                      fill
-                      className="object-cover"
-                      loading="lazy"
-                      sizes="(max-width: 768px) 100vw, 66vw"
-                    />
-                  </div>
-                ) : (
-                  <div className="bg-gray-800 rounded-lg h-96 mb-4 flex items-center justify-center">
-                    <span className="text-white">主要專案圖片</span>
-                  </div>
-                )}
-
-                {project.images && project.images.length > 0 && (
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                    {project.images.map((image, index) => (
-                      <div 
-                        key={index} 
-                        className="relative rounded-lg h-40 overflow-hidden"
-                      >
-                        <Image 
-                          src={image} 
-                          alt={`${project.title} - 專案圖片 ${index + 1}`}
-                          fill
-                          className="object-cover"
-                          loading="lazy"
-                          sizes="(max-width: 768px) 50vw, 33vw"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
+              <ProjectImages 
+                mainImage={project.image || ''}
+                images={project.images}
+                title={project.title}
+              />
             </div>
 
             <div>

@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const Hero = () => {
   return (
-    <section className="relative bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
+    <section className="relative big-linear-to-r from-blue-600 to-indigo-700 text-white">
       <div className="absolute inset-0 bg-black opacity-40"></div>
       <div className="container mx-auto px-4 py-24 md:py-32 relative z-10">
         <div className="max-w-3xl">

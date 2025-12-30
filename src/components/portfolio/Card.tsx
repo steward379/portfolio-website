@@ -1,7 +1,7 @@
 'use client';
 
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Project } from '@/data/projects';
 
 interface ProjectCardProps {
@@ -9,6 +9,16 @@ interface ProjectCardProps {
 }
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
+  const [imageError, setImageError] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    if (imgRef.current?.complete && imgRef.current.naturalHeight !== 0) {
+      setImageLoaded(true);
+    }
+  }, [project.image]);
+
   const getCategoryLabel = (category: Project['category']) => {
     return category === 'website' ? '網站開發' : '設計';
   };
@@ -31,19 +41,27 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         href={`/portfolio/${project.id}`} 
         className="block"
       >
-        <div className="relative h-60 overflow-hidden">
-          {project.image ? (
-            <Image 
-              src={project.image} 
-              alt={project.title} 
-              fill 
-              className="object-cover group-hover:scale-105 transition-transform duration-300"
-              loading="lazy"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
+        <div className="relative h-60 overflow-hidden bg-gray-200">
+          {project.image && !imageError ? (
+            <>
+              <img
+                ref={imgRef}
+                src={project.image}
+                alt={project.title}
+                className={`absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all duration-300 ${
+                  imageLoaded ? 'opacity-100' : 'opacity-0'
+                }`}
+                loading="lazy"
+                onError={() => setImageError(true)}
+                onLoad={() => setImageLoaded(true)}
+              />
+              {!imageLoaded && (
+                <div className="absolute inset-0 bg-gray-200 animate-pulse" />
+              )}
+            </>
           ) : (
-            <div className="absolute inset-0 bg-gray-800 flex items-center justify-center">
-              <span className="text-white">{project.title}的預覽圖</span>
+            <div className="absolute inset-0 bg-gray-200 flex items-center justify-center">
+              <span className="text-gray-500 text-sm">{project.title}的預覽圖</span>
             </div>
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
