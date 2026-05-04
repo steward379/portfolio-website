@@ -18,7 +18,7 @@ const ContactForm = () => {
   } | null>(null);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -28,20 +28,12 @@ const ContactForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus(null);
-
-    // 模擬表單提交
     try {
-      // 在實際專案中，這裡會發送請求到後端API
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      
-      console.log('Form submitted:', formData);
-      
+      await new Promise((resolve) => setTimeout(resolve, 800));
       setSubmitStatus({
         success: true,
         message: '您的訊息已成功送出，我們會盡快與您聯絡！',
       });
-      
-      // 重置表單
       setFormData({
         name: '',
         email: '',
@@ -60,24 +52,27 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="bg-white p-8 rounded-lg shadow-md">
-      <h3 className="text-xl font-bold mb-6 text-gray-900">傳送訊息</h3>
+    <div>
+      <div className="font-mono-label">Get in touch · 05</div>
+      <h3 className="mt-4 font-display text-3xl tracking-tight md:text-4xl">傳送訊息</h3>
 
       {submitStatus && (
         <div
-          className={`mb-6 p-4 rounded-lg ${
-            submitStatus.success ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'
+          className={`mt-8 border-l-2 px-5 py-4 ${
+            submitStatus.success
+              ? 'border-[var(--accent)] bg-[var(--bg-2)] text-[var(--ink)]'
+              : 'border-[var(--accent)] bg-[var(--bg-2)] text-[var(--accent-ink)]'
           }`}
         >
           {submitStatus.message}
         </div>
       )}
 
-      <form onSubmit={handleSubmit}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+      <form onSubmit={handleSubmit} className="mt-10 space-y-8">
+        <div className="grid grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-2">
           <div>
-            <label htmlFor="name" className="block text-gray-900 font-medium mb-2">
-              姓名 *
+            <label htmlFor="name" className="font-mono-label">
+              姓名 / Name *
             </label>
             <input
               type="text"
@@ -86,13 +81,13 @@ const ContactForm = () => {
               value={formData.name}
               onChange={handleChange}
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-500"
-              placeholder="請輸入您的姓名"
+              className="field mt-2"
+              placeholder="您的姓名"
             />
           </div>
 
           <div>
-            <label htmlFor="email" className="block text-gray-900 font-medium mb-2">
+            <label htmlFor="email" className="font-mono-label">
               Email *
             </label>
             <input
@@ -102,16 +97,14 @@ const ContactForm = () => {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-500"
-              placeholder="請輸入您的Email"
+              className="field mt-2"
+              placeholder="you@email.com"
             />
           </div>
-        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div>
-            <label htmlFor="phone" className="block text-gray-900 font-medium mb-2">
-              電話
+            <label htmlFor="phone" className="font-mono-label">
+              電話 / Phone
             </label>
             <input
               type="tel"
@@ -119,14 +112,14 @@ const ContactForm = () => {
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-500"
-              placeholder="請輸入您的電話"
+              className="field mt-2"
+              placeholder="選填"
             />
           </div>
 
           <div>
-            <label htmlFor="subject" className="block text-gray-900 font-medium mb-2">
-              主題 *
+            <label htmlFor="subject" className="font-mono-label">
+              主題 / Subject *
             </label>
             <select
               id="subject"
@@ -134,7 +127,7 @@ const ContactForm = () => {
               value={formData.subject}
               onChange={handleChange}
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
+              className="field mt-2"
             >
               <option value="">請選擇主題</option>
               <option value="網站開發">網站開發</option>
@@ -147,9 +140,9 @@ const ContactForm = () => {
           </div>
         </div>
 
-        <div className="mb-6">
-          <label htmlFor="message" className="block text-gray-900 font-medium mb-2">
-            訊息內容 *
+        <div>
+          <label htmlFor="message" className="font-mono-label">
+            訊息內容 / Message *
           </label>
           <textarea
             id="message"
@@ -158,22 +151,24 @@ const ContactForm = () => {
             onChange={handleChange}
             required
             rows={5}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none text-gray-900 placeholder-gray-500"
-            placeholder="請輸入您的訊息內容"
-          ></textarea>
+            className="field field-area mt-2"
+            placeholder="跟我們聊聊您的專案、目標、預算或想法⋯"
+          />
         </div>
 
-        <div className="text-right">
+        <div className="flex items-center justify-between border-t border-[var(--line)] pt-8">
+          <p className="text-sm text-[var(--muted)]">
+            * 為必填欄位。我們通常在 24 小時內回覆。
+          </p>
           <button
             type="submit"
             disabled={isSubmitting}
-            className={`px-6 py-3 rounded-lg text-white font-medium ${
-              isSubmitting
-                ? 'bg-blue-400 cursor-not-allowed'
-                : 'bg-blue-600 hover:bg-blue-700'
-            } transition-colors`}
+            className={`btn ${isSubmitting ? 'opacity-60 cursor-not-allowed' : ''}`}
           >
-            {isSubmitting ? '傳送中...' : '傳送訊息'}
+            {isSubmitting ? '傳送中⋯' : '傳送訊息'}
+            <svg className="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 17L17 7M9 7h8v8" />
+            </svg>
           </button>
         </div>
       </form>

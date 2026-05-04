@@ -9,11 +9,9 @@ export async function generateStaticParams(): Promise<{ id: string }[]> {
   return projects.map((project) => ({ id: project.id }));
 }
 
-export async function generateMetadata(
-  props: {
-    params: Promise<{ id: string }>;
-  }
-): Promise<Metadata> {
+export async function generateMetadata(props: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
   const params = await props.params;
   const project = getProjectById(params.id);
   if (!project) {
@@ -29,6 +27,18 @@ type PageProps = {
   params: Promise<{ id: string }>;
 };
 
+const categoryLabel = (c: 'website' | 'design'): string => (c === 'website' ? '網站開發' : '設計');
+
+const industryLabel = (i: string): string =>
+  ({
+    healthcare: '醫療',
+    finance: '金融',
+    food: '餐飲',
+    technology: '科技',
+    education: '教育',
+    retail: '零售',
+  }[i] || '其他');
+
 export default function ProjectPage({ params }: PageProps) {
   const { id } = use(params);
   const project = getProjectById(id);
@@ -37,149 +47,127 @@ export default function ProjectPage({ params }: PageProps) {
     notFound();
   }
 
-  const getCategoryLabel = (): string => {
-    return project.category === 'website' ? '網站開發' : '設計';
-  };
-
-  const getIndustryLabel = (): string => {
-    const industryLabels: Record<string, string> = {
-      healthcare: '醫療',
-      finance: '金融',
-      food: '餐飲',
-      technology: '科技',
-      education: '教育',
-      retail: '零售',
-    };
-    return industryLabels[project.industry] || '其他';
-  };
-
   return (
-    <div className="min-h-screen bg-white">
-      <section className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-16">
-        <div className="container mx-auto px-4">
-          <Link 
-            href="/portfolio" 
-            className="inline-flex items-center text-white hover:underline mb-8"
+    <div className="min-h-screen bg-[var(--bg)]">
+      <section className="relative pt-[120px] md:pt-[160px]">
+        <div className="shell">
+          <Link
+            href="/portfolio"
+            className="link-underline inline-flex items-center gap-2 text-sm text-[var(--muted)] hover:text-[var(--ink)]"
           >
-            <svg 
-              className="w-5 h-5 mr-2" 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24" 
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2} 
-                d="M10 19l-7-7m0 0l7-7m-7 7h18" 
-              />
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className="h-4 w-4">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 12H5M12 5l-7 7 7 7" />
             </svg>
-            返回作品集
+            <span>返回作品集</span>
           </Link>
 
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">{project.title}</h1>
-          <div className="flex flex-wrap gap-3 mb-6">
-            <span className="inline-block px-3 py-1 bg-white text-blue-600 text-sm rounded-full">
-              {getCategoryLabel()}
-            </span>
-            <span className="inline-block px-3 py-1 bg-blue-800 text-white text-sm rounded-full">
-              {getIndustryLabel()}
-            </span>
-          </div>
-          <p className="text-xl max-w-3xl mb-6">{project.description}</p>
-          {project.url && (
-            <div className="flex flex-wrap items-center gap-4">
-              <a 
-                href={project.url} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="inline-flex items-center bg-white text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-50 transition-colors font-medium shadow-md"
-              >
-                <span>訪問網站</span>
-                <svg 
-                  className="w-5 h-5 ml-2" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24" 
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    strokeWidth={2} 
-                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" 
-                  />
-                </svg>
-              </a>
-              <a
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-blue-200 underline text-sm break-all"
-              >
-                {project.url}
-              </a>
+          <div className="mt-10 grid grid-cols-12 gap-y-8 md:gap-x-6">
+            <div className="col-span-12 md:col-span-3" data-reveal>
+              <div className="eyebrow">Case · {project.date}</div>
             </div>
-          )}
+            <div
+              className="col-span-12 md:col-span-9"
+              data-reveal
+              style={{ ['--reveal-delay' as string]: '120ms' }}
+            >
+              <h1 className="font-display text-[clamp(1.6rem,3.4vw,2.8rem)] leading-[1.15] tracking-tight">
+                {project.title}
+              </h1>
+              <p className="mt-6 max-w-[60ch] text-[var(--ink-2)] md:text-[1.05rem]">
+                {project.description}
+              </p>
+              <div className="mt-6 flex flex-wrap items-center gap-2">
+                <span className="chip">{categoryLabel(project.category)}</span>
+                <span className="chip">{industryLabel(project.industry)}</span>
+              </div>
+              {project.url && (
+                <div className="mt-8 flex flex-wrap items-center gap-4">
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn"
+                  >
+                    訪問網站
+                    <svg className="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden>
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 17L17 7M9 7h8v8" />
+                    </svg>
+                  </a>
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link-underline text-sm text-[var(--muted)] break-all"
+                  >
+                    {project.url}
+                  </a>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-            <div className="lg:col-span-2">
-              <h2 className="text-2xl font-bold mb-6 text-gray-900">專案概述</h2>
-              <div 
-                className="text-gray-900 mb-8 leading-relaxed [&_small]:text-sm [&_small]:text-gray-600 [&_small]:block [&_small]:mt-4"
-                dangerouslySetInnerHTML={{ 
-                  __html: project.fullDescription || project.description 
+      <section className="py-20 md:py-28">
+        <div className="shell">
+          <div className="grid grid-cols-12 gap-y-12 md:gap-x-6">
+            <div className="col-span-12 md:col-span-8" data-reveal>
+              <div className="font-mono-label">Overview</div>
+              <h2 className="mt-4 font-display text-3xl tracking-tight md:text-4xl">專案概述</h2>
+              <div
+                className="mt-8 max-w-[68ch] text-[var(--ink-2)] leading-[1.8] [&_small]:mt-6 [&_small]:block [&_small]:text-sm [&_small]:text-[var(--muted)]"
+                dangerouslySetInnerHTML={{
+                  __html: project.fullDescription || project.description,
                 }}
               />
 
-              <ProjectImages 
-                mainImage={project.image || ''}
-                images={project.images}
-                title={project.title}
-              />
-            </div>
-
-            <div>
-              <div className="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
-                <h3 className="text-xl font-bold mb-4 text-gray-900">專案資訊</h3>
-                <ul className="space-y-4">
-                  <li className="flex justify-between">
-                    <span className="text-gray-900">客戶:</span>
-                    <span className="font-medium text-gray-900">{project.client}</span>
-                  </li>
-                  <li className="flex justify-between">
-                    <span className="text-gray-900">類別:</span>
-                    <span className="font-medium text-gray-900">{getCategoryLabel()}</span>
-                  </li>
-                  <li className="flex justify-between">
-                    <span className="text-gray-900">產業:</span>
-                    <span className="font-medium text-gray-900">{getIndustryLabel()}</span>
-                  </li>
-                  <li className="flex justify-between">
-                    <span className="text-gray-900">完成日期:</span>
-                    <span className="font-medium text-gray-900">{project.date}</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="bg-blue-50 p-6 rounded-lg">
-                <h3 className="text-xl font-bold mb-4 text-gray-900">需要相似的專案？</h3>
-                <p className="text-gray-900 mb-6">
-                  我們可以根據您的需求，為您打造獨特的品牌體驗和專業網站。
-                </p>
-                <Link 
-                  href="/about" 
-                  className="block w-full bg-blue-600 text-white text-center px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
-                >
-                  聯絡我們
-                </Link>
+              <div className="mt-16">
+                <ProjectImages
+                  mainImage={project.image || ''}
+                  images={project.images}
+                  title={project.title}
+                />
               </div>
             </div>
+
+            <aside className="col-span-12 md:col-span-3 md:col-start-10">
+              <div className="sticky top-28 space-y-10">
+                <div>
+                  <div className="font-mono-label">Project info</div>
+                  <ul className="mt-5 divide-y divide-[var(--line)] border-y border-[var(--line)] text-sm">
+                    <li className="flex justify-between py-3">
+                      <span className="text-[var(--muted)]">Client</span>
+                      <span className="text-right font-medium text-[var(--ink)]">{project.client}</span>
+                    </li>
+                    <li className="flex justify-between py-3">
+                      <span className="text-[var(--muted)]">Category</span>
+                      <span className="font-medium text-[var(--ink)]">{categoryLabel(project.category)}</span>
+                    </li>
+                    <li className="flex justify-between py-3">
+                      <span className="text-[var(--muted)]">Industry</span>
+                      <span className="font-medium text-[var(--ink)]">{industryLabel(project.industry)}</span>
+                    </li>
+                    <li className="flex justify-between py-3">
+                      <span className="text-[var(--muted)]">Date</span>
+                      <span className="font-medium text-[var(--ink)]">{project.date}</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="border-t border-[var(--line)] pt-8">
+                  <h3 className="font-display text-2xl tracking-tight">需要相似的專案？</h3>
+                  <p className="mt-3 text-sm text-[var(--ink-2)]">
+                    我們可以根據您的需求，為您打造獨特的品牌體驗和專業網站。
+                  </p>
+                  <Link href="/about" className="btn mt-5 w-full justify-center">
+                    聯絡我們
+                    <svg className="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden>
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 12h14M13 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                </div>
+              </div>
+            </aside>
           </div>
         </div>
       </section>

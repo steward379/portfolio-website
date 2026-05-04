@@ -6,7 +6,22 @@ interface ProjectFilterProps {
   onCategoryChange: (category: Project['category'] | null) => void;
   onIndustryChange: (industry: Project['industry'] | null) => void;
   onReset: () => void;
+  total: number;
 }
+
+const categories: { value: Project['category']; label: string }[] = [
+  { value: 'website', label: '網站開發' },
+  { value: 'design', label: '設計' },
+];
+
+const industries: { value: Project['industry']; label: string }[] = [
+  { value: 'healthcare', label: '醫療' },
+  { value: 'finance', label: '金融' },
+  { value: 'food', label: '餐飲' },
+  { value: 'technology', label: '科技' },
+  { value: 'education', label: '教育' },
+  { value: 'retail', label: '零售' },
+];
 
 const ProjectFilter = ({
   selectedCategory,
@@ -14,114 +29,78 @@ const ProjectFilter = ({
   onCategoryChange,
   onIndustryChange,
   onReset,
+  total,
 }: ProjectFilterProps) => {
-  // 類別選項
-  const categories = [
-    { value: 'website', label: '網站開發' },
-    { value: 'design', label: '設計' },
-  ];
-
-  // 產業選項
-  const industries = [
-    { value: 'healthcare', label: '醫療' },
-    { value: 'finance', label: '金融' },
-    { value: 'food', label: '餐飲' },
-    { value: 'technology', label: '科技' },
-    { value: 'education', label: '教育' },
-    { value: 'retail', label: '零售' },
-  ];
+  const hasFilter = !!(selectedCategory || selectedIndustry);
 
   return (
-    <div className="mb-12">
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
-          <h2 className="text-2xl font-bold mb-4 md:mb-0 text-black">篩選作品</h2>
-          {(selectedCategory || selectedIndustry) && (
-            <button
-              onClick={onReset}
-              className="text-blue-600 hover:text-blue-800 transition-colors flex items-center"
-            >
-              <svg 
-                className="w-4 h-4 mr-1" 
-                fill="none" 
-                stroke="currentColor" 
-                viewBox="0 0 24 24" 
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  strokeWidth={2} 
-                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" 
-                />
-              </svg>
-              重設篩選條件
-            </button>
-          )}
+    <div className="border-y border-[var(--line)] py-8">
+      <div className="grid grid-cols-12 gap-y-8 md:gap-x-6">
+        <div className="col-span-12 md:col-span-2">
+          <div className="font-mono-label">Filter</div>
+          <div className="mt-1 text-sm text-[var(--muted)]">
+            {String(total).padStart(2, '0')} <span className="font-mono-label">items</span>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* 類別篩選 */}
-          <div>
-            <h3 className="font-medium mb-3 text-gray-900">依類別篩選</h3>
-            <div className="flex flex-wrap gap-2">
+        <div className="col-span-12 md:col-span-5">
+          <div className="font-mono-label mb-3">By category</div>
+          <div className="flex flex-wrap gap-2">
+            <button
+              type="button"
+              onClick={() => onCategoryChange(null)}
+              className={`chip ${selectedCategory === null ? 'is-active' : ''}`}
+            >
+              All
+            </button>
+            {categories.map((c) => (
               <button
-                onClick={() => onCategoryChange(null)}
-                className={`px-4 py-2 rounded-full text-sm ${
-                  selectedCategory === null
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
-                } transition-colors`}
+                key={c.value}
+                type="button"
+                onClick={() => onCategoryChange(c.value)}
+                className={`chip ${selectedCategory === c.value ? 'is-active' : ''}`}
               >
-                全部
+                {c.label}
               </button>
-              {categories.map((category) => (
-                <button
-                  key={category.value}
-                  onClick={() => onCategoryChange(category.value as Project['category'])}
-                  className={`px-4 py-2 rounded-full text-sm ${
-                    selectedCategory === category.value
-                      ? 'bg-blue-600 text-white'
-                      : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
-                  } transition-colors`}
-                >
-                  {category.label}
-                </button>
-              ))}
-            </div>
+            ))}
           </div>
+        </div>
 
-          {/* 產業篩選 */}
-          <div>
-            <h3 className="font-medium mb-3 text-gray-900">依產業篩選</h3>
-            <div className="flex flex-wrap gap-2">
+        <div className="col-span-12 md:col-span-5">
+          <div className="font-mono-label mb-3">By industry</div>
+          <div className="flex flex-wrap gap-2">
+            <button
+              type="button"
+              onClick={() => onIndustryChange(null)}
+              className={`chip ${selectedIndustry === null ? 'is-active' : ''}`}
+            >
+              All
+            </button>
+            {industries.map((c) => (
               <button
-                onClick={() => onIndustryChange(null)}
-                className={`px-4 py-2 rounded-full text-sm ${
-                  selectedIndustry === null
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
-                } transition-colors`}
+                key={c.value}
+                type="button"
+                onClick={() => onIndustryChange(c.value)}
+                className={`chip ${selectedIndustry === c.value ? 'is-active' : ''}`}
               >
-                全部
+                {c.label}
               </button>
-              {industries.map((industry) => (
-                <button
-                  key={industry.value}
-                  onClick={() => onIndustryChange(industry.value as Project['industry'])}
-                  className={`px-4 py-2 rounded-full text-sm ${
-                    selectedIndustry === industry.value
-                      ? 'bg-blue-600 text-white'
-                      : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
-                  } transition-colors`}
-                >
-                  {industry.label}
-                </button>
-              ))}
-            </div>
+            ))}
           </div>
         </div>
       </div>
+
+      {hasFilter && (
+        <div className="mt-6 flex justify-end">
+          <button
+            type="button"
+            onClick={onReset}
+            className="link-underline text-sm text-[var(--accent-ink)]"
+          >
+            重設篩選條件
+          </button>
+        </div>
+      )}
     </div>
   );
 };

@@ -11,30 +11,20 @@ const Portfolio = () => {
 
   const projects = filterProjects(selectedCategory, selectedIndustry);
 
-  const handleCategoryChange = (category: Project['category'] | null) => {
-    setSelectedCategory(category);
-  };
-
-  const handleIndustryChange = (industry: Project['industry'] | null) => {
-    setSelectedIndustry(industry);
-  };
-
-  const resetFilters = () => {
-    setSelectedCategory(null);
-    setSelectedIndustry(null);
-  };
-
   return (
-    <section className="py-16 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <ProjectFilter 
+    <section className="bg-[var(--bg)] py-24 md:py-32">
+      <div className="shell">
+        <ProjectFilter
           selectedCategory={selectedCategory}
           selectedIndustry={selectedIndustry}
-          onCategoryChange={handleCategoryChange}
-          onIndustryChange={handleIndustryChange}
-          onReset={resetFilters}
+          onCategoryChange={setSelectedCategory}
+          onIndustryChange={setSelectedIndustry}
+          onReset={() => {
+            setSelectedCategory(null);
+            setSelectedIndustry(null);
+          }}
+          total={projects.length}
         />
-        
         <ProjectGrid projects={projects} />
       </div>
     </section>

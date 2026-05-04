@@ -1,165 +1,160 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
-import { teamMembers } from '@/data/team';
+import { useEffect, useRef, useState } from 'react';
+import { teamMembers, type TeamMember } from '@/data/team';
 
-const Team = () => {
-  const [imageErrors, setImageErrors] = useState<Set<string>>(new Set());
-  const [imageLoaded, setImageLoaded] = useState<Set<string>>(new Set());
-  const imgRefs = useRef<Map<string, HTMLImageElement>>(new Map());
+const isLogo = (id: string) => id === 'Futual' || id === 'Xyloc';
 
-  const handleImageError = (id: string) => {
-    setImageErrors((prev) => new Set(prev).add(id));
-  };
+const TeamCard = ({ member, index }: { member: TeamMember; index: number }) => {
+  const [imgErr, setImgErr] = useState(false);
+  const [imgOk, setImgOk] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
+  const logo = isLogo(member.id);
 
-  const handleImageLoad = (id: string) => {
-    setImageLoaded((prev) => new Set(prev).add(id));
-  };
-
-  const setImageRef = (id: string, element: HTMLImageElement | null) => {
-    if (element) {
-      imgRefs.current.set(id, element);
-    }
-  };
-
-  // 檢查所有圖片的載入狀態（只在組件掛載時檢查一次）
   useEffect(() => {
-    const checkLoadedImages = () => {
-      teamMembers.forEach((member) => {
-        const img = imgRefs.current.get(member.id);
-        if (img && img.complete && img.naturalHeight !== 0) {
-          setImageLoaded((prev) => {
-            // 使用函數式更新，檢查是否已經在 Set 中
-            if (prev.has(member.id)) return prev;
-            const newSet = new Set(prev);
-            newSet.add(member.id);
-            return newSet;
-          });
-        }
-      });
-    };
-    
-    // 使用 setTimeout 確保 DOM 已經渲染
-    const timeoutId = setTimeout(checkLoadedImages, 0);
-    
-    return () => clearTimeout(timeoutId);
-  }, []); // 空依賴陣列，只在掛載時執行一次
+    if (imgRef.current?.complete && imgRef.current.naturalHeight !== 0) {
+      setImgOk(true);
+    }
+  }, [member.image]);
 
   return (
-    <section className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">我們的團隊</h2>
-          <p className="text-xl text-gray-900 max-w-3xl mx-auto">
-            我們擁有一支充滿熱情和創意的專業團隊，致力於為客戶提供最優質的服務
-          </p>
+    <article
+      className="group relative grid grid-cols-12 items-start gap-y-6 border-b border-[var(--line)] py-10 md:gap-x-6 md:py-14"
+      data-reveal
+      style={{ ['--reveal-delay' as string]: `${index * 70}ms` }}
+    >
+      <span className="numeral col-span-2 text-2xl md:col-span-1 md:text-3xl">
+        0{index + 1}
+      </span>
+
+      <div className="col-span-10 md:col-span-3">
+        {logo ? (
+          <div className="frame relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden p-6 md:p-8">
+            {!imgErr ? (
+              <>
+                <img
+                  ref={imgRef}
+                  src={member.image}
+                  alt={member.name}
+                  className={`max-h-full max-w-full object-contain transition-opacity duration-700 ease-[var(--ease-out-expo)] ${
+                    imgOk ? 'opacity-100' : 'opacity-0'
+                  }`}
+                  loading="lazy"
+                  onError={() => setImgErr(true)}
+                  onLoad={() => setImgOk(true)}
+                />
+                {!imgOk && <div className="absolute inset-0 animate-pulse bg-[var(--surface)]" />}
+              </>
+            ) : (
+              <span className="font-mono-label">{member.name}</span>
+            )}
+          </div>
+        ) : (
+          <div className="relative mx-auto aspect-square w-full max-w-[260px] overflow-hidden rounded-full bg-[var(--surface)] ring-1 ring-[var(--line-2)] md:mx-0">
+            {!imgErr ? (
+              <>
+                <img
+                  ref={imgRef}
+                  src={member.image}
+                  alt={member.name}
+                  className={`absolute inset-0 h-full w-full object-cover transition-[opacity,filter,transform] duration-700 ease-[var(--ease-out-expo)] group-hover:scale-[1.04] ${
+                    imgOk ? 'opacity-100' : 'opacity-0'
+                  }`}
+                  style={{ filter: 'saturate(0.75) contrast(1.02)' }}
+                  loading="lazy"
+                  onError={() => setImgErr(true)}
+                  onLoad={() => setImgOk(true)}
+                />
+                {!imgOk && <div className="absolute inset-0 animate-pulse bg-[var(--surface)]" />}
+              </>
+            ) : (
+              <div className="absolute inset-0 flex items-center justify-center text-sm text-[var(--muted)]">
+                {member.name}
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+
+      <div className="col-span-12 md:col-span-8 md:pl-6">
+        <h3 className="font-display text-[1.9rem] leading-tight tracking-tight md:text-[2.4rem]">
+          {member.name}
+        </h3>
+        <p
+          className="mt-2 text-[13px] leading-relaxed text-[var(--accent-ink)] [&_br]:block"
+          dangerouslySetInnerHTML={{ __html: member.role }}
+        />
+        <p className="mt-5 max-w-[58ch] text-[var(--ink-2)]">{member.bio}</p>
+
+        <div className="mt-6 flex items-center gap-4 text-[var(--muted)]">
+          {member.socialLinks.linkedin && (
+            <a
+              href={member.socialLinks.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${member.name}的LinkedIn`}
+              className="link-underline text-[var(--ink)]"
+            >
+              <span className="font-mono-label !text-[var(--ink)]">LinkedIn</span>
+            </a>
+          )}
+          {member.socialLinks.twitter && (
+            <a
+              href={member.socialLinks.twitter}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${member.name}的Twitter`}
+              className="link-underline text-[var(--ink)]"
+            >
+              <span className="font-mono-label !text-[var(--ink)]">Twitter</span>
+            </a>
+          )}
+          {member.socialLinks.github && (
+            <a
+              href={member.socialLinks.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${member.name}的GitHub`}
+              className="link-underline text-[var(--ink)]"
+            >
+              <span className="font-mono-label !text-[var(--ink)]">GitHub</span>
+            </a>
+          )}
+        </div>
+      </div>
+
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 -top-px h-px origin-left scale-x-0 bg-[var(--accent)] transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-x-100"
+      />
+    </article>
+  );
+};
+
+const Team = () => {
+  return (
+    <section className="relative bg-[var(--bg)] py-32 md:py-44">
+      <div className="shell">
+        <div
+          className="grid grid-cols-12 items-end gap-y-10 border-b border-[var(--line)] pb-10 md:gap-x-6"
+          data-reveal
+        >
+          <div className="col-span-12 md:col-span-4">
+            <div className="eyebrow">Team · 04</div>
+          </div>
+          <div className="col-span-12 md:col-span-8">
+            <h2 className="font-display text-[clamp(2.4rem,6vw,5rem)] leading-[0.95] tracking-tight">
+              一群不同光譜的
+              <span className="font-display-italic"> 專業者</span>，
+              <br />
+              因好品味而聚在一起。
+            </h2>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {teamMembers.map((member) => (
-            <div key={member.id} className="bg-gray-50 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
-              <div className="relative h-64 w-full bg-gray-200 flex items-center justify-center p-8">
-                {!imageErrors.has(member.id) ? (
-                  <>
-                    {member.id === 'Futual' || member.id === 'Xyloc' ? (
-                      <div className={`relative bg-gray-200 flex items-center justify-center ${
-                        member.id === 'Futual' ? 'w-[300px] h-[100px]' : 'w-48 h-48'
-                      }`}>
-                        <img
-                          ref={(el) => setImageRef(member.id, el)}
-                          src={member.image}
-                          alt={member.name}
-                          className={`max-w-full max-h-full object-contain transition-opacity duration-700 ease-in-out ${
-                            imageLoaded.has(member.id) ? 'opacity-100' : 'opacity-0'
-                          }`}
-                          loading="lazy"
-                          onError={() => handleImageError(member.id)}
-                          onLoad={() => handleImageLoad(member.id)}
-                        />
-                        {!imageLoaded.has(member.id) && (
-                          <div className="absolute inset-0 bg-gray-200 animate-pulse" />
-                        )}
-                      </div>
-                    ) : (
-                      <div className="relative w-48 h-48 rounded-full overflow-hidden bg-gray-200">
-                        <img
-                          ref={(el) => setImageRef(member.id, el)}
-                          src={member.image}
-                          alt={member.name}
-                          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${
-                            imageLoaded.has(member.id) ? 'opacity-100' : 'opacity-0'
-                          }`}
-                          loading="lazy"
-                          onError={() => handleImageError(member.id)}
-                          onLoad={() => handleImageLoad(member.id)}
-                        />
-                        {!imageLoaded.has(member.id) && (
-                          <div className="absolute inset-0 bg-gray-200 animate-pulse" />
-                        )}
-                      </div>
-                    )}
-                  </>
-                ) : (
-                  member.id === 'Futual' || member.id === 'Xyloc' ? (
-                    <div className={`flex items-center justify-center text-gray-500 bg-gray-200 ${
-                      member.id === 'Futual' ? 'w-[300px] h-[100px]' : 'w-48 h-48'
-                    }`}>
-                      {member.name}
-                    </div>
-                  ) : (
-                    <div className="w-48 h-48 rounded-full flex items-center justify-center text-gray-500 bg-gray-200">
-                      {member.name}
-                    </div>
-                  )
-                )}
-              </div>
-              <div className="p-6">
-                <h3 className="font-bold text-xl mb-2 text-gray-900">{member.name}</h3>
-                <p className="text-blue-600 mb-6 font-medium" dangerouslySetInnerHTML={{ __html: member.role }} />
-                <p className="text-gray-900 mb-5">{member.bio}</p>
-                <div className="flex space-x-3">
-                  {member.socialLinks.linkedin && (
-                    <a 
-                      href={member.socialLinks.linkedin} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="text-gray-900 hover:text-blue-600 transition-colors"
-                      aria-label={`${member.name}的LinkedIn`}
-                    >
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84" />
-                      </svg>
-                    </a>
-                  )}
-                  {member.socialLinks.twitter && (
-                    <a 
-                      href={member.socialLinks.twitter} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="text-gray-900 hover:text-blue-600 transition-colors"
-                      aria-label={`${member.name}的Twitter`}
-                    >
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84" />
-                      </svg>
-                    </a>
-                  )}
-                  {member.socialLinks.github && (
-                    <a 
-                      href={member.socialLinks.github} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="text-gray-900 hover:text-blue-600 transition-colors"
-                      aria-label={`${member.name}的GitHub`}
-                    >
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clipRule="evenodd" />
-                      </svg>
-                    </a>
-                  )}
-                </div>
-              </div>
-            </div>
+        <div className="mt-2">
+          {teamMembers.map((m, i) => (
+            <TeamCard key={m.id} member={m} index={i} />
           ))}
         </div>
       </div>

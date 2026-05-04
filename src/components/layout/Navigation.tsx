@@ -5,39 +5,47 @@ import { usePathname } from 'next/navigation';
 
 interface NavigationItem {
   name: string;
+  label: string;
   path: string;
 }
 
 interface NavigationProps {
   className?: string;
+  onNavigate?: () => void;
 }
 
-const Navigation = ({ className = '' }: NavigationProps) => {
+const navItems: NavigationItem[] = [
+  { name: '首頁', label: '01', path: '/' },
+  { name: '作品', label: '02', path: '/portfolio' },
+  { name: '關於', label: '03', path: '/about' },
+];
+
+const Navigation = ({ className = '', onNavigate }: NavigationProps) => {
   const pathname = usePathname();
-  
-  const navItems: NavigationItem[] = [
-    { name: '首頁', path: '/' },
-    { name: '作品集', path: '/portfolio' },
-    { name: '關於我們', path: '/about' },
-  ];
 
   return (
-    <nav className={className}>
-      <ul className="flex flex-col md:flex-row md:space-x-8 space-y-4 md:space-y-0">
-        {navItems.map((item) => (
-          <li key={item.path}>
-            <Link
-              href={item.path}
-              className={`${
-                pathname === item.path
-                  ? 'text-blue-600 font-medium'
-                  : 'text-gray-900 hover:text-blue-600'
-              } transition-colors duration-300`}
-            >
-              {item.name}
-            </Link>
-          </li>
-        ))}
+    <nav className={className} aria-label="Primary">
+      <ul className="flex flex-col gap-5 md:flex-row md:items-center md:gap-9">
+        {navItems.map((item) => {
+          const active =
+            item.path === '/'
+              ? pathname === '/'
+              : pathname?.startsWith(item.path);
+          return (
+            <li key={item.path}>
+              <Link
+                href={item.path}
+                onClick={onNavigate}
+                className={`group inline-flex items-baseline gap-2 text-[15px] tracking-tight ${
+                  active ? 'text-[var(--ink)]' : 'text-[var(--muted)] hover:text-[var(--ink)]'
+                } transition-colors`}
+              >
+                <span className="font-mono-label">{item.label}</span>
+                <span className={`link-underline ${active ? 'is-active' : ''}`}>{item.name}</span>
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );

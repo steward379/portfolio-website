@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface ProjectImagesProps {
   mainImage: string;
@@ -9,117 +9,108 @@ interface ProjectImagesProps {
 }
 
 const ProjectImages = ({ mainImage, images, title }: ProjectImagesProps) => {
-  const [currentMainImage, setCurrentMainImage] = useState(mainImage);
-  const [imageErrors, setImageErrors] = useState<Set<string>>(new Set());
-  const [imageLoaded, setImageLoaded] = useState<Set<string>>(new Set());
-  const imgRefs = useRef<Map<string, HTMLImageElement>>(new Map());
+  const [current, setCurrent] = useState(mainImage);
+  const [errors, setErrors] = useState<Set<string>>(new Set());
+  const [loaded, setLoaded] = useState<Set<string>>(new Set());
+  const refs = useRef<Map<string, HTMLImageElement>>(new Map());
 
-  const handleImageError = (src: string) => {
-    setImageErrors((prev) => new Set(prev).add(src));
+  const setRef = (src: string, el: HTMLImageElement | null) => {
+    if (el) refs.current.set(src, el);
   };
 
-  const handleImageLoad = (src: string) => {
-    setImageLoaded((prev) => new Set(prev).add(src));
-  };
+  const onErr = (src: string) => setErrors((p) => new Set(p).add(src));
+  const onLoad = (src: string) =>
+    setLoaded((p) => {
+      if (p.has(src)) return p;
+      const n = new Set(p);
+      n.add(src);
+      return n;
+    });
 
-  const setImageRef = (src: string, element: HTMLImageElement | null) => {
-    if (element) {
-      imgRefs.current.set(src, element);
-    }
-  };
-
-  // 檢查所有圖片的載入狀態
   useEffect(() => {
-    const checkLoadedImages = () => {
-      const allImages = [currentMainImage, ...(images || [])];
-      allImages.forEach((src) => {
-        if (!src) return;
-        const img = imgRefs.current.get(src);
-        if (img && img.complete && img.naturalHeight !== 0) {
-          setImageLoaded((prev) => {
-            // 使用函數式更新，檢查是否已經在 Set 中
-            if (prev.has(src)) return prev;
-            const newSet = new Set(prev);
-            newSet.add(src);
-            return newSet;
-          });
-        }
+    const id = setTimeout(() => {
+      const all = [current, ...(images || [])];
+      all.forEach((src) => {
+        const img = refs.current.get(src);
+        if (img && img.complete && img.naturalHeight !== 0) onLoad(src);
       });
-    };
-    
-    // 使用 setTimeout 確保 DOM 已經渲染
-    const timeoutId = setTimeout(checkLoadedImages, 0);
-    
-    return () => clearTimeout(timeoutId);
-  }, [currentMainImage, images]); // 只在圖片列表改變時重新檢查
+    }, 0);
+    return () => clearTimeout(id);
+  }, [current, images]);
 
   return (
-    <div className="mb-12">
-      {currentMainImage ? (
-        <div className="relative rounded-lg h-96 mb-4 overflow-hidden bg-gray-200">
-          {!imageErrors.has(currentMainImage) ? (
-            <>
-              <img
-                ref={(el) => setImageRef(currentMainImage, el)}
-                src={currentMainImage}
-                alt={`${title} - 主要專案圖片`}
-                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${
-                  imageLoaded.has(currentMainImage) ? 'opacity-100' : 'opacity-0'
-                }`}
-                loading="lazy"
-                onError={() => handleImageError(currentMainImage)}
-                onLoad={() => handleImageLoad(currentMainImage)}
-              />
-              {!imageLoaded.has(currentMainImage) && (
-                <div className="absolute inset-0 bg-gray-200 animate-pulse" />
-              )}
-            </>
-          ) : (
-            <div className="absolute inset-0 flex items-center justify-center text-gray-500">
-              圖片載入失敗
-            </div>
-          )}
-        </div>
-      ) : (
-        <div className="bg-gray-800 rounded-lg h-96 mb-4 flex items-center justify-center">
-          <span className="text-white">主要專案圖片</span>
-        </div>
-      )}
+    <div>
+      <div className="frame media relative aspect-[16/10] w-full overflow-hidden">
+        {!errors.has(current) ? (
+          <>
+            <img
+              ref={(el) => setRef(current, el)}
+              src={current}
+              alt={`${title} — 主要專案圖片`}
+              className={`absolute inset-0 ${loaded.has(current) ? 'opacity-100' : 'opacity-0'}`}
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                transition: 'opacity 700ms var(--ease-out-expo)',
+              }}
+              loading="lazy"
+              onError={() => onErr(current)}
+              onLoad={() => onLoad(current)}
+            />
+            {!loaded.has(current) && (
+              <div className="absolute inset-0 animate-pulse bg-[var(--surface)]" />
+            )}
+          </>
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center text-sm text-[var(--muted)]">
+            圖片載入失敗
+          </div>
+        )}
+      </div>
 
       {images && images.length > 0 && (
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          {images.map((image, index) => (
+        <div className="mt-6 grid grid-cols-3 gap-3 md:grid-cols-5 md:gap-4">
+          {images.map((src, i) => (
             <button
-              key={index}
+              key={src + i}
+              type="button"
               onClick={() => {
-                setCurrentMainImage(image);
-                setImageErrors((prev) => {
-                  const newSet = new Set(prev);
-                  newSet.delete(image);
-                  return newSet;
+                setCurrent(src);
+                setErrors((p) => {
+                  const n = new Set(p);
+                  n.delete(src);
+                  return n;
                 });
               }}
-              className="relative rounded-lg h-40 overflow-hidden bg-gray-200 cursor-pointer hover:opacity-80 transition-opacity"
+              className={`media frame relative aspect-square overflow-hidden transition-all duration-300 ${
+                current === src ? 'ring-1 ring-[var(--ink)]' : 'opacity-70 hover:opacity-100'
+              }`}
+              aria-label={`縮圖 ${i + 1}`}
             >
-              {!imageErrors.has(image) ? (
+              {!errors.has(src) ? (
                 <>
                   <img
-                    ref={(el) => setImageRef(image, el)}
-                    src={image}
-                    alt={`${title} - 專案圖片 ${index + 1}`}
-                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${
-                      imageLoaded.has(image) ? 'opacity-100' : 'opacity-0'
-                    }`}
+                    ref={(el) => setRef(src, el)}
+                    src={src}
+                    alt={`${title} — 專案圖片 ${i + 1}`}
+                    className={`absolute inset-0 ${loaded.has(src) ? 'opacity-100' : 'opacity-0'}`}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      transition: 'opacity 700ms var(--ease-out-expo)',
+                    }}
                     loading="lazy"
-                    onError={() => handleImageError(image)}
-                    onLoad={() => handleImageLoad(image)}
+                    onError={() => onErr(src)}
+                    onLoad={() => onLoad(src)}
                   />
-                  {!imageLoaded.has(image) && (
-                    <div className="absolute inset-0 bg-gray-200 animate-pulse" />
+                  {!loaded.has(src) && (
+                    <div className="absolute inset-0 animate-pulse bg-[var(--surface)]" />
                   )}
                 </>
               ) : (
-                <div className="absolute inset-0 flex items-center justify-center text-gray-500 text-sm">
+                <div className="absolute inset-0 flex items-center justify-center text-xs text-[var(--muted)]">
                   載入失敗
                 </div>
               )}
@@ -132,4 +123,3 @@ const ProjectImages = ({ mainImage, images, title }: ProjectImagesProps) => {
 };
 
 export default ProjectImages;
-

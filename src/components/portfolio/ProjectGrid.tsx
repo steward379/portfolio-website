@@ -6,20 +6,29 @@ interface ProjectGridProps {
 }
 
 const ProjectGrid = ({ projects }: ProjectGridProps) => {
+  if (projects.length === 0) {
+    return (
+      <div className="border-y border-[var(--line)] py-32 text-center">
+        <div className="eyebrow justify-center">No matches</div>
+        <h3 className="mt-6 font-display text-3xl tracking-tight md:text-4xl">
+          沒有符合篩選條件的作品
+        </h3>
+        <p className="mt-3 text-[var(--muted)]">請嘗試其他篩選條件，或重設篩選</p>
+      </div>
+    );
+  }
+
   return (
-    <div>
-      {projects.length === 0 ? (
-        <div className="text-center py-20">
-          <h3 className="text-2xl font-medium text-gray-900">沒有符合篩選條件的作品</h3>
-          <p className="mt-4 text-gray-900">請嘗試其他篩選條件或重設篩選</p>
+    <div className="grid grid-cols-1 gap-x-6 gap-y-20 pt-20 sm:grid-cols-2 lg:grid-cols-3">
+      {projects.map((p, i) => (
+        <div
+          key={p.id}
+          data-reveal
+          style={{ ['--reveal-delay' as string]: `${(i % 3) * 70}ms` }}
+        >
+          <ProjectCard project={p} index={i} />
         </div>
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
-        </div>
-      )}
+      ))}
     </div>
   );
 };
