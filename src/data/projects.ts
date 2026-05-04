@@ -11,7 +11,11 @@ export interface Project {
     featured: boolean;
     date: string;
     url?: string;
+    /** 設為 true 時不顯示於首頁精選、作品集列表，且不產生詳情頁 */
+    hidden?: boolean;
   }
+
+const isPublicProject = (p: Project) => !p.hidden;
   
   export const projects: Project[] = [
     {
@@ -151,6 +155,7 @@ export interface Project {
     },
     {
       id: 'restaurant-branding',
+      hidden: true,
       title: '餐廳品牌視覺識別設計',
       client: '福味居餐廳',
       description: '為高級餐廳設計的完整品牌視覺識別系統，包括標誌、菜單和網站設計。',
@@ -169,6 +174,7 @@ export interface Project {
     },
     {
       id: 'education-platform',
+      hidden: true,
       title: '線上教育平台',
       client: '知識樹教育中心',
       description: '全方位的線上學習平台，整合課程管理、直播教學和學習進度追蹤。',
@@ -186,6 +192,7 @@ export interface Project {
     },
     {
       id: 'retail-app-design',
+      hidden: true,
       title: '零售電商應用設計',
       client: '時尚精品店',
       description: '專為精品零售店設計的電商應用，提供流暢的購物體驗和會員管理。',
@@ -203,28 +210,36 @@ export interface Project {
   ];
   
   export const getFeaturedProjects = () => {
-    return projects.filter(project => project.featured);
+    return projects.filter((p) => p.featured && isPublicProject(p));
   };
-  
+
   export const getProjectById = (id: string) => {
-    return projects.find(project => project.id === id);
+    return projects.find((project) => project.id === id);
+  };
+
+  /** 僅供詳情頁／路由：隱藏專案回傳 undefined */
+  export const getPublicProjectById = (id: string) => {
+    const p = getProjectById(id);
+    return p && isPublicProject(p) ? p : undefined;
   };
   
   export const getProjectsByCategory = (category: Project['category'] | null) => {
-    if (!category) return projects;
-    return projects.filter(project => project.category === category);
+    const visible = projects.filter(isPublicProject);
+    if (!category) return visible;
+    return visible.filter((project) => project.category === category);
   };
   
   export const getProjectsByIndustry = (industry: Project['industry'] | null) => {
-    if (!industry) return projects;
-    return projects.filter(project => project.industry === industry);
+    const visible = projects.filter(isPublicProject);
+    if (!industry) return visible;
+    return visible.filter((project) => project.industry === industry);
   };
   
   export const filterProjects = (
     category: Project['category'] | null,
     industry: Project['industry'] | null
   ) => {
-    let filteredProjects = projects;
+    let filteredProjects = projects.filter(isPublicProject);
     
     if (category) {
       filteredProjects = filteredProjects.filter(

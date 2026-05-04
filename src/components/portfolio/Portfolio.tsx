@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { filterProjects, Project } from '@/data/projects';
 import ProjectFilter from './ProjectFilter';
 import ProjectGrid from './ProjectGrid';
+import NonDisclosedWorksNote from './NonDisclosedWorksNote';
 
 const Portfolio = () => {
   const [selectedCategory, setSelectedCategory] = useState<Project['category'] | null>(null);
@@ -26,6 +27,7 @@ const Portfolio = () => {
           total={projects.length}
         />
         <ProjectGrid projects={projects} />
+        <NonDisclosedWorksNote />
       </div>
     </section>
   );

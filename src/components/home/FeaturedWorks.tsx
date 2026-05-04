@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { getFeaturedProjects } from '@/data/projects';
 import ProjectCard from '@/components/portfolio/Card';
+import NonDisclosedWorksNote from '@/components/portfolio/NonDisclosedWorksNote';
 
 const FeaturedWorks = () => {
   const projects = getFeaturedProjects();
@@ -51,6 +52,8 @@ const FeaturedWorks = () => {
             </svg>
           </Link>
         </div>
+
+        <NonDisclosedWorksNote />
       </div>
     </section>
   );

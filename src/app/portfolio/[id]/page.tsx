@@ -2,18 +2,20 @@ import { use } from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import { getProjectById, projects } from '@/data/projects';
+import { getPublicProjectById, projects } from '@/data/projects';
 import ProjectImages from '@/components/portfolio/ProjectImages';
 
 export async function generateStaticParams(): Promise<{ id: string }[]> {
-  return projects.map((project) => ({ id: project.id }));
+  return projects
+    .filter((p) => !p.hidden)
+    .map((project) => ({ id: project.id }));
 }
 
 export async function generateMetadata(props: {
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
   const params = await props.params;
-  const project = getProjectById(params.id);
+  const project = getPublicProjectById(params.id);
   if (!project) {
     return { title: '作品不存在 | 縮小檢視工作室' };
   }
@@ -41,7 +43,7 @@ const industryLabel = (i: string): string =>
 
 export default function ProjectPage({ params }: PageProps) {
   const { id } = use(params);
-  const project = getProjectById(id);
+  const project = getPublicProjectById(id);
 
   if (!project) {
     notFound();
