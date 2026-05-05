@@ -17,10 +17,10 @@ export async function generateMetadata(props: {
   const params = await props.params;
   const project = getPublicProjectById(params.id);
   if (!project) {
-    return { title: '作品不存在 | 縮小檢視工作室' };
+    return { title: '作品不存在 | 縮小檢視工作室 · Setup Studio' };
   }
   return {
-    title: `${project.title} | 縮小檢視工作室`,
+    title: `${project.title} | 縮小檢視工作室 · Setup Studio`,
     description: project.description,
   };
 }

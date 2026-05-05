@@ -1,7 +1,7 @@
 import Portfolio from '@/components/portfolio/Portfolio';
 
 export const metadata = {
-  title: '作品集 | 縮小檢視工作室',
+  title: '作品集 | 縮小檢視工作室 · Setup Studio',
   description: '瀏覽我們的作品集，了解我們在網站開發與設計方面的專業技能和創意。',
 };
 

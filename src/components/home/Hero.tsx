@@ -19,7 +19,7 @@ const Hero = () => {
         <div className="grid grid-cols-12 gap-y-12">
           <div className="col-span-12 md:col-span-8" data-reveal>
             <div className="eyebrow" style={{ ['--reveal-delay' as string]: '60ms' }}>
-              Studio · Est. 2020
+              Setup Studio · Est. 2020
             </div>
           </div>
 

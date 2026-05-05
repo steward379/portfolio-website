@@ -1,7 +1,8 @@
 import ContactForm from '@/components/contact/ContactForm';
+import { LINE_ADD_FRIEND_URL } from '@/data/contact';
 
 export const metadata = {
-  title: '關於我們 | 縮小檢視工作室',
+  title: '關於我們 | 縮小檢視工作室 · Setup Studio',
   description: '了解我們的公司故事，以及我們如何為客戶提供專業的網站和設計服務。',
 };
 
@@ -61,7 +62,7 @@ export default function AboutPage() {
 
             <div className="col-span-12 space-y-7 md:col-span-7 md:col-start-6" data-reveal style={{ ['--reveal-delay' as string]: '120ms' }}>
               <p className="text-[var(--ink-2)] md:text-[1.05rem]">
-                縮小檢視工作室成立於 2020 年，由一群具有豐富行業經驗的設計師和開發人員組成。
+                縮小檢視工作室（Setup Studio）成立於 2020 年，由一群具有豐富行業經驗的設計師和開發人員組成。
                 我們相信優秀的設計不僅僅是美觀，更應該能夠解決問題並創造價值。
               </p>
               <p className="text-[var(--ink-2)] md:text-[1.05rem]">
@@ -151,9 +152,21 @@ export default function AboutPage() {
                   </dd>
                 </div>
                 <div>
-                  <dt className="font-mono-label">Phone</dt>
+                  <dt className="font-mono-label md:hidden">LINE</dt>
+                  <dt className="font-mono-label hidden md:block">Phone</dt>
                   <dd className="mt-2 text-lg">
-                    <a href="tel:+886212345678" className="link-underline text-[var(--ink)]">
+                    <a
+                      href={LINE_ADD_FRIEND_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="link-underline text-[var(--ink)] md:hidden"
+                    >
+                      Line steward379
+                    </a>
+                    <a
+                      href="tel:+886212345678"
+                      className="link-underline hidden text-[var(--ink)] md:inline"
+                    >
                       Call me
                     </a>
                   </dd>

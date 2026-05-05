@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import Navigation from './Navigation';
+import { LINE_ADD_FRIEND_URL, LINE_ID } from '@/data/contact';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -50,13 +51,25 @@ const Header = () => {
             />
           </span>
           <span className="flex flex-col leading-tight">
-            <span className="font-mono-label">Studio</span>
+            <span className="font-mono-label">Setup Studio</span>
             <span className="font-display text-lg tracking-tight text-[var(--ink)]">縮小檢視</span>
           </span>
         </Link>
 
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-4 md:gap-8">
           <Navigation className="hidden md:flex" />
+
+          <a
+            href={LINE_ADD_FRIEND_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`LINE 加好友 ${LINE_ID}`}
+            className="inline-flex shrink-0 items-center gap-2 text-[13px] font-medium text-[var(--ink-2)] transition-colors hover:text-[var(--ink)] md:gap-1 md:text-[12px] md:font-normal md:text-[var(--muted)]"
+          >
+            <span className="hidden font-mono-label md:inline">LINE</span>
+            <span className="md:hidden">Line steward379</span>
+            <span className="hidden tabular-nums opacity-80 md:inline">@{LINE_ID}</span>
+          </a>
 
           <a
             href="https://www.facebook.com/ZoomOutDesign"
@@ -92,12 +105,22 @@ const Header = () => {
       </div>
 
       <div
-        className={`md:hidden border-t border-[var(--line)] bg-[var(--bg)] overflow-hidden transition-[max-height,opacity] duration-500 ${
-          isMenuOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'
+        className={`md:hidden border-t border-[var(--line)] bg-[var(--bg)] overflow-y-auto transition-[max-height,opacity] duration-500 ${
+          isMenuOpen ? 'max-h-[min(85vh,22rem)] opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
         <div className="shell py-6">
           <Navigation onNavigate={() => setIsMenuOpen(false)} />
+          <a
+            href={LINE_ADD_FRIEND_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setIsMenuOpen(false)}
+            className="mt-8 inline-flex items-center gap-2 border-t border-[var(--line)] pt-6 text-[15px] font-medium text-[var(--ink)]"
+          >
+            <span className="font-mono-label !text-[var(--ink)]">LINE</span>
+            <span className="link-underline">Line {LINE_ID}</span>
+          </a>
         </div>
       </div>
     </header>

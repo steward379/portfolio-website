@@ -23,7 +23,7 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "縮小檢視工作室 — Editorial Studio for Web & Brand",
+  title: "縮小檢視工作室 · Setup Studio — Web & Brand Design",
   description:
     "我們以編輯設計與工程質地，為品牌打造可被細讀的數位作品。From idea to interaction.",
 };

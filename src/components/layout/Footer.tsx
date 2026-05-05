@@ -1,12 +1,13 @@
 import Link from 'next/link';
 import Marquee from '@/components/ui/Marquee';
+import { LINE_ADD_FRIEND_URL } from '@/data/contact';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const tickerItems = [
     'Editorial × Tech-craft',
-    '縮小檢視工作室',
+    '縮小檢視工作室 · Setup Studio',
     'Web · Brand · Interaction',
     'Available for select projects',
     `© ${currentYear}`,
@@ -69,7 +70,17 @@ const Footer = () => {
                 steward379@gmail.com
               </a>
             </li>
-            <li>
+            <li className="md:hidden">
+              <a
+                href={LINE_ADD_FRIEND_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-underline"
+              >
+                Line steward379
+              </a>
+            </li>
+            <li className="hidden md:block">
               <a href="tel:+886212345678" className="link-underline">
                 Call me
               </a>
@@ -90,7 +101,9 @@ const Footer = () => {
       </div>
 
       <div className="shell flex flex-col items-start justify-between gap-3 border-t border-[var(--line)] py-6 text-xs text-[var(--muted)] md:flex-row md:items-center">
-        <span className="font-mono-label">© {currentYear} 縮小檢視工作室 · All rights reserved</span>
+        <span className="font-mono-label">
+          © {currentYear} 縮小檢視工作室 · Setup Studio · All rights reserved
+        </span>
         <span className="font-mono-label">Crafted with care · Last updated {currentYear}</span>
       </div>
     </footer>
