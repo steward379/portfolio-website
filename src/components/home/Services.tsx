@@ -39,7 +39,7 @@ const Services = () => {
 
               <div className="col-span-10 md:col-span-4">
               <h3 className="col-span-10 font-display text-3xl tracking-tight md:col-span-4 md:text-4xl">
-                  {service.EnglishTitle}
+                  {service.englishTitle}
                   <br />
                   <span className="font-display-italic text-lg md:text-xl">{service.title}</span>
                 </h3>
