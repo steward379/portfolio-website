@@ -12,11 +12,16 @@ const Services = () => {
             <div className="eyebrow">Services · 02</div>
           </div>
           <div className="col-span-12 md:col-span-8">
-            <h2 className="font-display text-[clamp(2.4rem,6vw,5rem)] leading-[0.95] tracking-tight">
+            <h2 className="mb-4 font-display text-[clamp(2.4rem,6vw,5rem)] leading-[0.95] tracking-tight">
+              We are making Digital Interfaces 
+              for brands that worths a 
+              <span className="font-display-italic"> Second Look</span>
+            </h2>
+            <h4 className="font-display text-[clamp(2rem,4vw,1.2rem)] leading-[0.95] tracking-tight">
               我們做的，是讓品牌
               <span className="font-display-italic"> 被細讀 </span>
               的數位介面。
-            </h2>
+            </h4>
           </div>
         </div>
 
@@ -33,8 +38,10 @@ const Services = () => {
               </span>
 
               <div className="col-span-10 md:col-span-4">
-                <h3 className="font-display text-3xl tracking-tight md:text-4xl">
-                  <span className="link-underline">{service.title}</span>
+              <h3 className="col-span-10 font-display text-3xl tracking-tight md:col-span-4 md:text-4xl">
+                  {service.EnglishTitle}
+                  <br />
+                  <span className="font-display-italic text-lg md:text-xl">{service.title}</span>
                 </h3>
               </div>
 

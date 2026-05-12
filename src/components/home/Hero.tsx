@@ -63,7 +63,7 @@ const Hero = () => {
               <div className="font-mono-label">About — 01</div>
             </div>
 
-            <p className="col-span-12 max-w-[52ch] text-[1.05rem] leading-relaxed text-[var(--ink-2)] md:col-span-6 md:text-[1.15rem]">
+            <p className="col-span-12 max-w-[52ch] text-[1.5rem] leading-relaxed text-[var(--ink-2)] md:col-span-6 md:text-[1.5rem]">
               我們是一家專注於網站開發和設計的工作室，提供從概念到實現的全方位服務。
               以編輯設計的細節，工程師的嚴謹，幫品牌建立經得起時間的數位形象。
             </p>

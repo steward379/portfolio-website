@@ -143,12 +143,17 @@ const Team = () => {
             <div className="eyebrow">Team · 04</div>
           </div>
           <div className="col-span-12 md:col-span-8">
-            <h2 className="font-display text-[clamp(2.4rem,6vw,5rem)] leading-[0.95] tracking-tight">
-              一群不同光譜的
-              <span className="font-display-italic"> 專業者</span>，
-              <br />
-              因好品味而聚在一起。
+            <h2 className="font-display text-[clamp(2rem,6vw,4rem)] leading-[0.95]">
+            A group of professionals <br/>
+            from different <span className="font-display-italic">spectrums</span>
+            <br />
+brought together by <br /> a shared sense of
+<span className="font-display-italic"> good taste</span>
             </h2>
+            <p className="mt-2 col-span-12 max-w-[52ch] text-[1.5rem] leading-relaxed text-[var(--ink-2)] md:col-span-6 md:text-[1.5rem]">
+              我們是一家專注於網站開發和設計的工作室，提供從概念到實現的全方位服務。
+              以編輯設計的細節，工程師的嚴謹，幫品牌建立經得起時間的數位形象。
+            </p>
           </div>
         </div>
 

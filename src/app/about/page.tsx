@@ -10,16 +10,19 @@ const values = [
   {
     label: '01',
     title: '創新思維',
+    EnglishTitle: 'Innovative',
     body: '我們不斷探索新的創意和技術，為客戶提供前沿的解決方案。我們鼓勵團隊突破常規思維，從不同角度看待問題。',
   },
   {
     label: '02',
     title: '以客戶為中心',
+    EnglishTitle: 'Customer-Centric',
     body: '我們深入了解客戶的需求和目標，與客戶建立長期的合作關係。我們相信真正了解客戶的業務是提供優質服務的關鍵。',
   },
   {
     label: '03',
     title: '品質與專業',
+    EnglishTitle: 'Quality and Professional',
     body: '我們對每個項目都投入百分之百的專注和努力，確保交付的成果符合最高標準。我們注重細節，不斷追求卓越。',
   },
 ];
@@ -56,7 +59,7 @@ export default function AboutPage() {
             <div className="col-span-12 md:col-span-4" data-reveal>
               <div className="font-mono-label">Story · Est. 2020</div>
               <h2 className="mt-6 font-display text-4xl leading-tight tracking-tight md:text-5xl">
-                我們的<span className="font-display-italic">故事</span>
+                Our<span className="font-display-italic"> Story</span>
               </h2>
             </div>
 
@@ -90,7 +93,7 @@ export default function AboutPage() {
             </div>
             <div className="col-span-12 md:col-span-8">
               <h2 className="font-display text-[clamp(2.4rem,6vw,5rem)] leading-[0.95] tracking-tight">
-                我們的<span className="font-display-italic">價值觀</span>
+                Our<span className="font-display-italic"> Values</span>
               </h2>
             </div>
           </div>
@@ -105,7 +108,9 @@ export default function AboutPage() {
               >
                 <span className="numeral col-span-2 text-3xl md:col-span-1 md:text-4xl">{v.label}</span>
                 <h3 className="col-span-10 font-display text-3xl tracking-tight md:col-span-4 md:text-4xl">
-                  {v.title}
+                  {v.EnglishTitle}
+                  <br />
+                  <span className="font-display-italic text-lg md:text-xl">{v.title}</span>
                 </h3>
                 <p className="col-span-12 max-w-[60ch] text-[var(--ink-2)] md:col-span-6">{v.body}</p>
                 <span
@@ -129,9 +134,9 @@ export default function AboutPage() {
             </div>
             <div className="col-span-12 md:col-span-8">
               <h2 className="font-display text-[clamp(2.4rem,6vw,5rem)] leading-[0.95] tracking-tight">
-                說一些事情，
+                Any Questions?
                 <br />
-                <span className="font-display-italic">我們聽。</span>
+                <span className="font-display-italic">Just Ask.</span>
               </h2>
             </div>
           </div>

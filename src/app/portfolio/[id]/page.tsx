@@ -72,10 +72,10 @@ export default function ProjectPage({ params }: PageProps) {
               data-reveal
               style={{ ['--reveal-delay' as string]: '120ms' }}
             >
-              <h1 className="font-display text-[clamp(1.6rem,3.4vw,2.8rem)] leading-[1.15] tracking-tight">
+              <h1 className="font-display text-[clamp(1rem,3vw,2.1rem)] leading-[1.15] tracking-tight">
                 {project.title}
               </h1>
-              <p className="mt-6 max-w-[60ch] text-[var(--ink-2)] md:text-[1.05rem]">
+              <p className="mt-6 max-w-[60ch] text-[var(--ink-2)] md:text-[1.2rem]">
                 {project.description}
               </p>
               <div className="mt-6 flex flex-wrap items-center gap-2">
@@ -115,7 +115,7 @@ export default function ProjectPage({ params }: PageProps) {
           <div className="grid grid-cols-12 gap-y-12 md:gap-x-6">
             <div className="col-span-12 md:col-span-8" data-reveal>
               <div className="font-mono-label">Overview</div>
-              <h2 className="mt-4 font-display text-3xl tracking-tight md:text-4xl">專案概述</h2>
+              <h2 className="mt-4 font-display text-xl tracking-tight md:text-2xl">專案概述</h2>
               <div
                 className="mt-8 max-w-[68ch] text-[var(--ink-2)] leading-[1.8] [&_small]:mt-6 [&_small]:block [&_small]:text-sm [&_small]:text-[var(--muted)]"
                 dangerouslySetInnerHTML={{

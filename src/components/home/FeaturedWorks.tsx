@@ -22,7 +22,7 @@ const FeaturedWorks = () => {
             </h2>
           </div>
           <div className="col-span-12 md:col-span-6 md:col-start-7">
-            <p className="max-w-[48ch] text-[var(--ink-2)] md:text-[1.05rem]">
+            <p className="max-w-[48ch] text-[var(--ink-2)] md:text-[1.5rem]">
               一份持續更新的精選清單。從互動行銷網頁、品牌系統到醫療官網，
               每一件作品都是一次深度合作。
             </p>
