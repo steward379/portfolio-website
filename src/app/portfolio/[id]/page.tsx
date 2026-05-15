@@ -2,7 +2,7 @@ import { use } from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import { getPublicProjectById, projects } from '@/data/projects';
+import { getPublicProjectById, projects, projectIndustryLabels } from '@/data/projects';
 import ProjectImages from '@/components/portfolio/ProjectImages';
 
 export async function generateStaticParams(): Promise<{ id: string }[]> {
@@ -30,16 +30,6 @@ type PageProps = {
 };
 
 const categoryLabel = (c: 'website' | 'design'): string => (c === 'website' ? '網站開發' : '設計');
-
-const industryLabel = (i: string): string =>
-  ({
-    healthcare: '醫療',
-    finance: '金融',
-    food: '餐飲',
-    technology: '科技',
-    education: '教育',
-    retail: '零售',
-  }[i] || '其他');
 
 export default function ProjectPage({ params }: PageProps) {
   const { id } = use(params);
@@ -80,7 +70,11 @@ export default function ProjectPage({ params }: PageProps) {
               </p>
               <div className="mt-6 flex flex-wrap items-center gap-2">
                 <span className="chip">{categoryLabel(project.category)}</span>
-                <span className="chip">{industryLabel(project.industry)}</span>
+                {project.industries.map((ind) => (
+                  <span key={ind} className="chip">
+                    {projectIndustryLabels[ind]}
+                  </span>
+                ))}
               </div>
               {project.url && (
                 <div className="mt-8 flex flex-wrap items-center gap-4">
@@ -146,8 +140,10 @@ export default function ProjectPage({ params }: PageProps) {
                       <span className="font-medium text-[var(--ink)]">{categoryLabel(project.category)}</span>
                     </li>
                     <li className="flex justify-between py-3">
-                      <span className="text-[var(--muted)]">Industry</span>
-                      <span className="font-medium text-[var(--ink)]">{industryLabel(project.industry)}</span>
+                      <span className="text-[var(--muted)]">標籤</span>
+                      <span className="text-right font-medium text-[var(--ink)]">
+                        {project.industries.map((i) => projectIndustryLabels[i]).join(' · ')}
+                      </span>
                     </li>
                     <li className="flex justify-between py-3">
                       <span className="text-[var(--muted)]">Date</span>

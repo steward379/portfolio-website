@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { Project } from '@/data/projects';
+import { Project, projectIndustryLabels } from '@/data/projects';
+import frameStyles from './projectMediaFrame.module.css';
 
 interface ProjectCardProps {
   project: Project;
@@ -10,16 +11,6 @@ interface ProjectCardProps {
 }
 
 const categoryLabel = (c: Project['category']) => (c === 'website' ? 'Web' : 'Design');
-
-const industryLabel = (i: Project['industry']) =>
-  ({
-    healthcare: 'Healthcare',
-    finance: 'Finance',
-    food: 'F&B',
-    technology: 'Tech',
-    education: 'Education',
-    retail: 'Retail',
-  }[i]);
 
 const ProjectCard = ({ project, index }: ProjectCardProps) => {
   const [imgErr, setImgErr] = useState(false);
@@ -39,15 +30,16 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
         className="block"
         aria-label={project.title}
       >
-        <div className="media frame relative aspect-[16/10] w-full overflow-hidden">
+        <div className={`frame relative aspect-[16/10] w-full ${frameStyles.shell}`}>
           {project.image && !imgErr ? (
             <>
               <img
                 ref={imgRef}
                 src={project.image}
                 alt={project.title}
-                className={imgOk ? 'opacity-100' : 'opacity-0'}
-                style={{ transition: 'opacity 700ms var(--ease-out-expo), filter 700ms var(--ease-out-expo), transform 900ms var(--ease-out-expo)' }}
+                className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ease-[var(--ease-out-expo)] ${
+                  imgOk ? 'opacity-100' : 'opacity-0'
+                }`}
                 loading="lazy"
                 onError={() => setImgErr(true)}
                 onLoad={() => setImgOk(true)}
@@ -60,21 +52,24 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
             </div>
           )}
 
-          <div className="media-tint" />
-
           <div className="absolute left-4 top-4 flex items-center gap-2 text-[var(--bg)] mix-blend-difference">
             {typeof index === 'number' && (
               <span className="font-mono-label opacity-90">№ {String(index + 1).padStart(2, '0')}</span>
             )}
           </div>
 
-          <div className="absolute bottom-4 right-4 inline-flex translate-y-3 items-center gap-2 opacity-0 transition-all duration-500 ease-[var(--ease-out-expo)] group-hover:translate-y-0 group-hover:opacity-100">
+          <div className="absolute bottom-4 right-4 flex max-w-[calc(100%-2rem)] translate-y-3 flex-wrap justify-end gap-2 opacity-0 transition-all duration-500 ease-[var(--ease-out-expo)] group-hover:translate-y-0 group-hover:opacity-100">
             <span className="chip border-[var(--bg)] text-[var(--bg)] mix-blend-difference">
               {categoryLabel(project.category)}
             </span>
-            <span className="chip border-[var(--bg)] text-[var(--bg)] mix-blend-difference">
-              {industryLabel(project.industry)}
-            </span>
+            {project.industries.map((ind) => (
+              <span
+                key={ind}
+                className="chip border-[var(--bg)] text-[var(--bg)] mix-blend-difference"
+              >
+                {projectIndustryLabels[ind]}
+              </span>
+            ))}
           </div>
         </div>
 

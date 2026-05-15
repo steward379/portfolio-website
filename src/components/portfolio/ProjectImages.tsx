@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import frameStyles from './projectMediaFrame.module.css';
 
 interface ProjectImagesProps {
   mainImage: string;
@@ -40,7 +41,7 @@ const ProjectImages = ({ mainImage, images, title }: ProjectImagesProps) => {
 
   return (
     <div>
-      <div className="frame media relative aspect-[16/10] w-full overflow-hidden">
+      <div className={`frame relative aspect-[16/10] w-full ${frameStyles.shell}`}>
         {!errors.has(current) ? (
           <>
             <img
@@ -83,8 +84,8 @@ const ProjectImages = ({ mainImage, images, title }: ProjectImagesProps) => {
                   return n;
                 });
               }}
-              className={`media frame relative aspect-square overflow-hidden transition-all duration-300 ${
-                current === src ? 'ring-1 ring-[var(--ink)]' : 'opacity-70 hover:opacity-100'
+              className={`frame relative aspect-square overflow-hidden transition-shadow duration-300 ${frameStyles.shell} ${
+                current === src ? 'ring-2 ring-[var(--ink)]' : 'ring-1 ring-transparent hover:ring-[var(--line)]'
               }`}
               aria-label={`縮圖 ${i + 1}`}
             >

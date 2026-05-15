@@ -1,14 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import { filterProjects, Project } from '@/data/projects';
+import { filterProjects, Project, ProjectIndustry } from '@/data/projects';
 import ProjectFilter from './ProjectFilter';
 import ProjectGrid from './ProjectGrid';
 import NonDisclosedWorksNote from './NonDisclosedWorksNote';
 
 const Portfolio = () => {
   const [selectedCategory, setSelectedCategory] = useState<Project['category'] | null>(null);
-  const [selectedIndustry, setSelectedIndustry] = useState<Project['industry'] | null>(null);
+  const [selectedIndustry, setSelectedIndustry] = useState<ProjectIndustry | null>(null);
 
   const projects = filterProjects(selectedCategory, selectedIndustry);
 

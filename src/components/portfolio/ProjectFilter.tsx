@@ -1,10 +1,22 @@
-import { Project } from '@/data/projects';
+import { Project, ProjectIndustry, projectIndustryLabels } from '@/data/projects';
+
+const industryOrder: ProjectIndustry[] = [
+  'environment',
+  'religion',
+  'culture',
+  'healthcare',
+  'finance',
+  'food',
+  'education',
+  'retail',
+  'technology',
+];
 
 interface ProjectFilterProps {
   selectedCategory: Project['category'] | null;
-  selectedIndustry: Project['industry'] | null;
+  selectedIndustry: ProjectIndustry | null;
   onCategoryChange: (category: Project['category'] | null) => void;
-  onIndustryChange: (industry: Project['industry'] | null) => void;
+  onIndustryChange: (industry: ProjectIndustry | null) => void;
   onReset: () => void;
   total: number;
 }
@@ -14,14 +26,10 @@ const categories: { value: Project['category']; label: string }[] = [
   { value: 'design', label: '設計' },
 ];
 
-const industries: { value: Project['industry']; label: string }[] = [
-  { value: 'healthcare', label: '醫療' },
-  { value: 'finance', label: '金融' },
-  { value: 'food', label: '餐飲' },
-  { value: 'technology', label: '科技' },
-  { value: 'education', label: '教育' },
-  { value: 'retail', label: '零售' },
-];
+const industries: { value: ProjectIndustry; label: string }[] = industryOrder.map((value) => ({
+  value,
+  label: projectIndustryLabels[value],
+}));
 
 const ProjectFilter = ({
   selectedCategory,

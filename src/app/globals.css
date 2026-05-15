@@ -323,44 +323,6 @@ body {
   animation-play-state: paused;
 }
 
-/* ===== Image hover treatments ============================================ */
-.media {
-  position: relative;
-  overflow: hidden;
-  background: var(--surface);
-}
-
-.media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: saturate(0.7) contrast(1.02);
-  transform: scale(1.02);
-  transition:
-    filter 700ms var(--ease-out-expo),
-    transform 900ms var(--ease-out-expo);
-}
-
-.media:hover img,
-.group:hover .media img {
-  filter: saturate(1.1) contrast(1.04);
-  transform: scale(1.06);
-}
-
-.media-tint {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 50%, color-mix(in oklab, var(--ink) 70%, transparent));
-  opacity: 0;
-  transition: opacity 500ms var(--ease-out-expo);
-  pointer-events: none;
-}
-
-.group:hover .media-tint,
-.media:hover .media-tint {
-  opacity: 1;
-}
-
 /* ===== Number tag ======================================================== */
 .numeral {
   font-family: var(--font-instrument-serif), "Times New Roman", serif;
