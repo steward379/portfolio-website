@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { teamMembers, type TeamMember } from '@/data/team';
+import MagnifierSection from '@/components/ui/MagnifierSection';
+import { heroLoupeSourceBackground } from '@/lib/heroGradient';
 
 const isLogo = (id: string) => id === 'Futual' || id === 'Xyloc';
 
@@ -133,37 +135,47 @@ const TeamCard = ({ member, index }: { member: TeamMember; index: number }) => {
 
 const Team = () => {
   return (
-    <section className="relative bg-[var(--bg)] py-32 md:py-44">
-      <div className="shell">
+    <MagnifierSection className="relative bg-[var(--bg)] py-32 md:py-44" data-spotlight>
+      <div data-magnifier-stack className="relative">
         <div
-          className="grid grid-cols-12 items-end gap-y-10 border-b border-[var(--line)] pb-10 md:gap-x-6"
-          data-reveal
-        >
-          <div className="col-span-12 md:col-span-4">
-            <div className="eyebrow">Team · 04</div>
+          aria-hidden
+          data-magnifier-source
+          className="pointer-events-none absolute inset-0 -z-10"
+          style={heroLoupeSourceBackground}
+        />
+        <div className="shell">
+          <div
+            className="grid grid-cols-12 items-end gap-y-10 border-b border-[var(--line)] pb-10 md:gap-x-6"
+            data-reveal
+          >
+            <div className="col-span-12 md:col-span-4">
+              <div className="eyebrow">Team · 04</div>
+            </div>
+            <div className="col-span-12 md:col-span-8">
+              <h2 className="font-display text-[clamp(2rem,6vw,4rem)] leading-[0.95]">
+                A group of professionals <br />
+                from different <span className="font-display-italic">spectrums</span>
+                <br />
+                brought together by <br />a shared sense of{' '}
+                <span className="font-display-italic">good taste</span>
+              </h2>
+              <div data-magnifier-exclude>
+                <p className="mt-2 max-w-[52ch] text-[1.5rem] leading-relaxed text-[var(--ink-2)] md:text-[1.5rem]">
+                  我們是一家專注於網站開發和設計的工作室，提供從概念到實現的全方位服務。
+                  以編輯設計的細節，工程師的嚴謹，幫品牌建立經得起時間的數位形象。
+                </p>
+              </div>
+            </div>
           </div>
-          <div className="col-span-12 md:col-span-8">
-            <h2 className="font-display text-[clamp(2rem,6vw,4rem)] leading-[0.95]">
-            A group of professionals <br/>
-            from different <span className="font-display-italic">spectrums</span>
-            <br />
-brought together by <br /> a shared sense of
-<span className="font-display-italic"> good taste</span>
-            </h2>
-            <p className="mt-2 col-span-12 max-w-[52ch] text-[1.5rem] leading-relaxed text-[var(--ink-2)] md:col-span-6 md:text-[1.5rem]">
-              我們是一家專注於網站開發和設計的工作室，提供從概念到實現的全方位服務。
-              以編輯設計的細節，工程師的嚴謹，幫品牌建立經得起時間的數位形象。
-            </p>
-          </div>
-        </div>
 
-        <div className="mt-2">
-          {teamMembers.map((m, i) => (
-            <TeamCard key={m.id} member={m} index={i} />
-          ))}
+          <div data-magnifier-exclude className="mt-2">
+            {teamMembers.map((m, i) => (
+              <TeamCard key={m.id} member={m} index={i} />
+            ))}
+          </div>
         </div>
       </div>
-    </section>
+    </MagnifierSection>
   );
 };
 

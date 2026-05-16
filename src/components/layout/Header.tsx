@@ -2,25 +2,17 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Navigation from './Navigation';
 import { LINE_ADD_FRIEND_URL, LINE_ID } from '@/data/contact';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const lastY = useRef(0);
 
   useEffect(() => {
     const onScroll = () => {
-      const y = window.scrollY;
-      const delta = y - lastY.current;
-      setScrolled(y > 8);
-      if (Math.abs(delta) > 6) {
-        setHidden(delta > 0 && y > 120);
-        lastY.current = y;
-      }
+      setScrolled(window.scrollY > 8);
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -32,9 +24,8 @@ const Header = () => {
   return (
     <header
       className={[
-        'fixed inset-x-0 top-0 z-50 transition-[transform,background,backdrop-filter,border-color] duration-500',
+        'fixed inset-x-0 top-0 z-50 transition-[background,backdrop-filter,border-color] duration-500',
         scrolled ? 'border-b border-[var(--line)] bg-[color-mix(in_oklab,var(--bg)_88%,transparent)] backdrop-blur-md' : 'border-b border-transparent',
-        hidden ? '-translate-y-full' : 'translate-y-0',
       ].join(' ')}
       style={{ ['--ease' as string]: 'cubic-bezier(0.22,1,0.36,1)' }}
     >

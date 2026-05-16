@@ -2,8 +2,10 @@ import { use } from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import { getPublicProjectById, projects, projectIndustryLabels } from '@/data/projects';
 import ProjectImages from '@/components/portfolio/ProjectImages';
+import MagnifierSection from '@/components/ui/MagnifierSection';
+import { getPublicProjectById, projects, projectIndustryLabels } from '@/data/projects';
+import { heroLoupeSourceBackground } from '@/lib/heroGradient';
 
 export async function generateStaticParams(): Promise<{ id: string }[]> {
   return projects
@@ -41,68 +43,76 @@ export default function ProjectPage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen bg-[var(--bg)]">
-      <section className="relative pt-[120px] md:pt-[160px]">
-        <div className="shell">
-          <Link
-            href="/portfolio"
-            className="link-underline inline-flex items-center gap-2 text-sm text-[var(--muted)] hover:text-[var(--ink)]"
-          >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className="h-4 w-4">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 12H5M12 5l-7 7 7 7" />
-            </svg>
-            <span>返回作品集</span>
-          </Link>
-
-          <div className="mt-10 grid grid-cols-12 gap-y-8 md:gap-x-6">
-            <div className="col-span-12 md:col-span-3" data-reveal>
-              <div className="eyebrow">Case · {project.date}</div>
-            </div>
-            <div
-              className="col-span-12 md:col-span-9"
-              data-reveal
-              style={{ ['--reveal-delay' as string]: '120ms' }}
+      <MagnifierSection className="relative" data-spotlight>
+        <div data-magnifier-stack className="relative pt-[120px] md:pt-[160px]">
+          <div
+            aria-hidden
+            data-magnifier-source
+            className="pointer-events-none absolute inset-0 -z-10"
+            style={heroLoupeSourceBackground}
+          />
+          <div className="shell">
+            <Link
+              href="/portfolio"
+              className="link-underline inline-flex items-center gap-2 text-sm text-[var(--muted)] hover:text-[var(--ink)]"
             >
-              <h1 className="font-display text-[clamp(1rem,3vw,2.1rem)] leading-[1.15] tracking-tight">
-                {project.title}
-              </h1>
-              <p className="mt-6 max-w-[60ch] text-[var(--ink-2)] md:text-[1.2rem]">
-                {project.description}
-              </p>
-              <div className="mt-6 flex flex-wrap items-center gap-2">
-                <span className="chip">{categoryLabel(project.category)}</span>
-                {project.industries.map((ind) => (
-                  <span key={ind} className="chip">
-                    {projectIndustryLabels[ind]}
-                  </span>
-                ))}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className="h-4 w-4">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 12H5M12 5l-7 7 7 7" />
+              </svg>
+              <span>返回作品集</span>
+            </Link>
+
+            <div className="mt-10 grid grid-cols-12 gap-y-8 md:gap-x-6">
+              <div className="col-span-12 md:col-span-3" data-reveal>
+                <div className="eyebrow">Case · {project.date}</div>
               </div>
-              {project.url && (
-                <div className="mt-8 flex flex-wrap items-center gap-4">
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn"
-                  >
-                    訪問網站
-                    <svg className="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden>
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 17L17 7M9 7h8v8" />
-                    </svg>
-                  </a>
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="link-underline text-sm text-[var(--muted)] break-all"
-                  >
-                    {project.url}
-                  </a>
+              <div
+                className="col-span-12 md:col-span-9"
+                data-reveal
+                style={{ ['--reveal-delay' as string]: '120ms' }}
+              >
+                <h1 className="font-display text-[clamp(1rem,3vw,2.1rem)] leading-[1.15] tracking-tight">
+                  {project.title}
+                </h1>
+                <p className="mt-6 max-w-[60ch] text-[var(--ink-2)] md:text-[1.2rem]">
+                  {project.description}
+                </p>
+                <div className="mt-6 flex flex-wrap items-center gap-2">
+                  <span className="chip">{categoryLabel(project.category)}</span>
+                  {project.industries.map((ind) => (
+                    <span key={ind} className="chip">
+                      {projectIndustryLabels[ind]}
+                    </span>
+                  ))}
                 </div>
-              )}
+                {project.url && (
+                  <div className="mt-8 flex flex-wrap items-center gap-4">
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn"
+                    >
+                      訪問網站
+                      <svg className="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden>
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 17L17 7M9 7h8v8" />
+                      </svg>
+                    </a>
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="link-underline text-sm text-[var(--muted)] break-all"
+                    >
+                      {project.url}
+                    </a>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
-      </section>
+      </MagnifierSection>
 
       <section className="py-20 md:py-28">
         <div className="shell">

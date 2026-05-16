@@ -1,5 +1,7 @@
 import ContactForm from '@/components/contact/ContactForm';
+import MagnifierSection from '@/components/ui/MagnifierSection';
 import { LINE_ADD_FRIEND_URL } from '@/data/contact';
+import { heroLoupeSourceBackground } from '@/lib/heroGradient';
 
 export const metadata = {
   title: '關於我們 | 縮小檢視工作室 · Setup Studio',
@@ -30,28 +32,36 @@ const values = [
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-[var(--bg)]">
-      <section className="relative pt-[140px] md:pt-[180px]" data-spotlight>
-        <div className="shell">
-          <div className="grid grid-cols-12 gap-y-8 md:gap-x-6">
-            <div className="col-span-12 md:col-span-3" data-reveal>
-              <div className="eyebrow">Index · 03</div>
-            </div>
-            <div className="col-span-12 md:col-span-9" data-reveal style={{ ['--reveal-delay' as string]: '120ms' }}>
-              <h1 className="font-display text-[clamp(3rem,9vw,9rem)] leading-[0.92] tracking-tight">
-                <span className="clip-reveal">
-                  <span>About the</span>
-                </span>{' '}
-                <span className="clip-reveal">
-                  <span className="font-display-italic">studio.</span>
-                </span>
-              </h1>
-              <p className="mt-10 max-w-[55ch] text-[var(--ink-2)] md:text-[1.1rem]">
-                我們是一家充滿熱情的設計與開發團隊，致力於為客戶創造獨特的數位體驗。
-              </p>
+      <MagnifierSection className="relative" data-spotlight>
+        <div data-magnifier-stack className="relative pt-[140px] md:pt-[180px]">
+          <div
+            aria-hidden
+            data-magnifier-source
+            className="pointer-events-none absolute inset-0 -z-10"
+            style={heroLoupeSourceBackground}
+          />
+          <div className="shell">
+            <div className="grid grid-cols-12 gap-y-8 md:gap-x-6">
+              <div className="col-span-12 md:col-span-3" data-reveal>
+                <div className="eyebrow">Index · 03</div>
+              </div>
+              <div className="col-span-12 md:col-span-9" data-reveal style={{ ['--reveal-delay' as string]: '120ms' }}>
+                <h1 className="font-display text-[clamp(3rem,9vw,9rem)] leading-[0.92] tracking-tight">
+                  <span className="clip-reveal">
+                    <span>About the</span>
+                  </span>{' '}
+                  <span className="clip-reveal">
+                    <span className="font-display-italic">studio.</span>
+                  </span>
+                </h1>
+                <p className="mt-10 max-w-[55ch] text-[var(--ink-2)] md:text-[1.1rem]">
+                  我們是一家充滿熱情的設計與開發團隊，致力於為客戶創造獨特的數位體驗。
+                </p>
+              </div>
             </div>
           </div>
         </div>
-      </section>
+      </MagnifierSection>
 
       <section className="py-32 md:py-44">
         <div className="shell">

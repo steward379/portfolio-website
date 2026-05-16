@@ -355,6 +355,11 @@ body {
   background: var(--accent);
 }
 
+.cursor-dot.is-hidden {
+  opacity: 0;
+  transition: opacity 140ms ease;
+}
+
 @media (hover: none), (pointer: coarse) {
   .cursor-dot {
     display: none;

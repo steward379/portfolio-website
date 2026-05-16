@@ -31,6 +31,14 @@ const SiteChrome = ({ children }: { children: ReactNode }) => {
     const onMove = (e: MouseEvent) => {
       tx = e.clientX;
       ty = e.clientY;
+      const t = e.target as HTMLElement | null;
+      if (t?.closest('[data-magnifier-exclude]')) {
+        cursorRef.current?.classList.remove('is-hidden');
+      } else if (t?.closest('[data-magnifier]')) {
+        cursorRef.current?.classList.add('is-hidden');
+      } else {
+        cursorRef.current?.classList.remove('is-hidden');
+      }
     };
 
     const onOver = (e: MouseEvent) => {
