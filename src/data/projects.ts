@@ -42,13 +42,34 @@ const isPublicProject = (p: Project) => !p.hidden;
   
   export const projects: Project[] = [
     {
+      id: 'zero-waste-mazu-website',
+      title: '零廢敬媽祖：倡議官網',
+      client: '永續百行（零廢敬媽祖 × 大甲鎮瀾宮合作倡議）',
+      description:
+        'Mobile First 倡議官網，整合計畫介紹、回饋方案、公益影片與行前減廢宣導，銜接支持與 FAQ 等行動動線。',
+      fullDescription:
+        '「零廢敬媽祖」是一場與<strong>大甲鎮瀾宮</strong>合作的宗教減廢倡議：在台灣最具規模的<strong>2026 大甲媽祖遶境</strong>現場，透過友善商家、清洗據點與循環／自備餐具等機制，讓減廢成為可被理解、參與並延續的日常選擇，並逐步累積成可複製的宗教永續經驗。<br/><br/>此<strong>倡議官網</strong>以明亮、祈福感的視覺呈現品牌識別與永續訊息，涵蓋計畫說明、回饋介紹、公益宣傳影片與遶境前的減廢引導等內容，並與嘖嘖群眾募資、永續行動地圖等線上線下設計互相搭配。（同一倡議旗下另有獨立製作之「清淨守護籤」心理測驗互動頁，請見作品集另一案。）<br/><br/><small>企劃／文案支援、網站前端、互動：Steward (創辦人)<br/>部署、網站前端支援：Timothy<br/>設計、企劃：FUTUAL 共生未來團隊<br/><br/>倡議企畫：永續百行<br/>宮廟合作：大甲鎮瀾宮<br/>計畫說明見嘖嘖專案頁：<a href="https://www.zeczec.com/projects/zwmazu" target="_blank" rel="noopener noreferrer">https://www.zeczec.com/projects/zwmazu</a></small>',
+      category: 'website',
+      industries: ['environment', 'religion'],
+      image: '/portfolio-website/zwmazu-www-cover.png',
+      images: [
+        '/portfolio-website/zwmazu-www-cover.png',
+        '/portfolio-website/zwmazu-www-video.png',
+        '/portfolio-website/zwmazu-www-rewards.png',
+        '/portfolio-website/zwmazu-www-prepare.png',
+      ],
+      featured: true,
+      date: '2026-05',
+      url: 'https://www.eco100.tw/zwmazu',
+    },
+    {
       id: 'zero-waste-mazu-quiz',
       title: '零廢敬媽祖：2026 清淨守護籤',
       client: '永續百行（零廢敬媽祖 × 大甲鎮瀾宮合作倡議）',
       description:
-        'Mobile First 心理測驗網站，以「清淨守護籤」串連媽祖遶境減廢倡議，引導自備與循環餐具行動。',
+        'Mobile First 獨立互動頁「清淨守護籤」，以抽籤與結果卡串連媽祖遶境減廢倡議，引導自備與循環餐具行動。',
       fullDescription:
-        '「零廢敬媽祖」是一場與<strong>大甲鎮瀾宮</strong>合作的宗教減廢倡議：在台灣最具規模的<strong>2026 大甲媽祖遶境</strong>現場，透過友善商家、清洗據點與循環／自備餐具等機制，讓減廢成為可被理解、參與並延續的日常選擇，並逐步累積成可複製的宗教永續經驗。<br/><br/>此<strong>線上心理測驗「清淨守護籤」</strong>以輕量互動包裝永續訊息——從抽籤到結果頁，將<span style="white-space:nowrap;">「少用一次性餐具」</span>等行動召喚與現場集點連結，協助民眾在遶境前後更容易進入減廢情境。網站採 Mobile First、明亮祈福視覺與 Q 版守護神意象，與嘖嘖群眾募資與永續行動地圖等線上線下設計互相搭配。<br/><br/><small>企劃／文案支援、網站前端、互動：Steward (創辦人)<br/>部署、網站前端支援：Timothy<br/>設計、企劃：FUTUAL 共生未來團隊<br/><br/>倡議企畫：永續百行<br/>宮廟合作：大甲鎮瀾宮<br/>計畫說明見嘖嘖專案頁：<a href="https://www.zeczec.com/projects/zwmazu" target="_blank" rel="noopener noreferrer">https://www.zeczec.com/projects/zwmazu</a></small>',
+        '「零廢敬媽祖」是一場與<strong>大甲鎮瀾宮</strong>合作的宗教減廢倡議：在台灣最具規模的<strong>2026 大甲媽祖遶境</strong>現場，透過友善商家、清洗據點與循環／自備餐具等機制，讓減廢成為可被理解、參與並延續的日常選擇，並逐步累積成可複製的宗教永續經驗。<br/><br/>此為倡議底下<strong>獨立製作</strong>的 Mobile First 互動頁——使用者透過<strong>「清淨守護籤」</strong>取得個人化的祈福語與行動提示，將<span style="white-space:nowrap;">「少用一次性餐具」</span>等訊息包裝成可分享的結果卡，並可連結至現場集點與倡議脈絡；視覺延續主題的橙色祈福語境與 Q 版守護神意象。<br/><br/>倡議主資訊、計畫與回饋說明見<strong><a href="https://www.eco100.tw/zwmazu" target="_blank" rel="noopener noreferrer">零廢敬媽祖倡議官網</a></strong>；群眾募資背景見 <a href="https://www.zeczec.com/projects/zwmazu" target="_blank" rel="noopener noreferrer">嘖嘖專案頁</a>。<br/><br/><small>企劃／文案支援、網站前端、互動：Steward (創辦人)<br/>部署、網站前端支援：Timothy<br/>設計、企劃：FUTUAL 共生未來團隊<br/><br/>倡議企畫：永續百行<br/>宮廟合作：大甲鎮瀾宮<br/>計畫說明見嘖嘖專案頁：<a href="https://www.zeczec.com/projects/zwmazu" target="_blank" rel="noopener noreferrer">https://www.zeczec.com/projects/zwmazu</a></small>',
       category: 'website',
       industries: ['environment', 'religion'],
       image: '/portfolio-website/zwmazu-cover.png',
@@ -65,7 +86,7 @@ const isPublicProject = (p: Project) => !p.hidden;
     },
     {
       id: 'futual-website',
-      title: '共生未來官網開發',
+      title: '共生未來 FUTUAL 設計研究公司官網開發',
       client: 'Futual 共生未來',
       description: '與設計師合作開發的現代化企業官網，展現品牌理念與核心價值。',
       fullDescription: '與設計師合作為 Futual 共生未來開發的企業官網。網站採用 Next.js 和 Tailwind CSS 構建，具有流暢的動畫效果和互動式設計元素。我們專注於創造一個能夠清晰傳達品牌理念和核心價值的數位平台，同時提供優雅的用戶體驗。網站設計強調視覺層次和內容可讀性，確保訪客能夠輕鬆了解公司的使命和服務。<br/><br/><small>前端：Steward (創辦人)、Timothy (合作前端工程師)<br/>設計：Futual 團隊主理人</small>',
@@ -83,7 +104,7 @@ const isPublicProject = (p: Project) => !p.hidden;
     },
     {
       id: 'aromase-shampoo',
-      title: '艾瑪絲洗髮精：職場壓力心理測驗',
+      title: '艾瑪絲洗髮精：試用登陸頁與職場壓力心理測驗',
       client: 'Supermedia 超人氣媒體',
       description: 'Mobile First 手機優先的互動式行銷網站，整合客戶證言影片、試用表單與職場壓力心理測驗。',
       fullDescription: '為 Supermedia 超人氣媒體開發的 Mobile First 互動式行銷網站。此專案採用手機優先的開發策略，整合多項功能包括客戶證言影片展示、試用申請表單以及職場壓力心理測驗，創造完整的用戶體驗流程。網站設計以清新自然的視覺風格呈現產品特色，透過互動式測驗吸引用戶參與，並引導完成試用申請，有效提升品牌曝光與轉換率。<br/><br/><small>前端：Timothy (合作前端工程師)<br/>後端、雲端、設計：Supermedia 團隊</small>',
@@ -104,7 +125,7 @@ const isPublicProject = (p: Project) => !p.hidden;
     },
     {
       id: 'meowbti-quiz',
-      title: '鐵鎚牌貓砂：貓咪到底在喵什麼？心理測驗',
+      title: '讀喵術：貓咪到底在喵什麼？鐵鎚牌貓砂',
       client: 'supermedia 超人氣媒體',
       description: 'Mobile First 手機優先的互動式心理測驗網站，結合創意微互動與流暢動畫效果。',
       fullDescription: '為 supermedia 超人氣媒體開發的 Mobile First 互動式心理測驗網站。此專案採用手機優先的開發策略，與設計師密切合作，自行發想並實作多個微互動效果與動畫，大幅提升用戶體驗的趣味性與流暢度。除了前端開發工作外，也協助完成部分平面設計的 UX 完稿，確保視覺與互動的完美結合。網站提供豐富的互動體驗，讓用戶透過有趣的測驗了解自己的個性特質。特別註明：上傳功能目前已停用。<br/><br/><small>前端設計、互動：Steward (創辦人)<br/>後端、雲端、視覺設計：Supermedia 團隊</small>',
@@ -123,7 +144,7 @@ const isPublicProject = (p: Project) => !p.hidden;
     },
     {
       id: 'wealth-quiz-temple',
-      title: '測測你是哪隻小財怪：台中廣天宮心理測驗',
+      title: '台中廣天宮：測測你是哪隻小財怪：',
       client: 'supermedia 超人氣媒體',
       description: 'Mobile First 手機優先的互動式財運測驗網站，融合傳統廟宇文化與現代互動設計。',
       fullDescription: '為 supermedia 超人氣媒體開發的 Mobile First 互動式財運心理測驗網站。此專案採用手機優先的開發策略，結合傳統廟宇文化元素與現代互動設計，創造出獨特的用戶體驗。與設計師密切合作，自行發想並實作多個微互動效果與動畫，包括載入動畫、測驗流程動畫以及結果頁面的視覺呈現。網站採用傳統紅金配色與廟宇建築元素，讓用戶透過有趣的測驗了解自己的財運特質，並引導參與財神借庫活動。<br/><br/><small>前端設計、互動：Steward (創辦人)<br/>後端、雲端：Ming (合作工程師)<br/>視覺設計：Supermedia 團隊</small>',
@@ -142,7 +163,7 @@ const isPublicProject = (p: Project) => !p.hidden;
     },
     {
       id: 'office-worker-escape',
-      title: '社畜大逃殺：職場求生挑戰 2025 文博會',
+      title: '社畜大逃殺遊戲：職場求生挑戰 2025 文博會',
       client: 'supermedia 超人氣媒體',
       description: 'Mobile First 手機優先的互動式職場生存遊戲，重現職場真實情境與社畜生活體驗。',
       fullDescription: '為 supermedia 超人氣媒體開發的 Mobile First 互動式職場生存遊戲。此專案採用手機優先的開發策略，以幽默詼諧的方式重現職場中的各種奇葩 NPC 與真實情境，讓玩家體驗社畜生活的挑戰。與設計師密切合作，自行發想並實作多個微互動效果與動畫，包括角色選擇、遊戲進行中的動態效果、生存計時系統以及遊戲結束後的結果呈現。遊戲結合排行榜功能，增加互動性與競爭感，讓用戶在輕鬆的遊戲體驗中產生共鳴。<br/><br/><small>前後端、雲端：Ming (合作工程師)<br/>遊戲：Supermedia 合作 Unity 工程師<br/>視覺設計：Supermedia 團隊</small>',

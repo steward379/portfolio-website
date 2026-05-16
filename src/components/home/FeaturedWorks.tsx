@@ -14,7 +14,9 @@ const FeaturedWorks = () => {
           data-reveal
         >
           <div className="col-span-12 md:col-span-5">
-            <div className="eyebrow">Selected Works · 03</div>
+            <div className="eyebrow">
+              Selected Works · {String(projects.length).padStart(2, '0')}
+            </div>
             <h2 className="mt-6 font-display text-[clamp(2.4rem,6vw,5.2rem)] leading-[0.95] tracking-tight">
               Selected
               <br />
