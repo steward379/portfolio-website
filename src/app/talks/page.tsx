@@ -178,10 +178,10 @@ export default function TalksPage() {
               <div className="col-span-12 md:col-span-9" data-reveal style={{ ['--reveal-delay' as string]: '120ms' }}>
                 <h1 className="font-display text-[clamp(3rem,9vw,9rem)] leading-[0.92] tracking-tight">
                   <span className="clip-reveal">
-                    <span>社群教學</span>
+                    <span>Community, Lectures</span>
                   </span>
                   <span className="clip-reveal">
-                    <span className="font-display-italic">與創作軌跡</span>
+                    <span className="font-display-italic">and Marketing</span>
                   </span>
                 </h1>
                 <p className="mt-6 font-display text-[clamp(1.35rem,3vw,2rem)] tracking-tight text-[var(--ink-2)]">
