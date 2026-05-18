@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { teamMembers, type TeamMember } from '@/data/team';
 import MagnifierSection from '@/components/ui/MagnifierSection';
 import { heroLoupeSourceBackground } from '@/lib/heroGradient';
+import { assetUrl } from '@/lib/assetUrl';
 
 const isLogo = (id: string) => id === 'Futual' || id === 'Xyloc';
 
@@ -25,18 +26,14 @@ const TeamCard = ({ member, index }: { member: TeamMember; index: number }) => {
       data-reveal
       style={{ ['--reveal-delay' as string]: `${index * 70}ms` }}
     >
-      <span className="numeral col-span-2 text-2xl md:col-span-1 md:text-3xl">
-        0{index + 1}
-      </span>
-
-      <div className="col-span-10 md:col-span-3">
+      <div className="col-span-12 md:col-span-4">
         {logo ? (
           <div className="frame relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden p-6 md:p-8">
             {!imgErr ? (
               <>
                 <img
                   ref={imgRef}
-                  src={member.image}
+                  src={assetUrl(member.image)}
                   alt={member.name}
                   className={`max-h-full max-w-full object-contain transition-opacity duration-700 ease-[var(--ease-out-expo)] ${
                     imgOk ? 'opacity-100' : 'opacity-0'
@@ -57,7 +54,7 @@ const TeamCard = ({ member, index }: { member: TeamMember; index: number }) => {
               <>
                 <img
                   ref={imgRef}
-                  src={member.image}
+                  src={assetUrl(member.image)}
                   alt={member.name}
                   className={`absolute inset-0 h-full w-full object-cover transition-[opacity,filter,transform] duration-700 ease-[var(--ease-out-expo)] group-hover:scale-[1.04] ${
                     imgOk ? 'opacity-100' : 'opacity-0'
@@ -149,7 +146,7 @@ const Team = () => {
             data-reveal
           >
             <div className="col-span-12 md:col-span-4">
-              <div className="eyebrow">Team · 04</div>
+              <div className="eyebrow">Team</div>
             </div>
             <div className="col-span-12 md:col-span-8">
               <h2 className="font-display text-[clamp(2rem,6vw,4rem)] leading-[0.95]">

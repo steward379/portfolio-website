@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import Navigation from './Navigation';
 import { LINE_ADD_FRIEND_URL, LINE_ID } from '@/data/contact';
+import { assetUrl } from '@/lib/assetUrl';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -33,7 +34,7 @@ const Header = () => {
         <Link href="/" className="group flex items-center gap-3" aria-label="Home">
           <span className="relative inline-flex h-9 w-9 items-center justify-center overflow-hidden border border-[var(--line-2)]">
             <Image
-              src="/portfolio-website/logo.jpg"
+              src={assetUrl('/portfolio-website/logo.jpg')}
               alt=""
               width={36}
               height={36}

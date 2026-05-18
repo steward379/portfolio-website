@@ -26,7 +26,7 @@ const ProjectGrid = ({ projects }: ProjectGridProps) => {
           data-reveal
           style={{ ['--reveal-delay' as string]: `${(i % 3) * 70}ms` }}
         >
-          <ProjectCard project={p} index={i} />
+          <ProjectCard project={p} />
         </div>
       ))}
     </div>

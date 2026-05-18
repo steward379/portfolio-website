@@ -3,16 +3,16 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { Project, projectIndustryLabels } from '@/data/projects';
+import { assetUrl } from '@/lib/assetUrl';
 import frameStyles from './projectMediaFrame.module.css';
 
 interface ProjectCardProps {
   project: Project;
-  index?: number;
 }
 
 const categoryLabel = (c: Project['category']) => (c === 'website' ? 'Web' : 'Design');
 
-const ProjectCard = ({ project, index }: ProjectCardProps) => {
+const ProjectCard = ({ project }: ProjectCardProps) => {
   const [imgErr, setImgErr] = useState(false);
   const [imgOk, setImgOk] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
@@ -35,7 +35,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
             <>
               <img
                 ref={imgRef}
-                src={project.image}
+                src={assetUrl(project.image)}
                 alt={project.title}
                 className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ease-[var(--ease-out-expo)] ${
                   imgOk ? 'opacity-100' : 'opacity-0'
@@ -51,12 +51,6 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
               {project.title} · 預覽圖
             </div>
           )}
-
-          <div className="absolute left-4 top-4 flex items-center gap-2 text-[var(--bg)] mix-blend-difference">
-            {typeof index === 'number' && (
-              <span className="font-mono-label opacity-90">№ {String(index + 1).padStart(2, '0')}</span>
-            )}
-          </div>
 
           <div className="absolute bottom-4 right-4 flex max-w-[calc(100%-2rem)] translate-y-3 flex-wrap justify-end gap-2 opacity-0 transition-all duration-500 ease-[var(--ease-out-expo)] group-hover:translate-y-0 group-hover:opacity-100">
             <span className="chip border-[var(--bg)] text-[var(--bg)] mix-blend-difference">

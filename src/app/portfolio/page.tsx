@@ -21,7 +21,7 @@ export default function PortfolioPage() {
           <div className="shell">
             <div className="grid grid-cols-12 gap-y-8 md:gap-x-6">
               <div className="col-span-12 md:col-span-3" data-reveal>
-                <div className="eyebrow">Index · 02</div>
+                <div className="eyebrow">Portfolio</div>
               </div>
               <div className="col-span-12 md:col-span-9" data-reveal style={{ ['--reveal-delay' as string]: '120ms' }}>
                 <h1 className="font-display text-[clamp(3rem,9vw,9rem)] leading-[0.92] tracking-tight">

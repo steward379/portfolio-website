@@ -18,7 +18,7 @@ const Services = () => {
             data-reveal
           >
             <div className="col-span-12 md:col-span-4">
-              <div className="eyebrow">Services · 02</div>
+              <div className="eyebrow">Services</div>
             </div>
             <div className="col-span-12 md:col-span-8">
               <h2 className="mb-4 font-display text-[clamp(2.4rem,6vw,5rem)] leading-[0.95] tracking-tight">
@@ -46,19 +46,15 @@ const Services = () => {
                   data-reveal
                   style={{ ['--reveal-delay' as string]: `${i * 90}ms` }}
                 >
-                  <span className="numeral col-span-2 text-3xl md:col-span-1 md:text-4xl">
-                    0{i + 1}
-                  </span>
-
-                  <div className="col-span-10 md:col-span-4">
-                    <h3 className="col-span-10 font-display text-3xl tracking-tight md:col-span-4 md:text-4xl">
+                  <div className="col-span-12 md:col-span-5">
+                    <h3 className="font-display text-3xl tracking-tight md:text-4xl">
                       {service.englishTitle}
                       <br />
                       <span className="font-display-italic text-lg md:text-xl">{service.title}</span>
                     </h3>
                   </div>
 
-                  <p className="col-span-12 max-w-[60ch] text-[var(--ink-2)] md:col-span-6">
+                  <p className="col-span-12 max-w-[60ch] text-[var(--ink-2)] md:col-span-7">
                     {service.description}
                   </p>
 

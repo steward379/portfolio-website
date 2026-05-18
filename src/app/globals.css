@@ -469,6 +469,56 @@ body {
   border-color: var(--ink);
 }
 
+/* ===== Teaching tables (/talks) ========================================= */
+.teaching-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.teaching-table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.teaching-table-caption {
+  caption-side: top;
+  text-align: left;
+  padding-bottom: 0.75rem;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.teaching-table th,
+.teaching-table td {
+  border-bottom: 1px solid var(--line);
+  padding: 0.85rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.teaching-table th {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.teaching-table tbody tr:hover td {
+  background: color-mix(in oklab, var(--surface) 55%, transparent);
+}
+
+.teaching-table tbody tr:last-child td {
+  border-bottom-color: transparent;
+}
+
 /* ===== Decorative frame for media ======================================== */
 .frame {
   border: 1px solid var(--line);

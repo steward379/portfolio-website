@@ -47,7 +47,7 @@ const ProjectFilter = ({
         <div className="col-span-12 md:col-span-2">
           <div className="font-mono-label">Filter</div>
           <div className="mt-1 text-sm text-[var(--muted)]">
-            {String(total).padStart(2, '0')} <span className="font-mono-label">items</span>
+            {total} <span className="font-mono-label">items</span>
           </div>
         </div>
 

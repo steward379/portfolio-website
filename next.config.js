@@ -1,10 +1,13 @@
 //next.config.js
 /** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === 'production';
+const basePath = isProd ? '/portfolio-website' : '';
+
 const nextConfig = {
   output: 'export',
-  // 網站部署在 stewardtsou.com/portfolio-website/ 子路徑
-  basePath: '/portfolio-website',
-  assetPrefix: '/portfolio-website',
+  // 正式環境部署於 /portfolio-website；本機開發 basePath 為空，根路徑即首頁
+  basePath,
+  assetPrefix: basePath || undefined,
   images: {
     unoptimized: true,
   },

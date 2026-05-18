@@ -10,19 +10,16 @@ export const metadata = {
 
 const values = [
   {
-    label: '01',
     title: '創新思維',
     EnglishTitle: 'Innovative',
     body: '我們不斷探索新的創意和技術，為客戶提供前沿的解決方案。我們鼓勵團隊突破常規思維，從不同角度看待問題。',
   },
   {
-    label: '02',
     title: '以客戶為中心',
     EnglishTitle: 'Customer-Centric',
     body: '我們深入了解客戶的需求和目標，與客戶建立長期的合作關係。我們相信真正了解客戶的業務是提供優質服務的關鍵。',
   },
   {
-    label: '03',
     title: '品質與專業',
     EnglishTitle: 'Quality and Professional',
     body: '我們對每個項目都投入百分之百的專注和努力，確保交付的成果符合最高標準。我們注重細節，不斷追求卓越。',
@@ -43,7 +40,7 @@ export default function AboutPage() {
           <div className="shell">
             <div className="grid grid-cols-12 gap-y-8 md:gap-x-6">
               <div className="col-span-12 md:col-span-3" data-reveal>
-                <div className="eyebrow">Index · 03</div>
+                <div className="eyebrow">About</div>
               </div>
               <div className="col-span-12 md:col-span-9" data-reveal style={{ ['--reveal-delay' as string]: '120ms' }}>
                 <h1 className="font-display text-[clamp(3rem,9vw,9rem)] leading-[0.92] tracking-tight">
@@ -99,7 +96,7 @@ export default function AboutPage() {
             data-reveal
           >
             <div className="col-span-12 md:col-span-4">
-              <div className="eyebrow">Values · 04</div>
+              <div className="eyebrow">Values</div>
             </div>
             <div className="col-span-12 md:col-span-8">
               <h2 className="font-display text-[clamp(2.4rem,6vw,5rem)] leading-[0.95] tracking-tight">
@@ -111,18 +108,17 @@ export default function AboutPage() {
           <ul>
             {values.map((v, i) => (
               <li
-                key={v.label}
+                key={v.EnglishTitle}
                 className="group relative grid grid-cols-12 items-baseline gap-y-3 border-b border-[var(--line)] py-9 md:gap-x-6 md:py-12"
                 data-reveal
                 style={{ ['--reveal-delay' as string]: `${i * 90}ms` }}
               >
-                <span className="numeral col-span-2 text-3xl md:col-span-1 md:text-4xl">{v.label}</span>
-                <h3 className="col-span-10 font-display text-3xl tracking-tight md:col-span-4 md:text-4xl">
+                <h3 className="col-span-12 font-display text-3xl tracking-tight md:col-span-5 md:text-4xl">
                   {v.EnglishTitle}
                   <br />
                   <span className="font-display-italic text-lg md:text-xl">{v.title}</span>
                 </h3>
-                <p className="col-span-12 max-w-[60ch] text-[var(--ink-2)] md:col-span-6">{v.body}</p>
+                <p className="col-span-12 max-w-[60ch] text-[var(--ink-2)] md:col-span-7">{v.body}</p>
                 <span
                   aria-hidden
                   className="pointer-events-none absolute inset-x-0 -top-px h-px origin-left scale-x-0 bg-[var(--accent)] transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-x-100"
@@ -140,7 +136,7 @@ export default function AboutPage() {
             data-reveal
           >
             <div className="col-span-12 md:col-span-4">
-              <div className="eyebrow">Contact · 05</div>
+              <div className="eyebrow">Contact</div>
             </div>
             <div className="col-span-12 md:col-span-8">
               <h2 className="font-display text-[clamp(2.4rem,6vw,5rem)] leading-[0.95] tracking-tight">

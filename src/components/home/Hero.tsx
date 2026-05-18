@@ -64,7 +64,7 @@ const Hero = () => {
               style={{ ['--reveal-delay' as string]: '420ms' }}
             >
               <div className="col-span-12 md:col-span-3">
-                <div className="font-mono-label">About — 01</div>
+                <div className="font-mono-label">About</div>
               </div>
 
               <div className="col-span-12 md:col-span-6" data-magnifier-exclude>

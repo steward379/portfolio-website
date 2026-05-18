@@ -29,7 +29,7 @@ const Footer = () => {
 
       <div className="shell grid grid-cols-1 gap-12 py-20 md:grid-cols-12">
         <div className="md:col-span-5">
-          <div className="eyebrow">Index · 00</div>
+          <div className="eyebrow">Setup Studio</div>
           <h3 className="mt-5 font-display text-4xl leading-[1.1] md:text-5xl">
             Let&rsquo;s make something
             <br />
@@ -45,13 +45,13 @@ const Footer = () => {
           <div className="font-mono-label">Sitemap</div>
           <ul className="mt-5 space-y-3 text-[15px]">
             <li>
-              <Link href="/" className="link-underline text-[var(--ink)]">
-                首頁
+              <Link href="/portfolio" className="link-underline text-[var(--ink)]">
+                作品集
               </Link>
             </li>
             <li>
-              <Link href="/portfolio" className="link-underline text-[var(--ink)]">
-                作品集
+              <Link href="/talks" className="link-underline text-[var(--ink)]">
+                社群教學
               </Link>
             </li>
             <li>

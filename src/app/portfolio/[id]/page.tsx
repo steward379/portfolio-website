@@ -6,6 +6,7 @@ import ProjectImages from '@/components/portfolio/ProjectImages';
 import MagnifierSection from '@/components/ui/MagnifierSection';
 import { getPublicProjectById, projects, projectIndustryLabels } from '@/data/projects';
 import { heroLoupeSourceBackground } from '@/lib/heroGradient';
+import { rewriteInternalHtml } from '@/lib/assetUrl';
 
 export async function generateStaticParams(): Promise<{ id: string }[]> {
   return projects
