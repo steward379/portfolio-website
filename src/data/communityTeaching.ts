@@ -61,7 +61,7 @@ export const teachingSections: TeachingSectionDefinition[] = [
         tags: '期待解鎖',
       },
       {
-        name: 'Scoop 私戲平台',
+        name: 'Scoop 私廚平台',
         role: 'Co-Founder (Design, Product)',
         type: 'Self-initiated、實習新村',
         tags: '期待解鎖',

@@ -99,22 +99,33 @@ function SimpleTable({
 }
 
 export default function TalksPage() {
-  // 行銷經驗資料
+  // 行銷經驗資料（依 Notion「行銷經驗 Experience」截圖照錄）
   const marketingExperience = {
-    headers: ['專案／公司名稱', '職位', '業主', '標籤'],
+    headers: ['Name', 'Tags', '頭銜', '主題', '業主', '其他'],
     rows: [
-      ['Guest What 好客樹共享出租平台', 'Co-Founder (Design, Marketing, BD)', 'Self-initiated', 'Appworks 創業加速器 #9 數位時代專訪'],
-      ['JustPrint 微幕列印版面設計印刷服務', 'Co-Founder (Design)', 'Self-initiated', 'Appworks 創業加速器 #9'],
-      ['Coolla 露營點數串聯整合 App 服務', 'Co-Founder (Design)', 'Self-initiated', '期待解鎖'],
-      ['Scoop 私戲平台', 'Co-Founder (Design, Product)', 'Self-initiated、實習新村', '期待解鎖'],
-      ['Triptrip 攻堅旅行社計畫', 'Founder', 'Self-initiated', '台科大創業競賽第三名'],
-      ['CBA 亞洲區塊鏈學院', 'BD', '介紹區塊鏈課程予技術人', '巴克夏科技 BuckChaf'],
-      ['重力公主 Hearing Action YouTube 頻道', '行銷顧問', '社群行銷、人力介紹', '重力公主 Hearing Action — Youtuber'],
-      ['Blocto (portto) 門戶科技區塊鏈錢包', '行銷顧問', '社群行銷、人力介紹', '門戶科技 Blocto, portto'],
-      ['庶加林上線管理平台', '行銷負責視覺設計', '社群展廣合作、Logo', '奇異果文創'],
-      ['北一區 Moocs、政大 Moocs', '社群行銷負責設計', 'Moocs 措施', '國立政治大學'],
-      ['台北眷村文化館', '社群設計執行', '打工展場／工作坊／居民保存', '台北文化局、眷村保存館'],
-      ['實體線索媒體', '社群經營、設計', '社群經營', '實體線索媒體'],
+      ['Guest What 好客網共享私廚平台', '網路創業', 'Co-Founder (Design, Marketing, BD)', '—', 'Self-initiated', 'Appworks 創業加速器 #9 / 數位時代專訪'],
+      ['JustPrint 就是列印校園列印服務', '網路創業', 'Co-Founder (Design)', '—', 'Self-initiated', 'Appworks 創業加速器 #9'],
+      ['Coolist 酷集點廣告集點 App 服務', '網路創業', 'Co-Founder (Design)', '—', 'Self-initiated', '—'],
+      ['Scoop 私廚平台', '網路創業', 'Co-Founder (Design, Product)', '—', 'Self-initiated、龐哥斯特', '—'],
+      ['Triptrip 故事旅行包計畫', '網路創業', 'Founder', '—', 'Self-initiated', '台科大創業競賽第三名'],
+      ['噴噴土地公廟與文創品群眾募資專案「薑廟特急」', '行銷統籌', '行銷總籌', '—', '—', '—'],
+      ['CBA 亞洲區塊鏈學院', '行銷統籌', 'BD', '介紹區塊鏈課程予技術人', '巴克夏夫科技 BuckChaf', '—'],
+      ['聽力公主 Hearing Action YouTube 頻道 聽力科技與助聽科技', '行銷顧問', '行銷顧問', '—', '聽力公主 Hearing Action — Youtuber', '—'],
+      ['Blocto (portto) 門戶科技區塊鏈錢包', '行銷顧問', '行銷顧問', '社群行銷、人才介紹', '門戶科技 Blocto, portto', '—'],
+      ['底加線上課程平台', '行銷顧問', '行銷與品牌設計', '社群推廣與合作、Logo', '奇異果文創', '—'],
+      ['北一區 Moocs、政大 Moocs', '社群行銷', '社群行銷與設計', 'Moocs 推廣', '國立政治大學', '—'],
+      ['台北眷村文化節', '社群行銷', '社群設計與行銷', '打工度假 / 工作坊 / 活保存', '台北文化局、眷村保存協會', '—'],
+      ['最後一個晚安憂鬱症 Bot', '社群行銷', '社群設計', '聊天機器人', '最後一個晚安', '—'],
+      ['愛麗絲辣椒醬', '社群行銷', '社群推廣、設計', '社群經營', '愛麗絲辣椒醬', '—'],
+      ['台大設計學院 D-School', '工作坊教學', '講師', '亮點設計：簡報設計新觀點', '台大設計學院', '—'],
+      ['師大全人書院', '工作坊教學', '講師', '品牌設計、Logo 與 CIS', '師大全人書院', '—'],
+      ['台北律師公會', '工作坊教學', '講師', '簡報設計', '台北律師公會', '—'],
+      ['Hahow x Lymma 華人設計師平台', '社群業配', '課程推廣、廣告平台', '課程推廣', 'Hahow、Lymma', '—'],
+      ['猴洞生態園區營隊', '社群業配', '營隊推廣', '營隊推廣', '猴洞生態園區 - 胡庭碩', '—'],
+      ['臺大黑客松 台北市政府開放應用獎', '獎項', '設計師', '聊天機器人 - 行動警局', '臺大黑客松', '—'],
+      ['SnapAsk 知之學生家教媒合平台', '專欄作家', '—', '生活專欄作家 (鳥哥)', 'SnapAsk 知之', '—'],
+      ['《YO, 這位 BROTHER》Ptt 名人：名為變態的神父', '圖像合作', '—', '插畫與漫畫家', '奇異果文創', '—'],
+      ['Blink 履歷導師', '導師', '導師', '—', 'Blink', '—'],
     ],
   };
 
@@ -131,22 +142,26 @@ export default function TalksPage() {
     ],
   };
 
-  // 演講與工作坊資料
+  // 演講與工作坊資料（依 Notion「演講與工作坊 Lectures & Workshops」截圖照錄）
   const teachingWorkshops = {
-    headers: ['主題／內容', '業主 Clients', 'Tags', 'Date'],
+    headers: ['Name', 'tag', '業主 Clients', 'Tags', 'Date'],
     rows: [
-      ['台大 d-school 設計設計：開放設計新觀點', '國立台灣大學 D-School 設計學院', '學校、溫暖課程、工作坊', '—'],
-      ['NFT 與 DAO', '國立台灣大學 兆豐應用設計系', '學校、正式課程、演講', '2021'],
-      ['設計社群行銷 - 新創設計 x 設計', 'Impact Hub 影響力製造所', '社群行銷', '2021'],
-      ['Logo / CIS 基礎課程', '師大全人醫院', '學校、溫暖課程、工作坊', '—'],
-      ['簡報設計課程', '台北市府公會', '組織、工作坊', '—'],
-      ['AI 向基礎實訓練課', '國立台灣科技大學 雜談設計週', '學校、正式課程、工作坊', '—'],
-      ['深度實踐宇宙設計課程', '國立彰化師大學 設計系', '學校、社團、工作坊', '—'],
-      ['簡報設計', '百軒行政 Bi-Great Things', '組織、工作坊', '—'],
-      ['創業與產品級課程實驗論壇', '國立政治大學 DCT 數位內容學士學位學程', '學校、演講', '—'],
-      ['Photoshop 課程', '國立台灣科技大學 應用設計社', '視覺設計', '—'],
-      ['北科互動設計 - 2025 創新設計實驗設計引導課程', 'IxDA 台灣互動設計協會', '工作坊、學校、組織', '2025/11'],
-      ['Google Developer Festival - Gemini↑ 課程規劃', '鐵坦科技 Tech Lead', '工作坊、組織', '2025/11'],
+      ['台大 d-school 亮點設計：簡報設計新觀點', '創意思考', '國立台灣大學 D-School 設計學院', '學校、通識課程、工作坊、演講', '—'],
+      ['NFT 與 DAO', '區塊鏈', '國立台南大學 視覺藝術與設計系 油畫課 侯思穎教授', '學校、正式課程、演講', '2021'],
+      ['資訊社群行銷 - 鄒柏軒 x 設計 - 吳培弘（線上）', '社群行銷', 'Impact Hub 影響力製造所', '—', '2021'],
+      ['Logo / CIS 基礎課程', '視覺設計', '師大全人書院', '學校、通識課程、工作坊', '—'],
+      ['簡報設計講師', '溝通設計', '台北律師公會', '組織、工作坊', '—'],
+      ['Ai 向量插畫訓練', '視覺設計', '國立台灣科技大學 繪性別課程', '學校、正式課程、工作坊', '—'],
+      ['演講與標準字設計教學', '—', '國立政治大學 設計社', '學校、社團、工作坊', '—'],
+      ['簡報設計', '溝通設計', '百軌業行 Bi-Great Things', '組織、工作坊', '—'],
+      ['創業與區塊鏈經驗分享', '創業', '國立政治大學 DCT 數位內容學士與碩士', '學校、演講', '—'],
+      ['簡報設計', '溝通設計', '奇異果文創', '—', '—'],
+      ['Photoshop 講師', '視覺設計', '國立台灣科技大學 電腦研習社', '—', '—'],
+      ['【待】台東縣文化局', '—', '—', '—', '—'],
+      ['meme 空間 角色設計小聚', '創意思考', '—', '自辦、工作坊', '—'],
+      ['【待】LOGO 創作小聚 職運發展', '—', '—', '—', '—'],
+      ['北科互動設計 - 2025 創新設計營 設計引導師 (Contributor)', '創意思考', 'IxDA 台灣互動設計協會', '工作坊、學校、組織', '2025/11'],
+      ['Google Developer Festival - Gemini3 議程助教 (Contributor)', 'AI', '鈦坦科技 Tech Lead', '工作坊、組織', '2025/11'],
     ],
   };
 
@@ -225,11 +240,19 @@ export default function TalksPage() {
         </div>
       </MagnifierSection>
 
-      <Section eyebrow="Experience" title="行銷經驗與專案參與">
+      <Section eyebrow="Experience" title="行銷經驗 Experience">
         <SimpleTable
-          caption="創業、行銷、設計與產品開發的實務經歷。"
+          caption="網路創業、行銷統籌／顧問、社群行銷、工作坊教學、社群業配、獎項與專欄合作（依 Notion 資料整理）。"
           headers={marketingExperience.headers}
           rows={marketingExperience.rows}
+        />
+      </Section>
+
+      <Section eyebrow="Lectures" title="演講與工作坊 Lectures & Workshops">
+        <SimpleTable
+          caption="校園課程、社團、組織與品牌方邀請之講座／工作坊／教學紀錄。"
+          headers={teachingWorkshops.headers}
+          rows={teachingWorkshops.rows}
         />
       </Section>
 
@@ -238,14 +261,6 @@ export default function TalksPage() {
           caption="自有／協作的發聲渠道與露出位置。"
           headers={socialChannels.headers}
           rows={socialChannels.rows}
-        />
-      </Section>
-
-      <Section eyebrow="Education" title="教學與工作坊經歷">
-        <SimpleTable
-          caption="演講、工作坊、課程與教學活動紀錄。"
-          headers={teachingWorkshops.headers}
-          rows={teachingWorkshops.rows}
         />
       </Section>
 
