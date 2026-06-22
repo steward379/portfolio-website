@@ -53,18 +53,15 @@ const ProjectImages = ({ mainImage, images, title }: ProjectImagesProps) => {
 
   return (
     <div>
-      <div className={`frame relative aspect-[16/10] w-full ${frameStyles.shell}`}>
+      <div className={`frame relative w-full ${frameStyles.shell} ${frameStyles.mainViewer}`}>
         {!errors.has(current) ? (
           <>
             <img
               ref={(el) => setRef(current, el)}
               src={current}
               alt={`${title} — 主要專案圖片`}
-              className={`absolute inset-0 ${loaded.has(current) ? 'opacity-100' : 'opacity-0'}`}
+              className={loaded.has(current) ? 'opacity-100' : 'opacity-0'}
               style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
                 transition: 'opacity 700ms var(--ease-out-expo)',
               }}
               loading="lazy"
@@ -72,7 +69,7 @@ const ProjectImages = ({ mainImage, images, title }: ProjectImagesProps) => {
               onLoad={() => onLoad(current)}
             />
             {!loaded.has(current) && (
-              <div className="absolute inset-0 animate-pulse bg-[var(--surface)]" />
+              <div className="aspect-[16/10] w-full animate-pulse bg-[var(--surface)]" />
             )}
           </>
         ) : (
