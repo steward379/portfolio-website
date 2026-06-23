@@ -55,12 +55,22 @@ const ProjectImages = ({ mainImage, images, title }: ProjectImagesProps) => {
     <div>
       <div className={`frame relative w-full ${frameStyles.shell} ${frameStyles.mainViewer}`}>
         {!errors.has(current) ? (
-          <>
+          <div className="relative w-full">
+            {!loaded.has(current) && (
+              <div
+                className="aspect-[16/10] w-full animate-pulse bg-[var(--surface)]"
+                aria-hidden
+              />
+            )}
             <img
               ref={(el) => setRef(current, el)}
               src={current}
               alt={`${title} — 主要專案圖片`}
-              className={loaded.has(current) ? 'opacity-100' : 'opacity-0'}
+              className={
+                loaded.has(current)
+                  ? 'opacity-100'
+                  : 'absolute left-0 top-0 w-full opacity-0'
+              }
               style={{
                 transition: 'opacity 700ms var(--ease-out-expo)',
               }}
@@ -68,10 +78,7 @@ const ProjectImages = ({ mainImage, images, title }: ProjectImagesProps) => {
               onError={() => onErr(current)}
               onLoad={() => onLoad(current)}
             />
-            {!loaded.has(current) && (
-              <div className="aspect-[16/10] w-full animate-pulse bg-[var(--surface)]" />
-            )}
-          </>
+          </div>
         ) : (
           <div className="absolute inset-0 flex items-center justify-center text-sm text-[var(--muted)]">
             圖片載入失敗

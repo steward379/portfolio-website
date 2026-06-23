@@ -20,17 +20,25 @@
   box-shadow: none;
 }
 
-.shell img {
+.shell:not(.mainViewer) img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* 作品頁主圖：完整顯示截圖，不裁切放大 */
-.mainViewer img {
+/* 作品頁主圖：完整顯示截圖，不裁切、不加內側暗角 */
+.shell.mainViewer {
+  overflow: visible;
+  box-shadow: none;
+}
+
+.shell.mainViewer img {
   position: static;
   display: block;
   width: 100%;
+  max-width: 100%;
   height: auto;
+  max-height: none;
   object-fit: contain;
+  object-position: center;
 }
